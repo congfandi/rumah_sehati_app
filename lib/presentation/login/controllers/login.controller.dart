@@ -9,7 +9,6 @@ import '../../../app/data/models/base_response.dart';
 import '../../../app/data/models/profile/response/profile.dart';
 import '../../../app/data/providers/providers.dart';
 import '../../../infrastructure/dal/services/auth_service.dart';
-import '../../../infrastructure/navigation/routes.dart';
 import '../../../infrastructure/widgets/widgets.dart';
 
 class LoginController extends GetxController implements ApiResponse {
@@ -61,6 +60,5 @@ class LoginController extends GetxController implements ApiResponse {
   void onSuccessRequest(String path, ResultResponse result) {
     AuthService.to
         .login(token: result.token ?? "", profile: result.profile ?? Profile());
-    Get.offAllNamed(Routes.HOME);
   }
 }

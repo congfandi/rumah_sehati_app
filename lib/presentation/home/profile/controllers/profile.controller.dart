@@ -1,11 +1,16 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/providers/providers.dart';
+import 'package:rumah_sehati_mobile/infrastructure/theme/pallet.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/helpers/helpers.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
+import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
 
 import '../../../../app/data/models/base_response.dart';
 import '../../../../app/data/models/profile/response/profile.dart';
 import '../../../../domain/core/interfaces/api_response.dart';
+import '../../../../infrastructure/dal/services/auth_service.dart';
 
 class ProfileController extends GetxController implements ApiResponse {
   RxMap<String, String> dataProfile = RxMap();
@@ -24,7 +29,25 @@ class ProfileController extends GetxController implements ApiResponse {
     });
   }
 
-  void logout() {}
+  void logout() {
+    AppDialog(
+        context: Get.context,
+        title: "Logout",
+        description: "Apa kamu yakin?",
+        logo: const Icon(
+          Icons.help,
+          color: Pallet.danger,
+          size: 30,
+        ),
+        onOk: () {
+          AuthService.to.logout();
+        },
+        okTitle: "Ok",
+        noTitle: "Tidak",
+        onNo: () {
+          Get.back();
+        });
+  }
 
   @override
   void onReady() {

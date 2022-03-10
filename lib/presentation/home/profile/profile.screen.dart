@@ -24,14 +24,14 @@ class ProfileScreen extends GetView<ProfileController> {
             ),
             Expanded(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      _header(),
-                      _personalInfo(),
-                      _myAccount(),
-                    ],
-                  ),
-                ))
+              child: Column(
+                children: [
+                  _header(),
+                  _personalInfo(),
+                  _myAccount(),
+                ],
+              ),
+            ))
           ],
         ),
       ),
@@ -72,9 +72,9 @@ class ProfileScreen extends GetView<ProfileController> {
             children: [
               Expanded(
                   child: Text(
-                    Strings.personalInformation,
-                    style: TextStyles.captionModerateSemiBold(),
-                  )),
+                Strings.personalInformation,
+                style: TextStyles.captionModerateSemiBold(),
+              )),
               const Icon(
                 Icons.edit,
                 color: Pallet.primaryPurple,
@@ -91,28 +91,28 @@ class ProfileScreen extends GetView<ProfileController> {
           ),
           SizedBox(height: Dimension.height16),
           Obx(
-                () => Column(
+            () => Column(
                 children: controller.dataProfile.entries
                     .map((rowData) => Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          rowData.key,
-                          style: TextStyles.bodySmallRegular(
-                              color: Pallet.lightBlack),
-                        ),
-                        Text(
-                          rowData.value,
-                          style: TextStyles.bodySmallMedium(
-                              color: Pallet.lightBlack),
-                        ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    ),
-                    SizedBox(height: Dimension.height16)
-                  ],
-                ))
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  rowData.key,
+                                  style: TextStyles.bodySmallRegular(
+                                      color: Pallet.lightBlack),
+                                ),
+                                Text(
+                                  rowData.value,
+                                  style: TextStyles.bodySmallMedium(
+                                      color: Pallet.lightBlack),
+                                ),
+                              ],
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            ),
+                            SizedBox(height: Dimension.height16)
+                          ],
+                        ))
                     .toList()),
           )
         ],
@@ -224,16 +224,21 @@ class ProfileScreen extends GetView<ProfileController> {
   }
 
   Widget _buttonLogout() {
-    return Container(
-      width: Get.width,
-      height: 45,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Pallet.primaryPurple, width: 2)),
-      child: Center(
-        child: Text(
-          Strings.logout,
-          style: TextStyles.componentModerate(color: Pallet.primaryPurple),
+    return GestureDetector(
+      onTap: () {
+        controller.logout();
+      },
+      child: Container(
+        width: Get.width,
+        height: 45,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Pallet.primaryPurple, width: 2)),
+        child: Center(
+          child: Text(
+            Strings.logout,
+            style: TextStyles.componentModerate(color: Pallet.primaryPurple),
+          ),
         ),
       ),
     );

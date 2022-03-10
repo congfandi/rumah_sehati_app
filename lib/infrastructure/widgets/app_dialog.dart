@@ -9,6 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
+import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
 
 import 'app_normal_button.dart';
 
@@ -19,8 +20,8 @@ class AppDialog {
   final Widget logo;
   final String? okTitle;
   final String? noTitle;
-  VoidCallback? onNo;
-  VoidCallback? onOk;
+  final Function? onNo;
+  final Function? onOk;
 
   AppDialog(
       {required this.context,
@@ -70,26 +71,39 @@ class AppDialog {
               SizedBox(
                 height: Dimension.height30,
               ),
-              onNo == null
-                  ? Container()
-                  : AppNormalButton(
-                      onPress: () {
-                        onNo!();
-                      },
-                      title: noTitle ?? "No",
-                      titleColor: Pallet.jetBlack,
-                    ),
-              SizedBox(
-                height: onNo == null ? 0 : Dimension.height20,
-              ),
-              onOk == null
-                  ? Container()
-                  : AppNormalButton(
-                      onPress: () {
-                        onOk!();
-                      },
-                      title: okTitle ?? "Yes",
-                    )
+              Row(
+                children: [
+                  onNo == null
+                      ? Container()
+                      : Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: AppNormalButton(
+                              onPress: () {
+                                onNo!();
+                              },
+                              title: noTitle ?? "No",
+                              titleColor: Pallet.white,
+                            ),
+                          ),
+                        ),
+                  SizedBox(
+                    height: onNo == null ? 0 : Dimension.height20,
+                  ),
+                  onOk == null
+                      ? Container()
+                      : Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: AppOutlineButton(
+                              titleColor: Pallet.danger,
+                                onPress: () => onOk!(),
+                                title: okTitle ?? "Yes"),
+                          ),
+                        )
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              )
             ],
           ),
         ),

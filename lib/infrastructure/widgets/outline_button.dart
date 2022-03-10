@@ -8,12 +8,13 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 
 class AppOutlineButton extends StatelessWidget {
   final String title;
   final Color titleColor;
-  final VoidCallback? onPress;
+  final Function onPress;
   final Color buttonColor;
 
   const AppOutlineButton(
@@ -26,26 +27,21 @@ class AppOutlineButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(vertical: Dimension.width8),
-      child: TextButton(
-        onPressed: onPress,
-        style: TextButton.styleFrom(
-          primary: Pallet.primaryPurple,
-          padding: EdgeInsets.symmetric(
-            horizontal: Dimension.width24,
-            vertical: Dimension.height12,
+    return GestureDetector(
+      onTap: () {
+        onPress();
+      },
+      child: Container(
+        width: Get.width,
+        height: 45,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: buttonColor, width: 2)),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyles.componentModerate(color: buttonColor),
           ),
-          shape: const StadiumBorder(),
-          side: BorderSide(
-            color: Pallet.primaryPurple,
-            width: Dimension.width2,
-          ),
-        ),
-        child: Text(
-          title,
-          style: TextStyles.moderateSemiBold(color: titleColor),
         ),
       ),
     );
