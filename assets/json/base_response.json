@@ -1,0 +1,17 @@
+{
+    "statusCode": 200,
+    "message": "this is just sample error, this should be 401,403,404 or 500",
+    "result": {
+            "token": "adfasdff asdf asdf",
+            "profile": {
+                "phone": "087832442424",
+                "email": "congfandi@gmail.com",
+                "name": "Cong Fandi",
+                "birthDate": "15/10/1994",
+                "height": 123,
+                "weight": 123,
+                "condition": "Hamil",
+                "photo":"https://i.pravatar.cc/300"
+            }
+    }
+}
