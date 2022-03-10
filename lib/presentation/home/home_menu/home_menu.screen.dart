@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/tips_item.dart';
@@ -9,21 +9,22 @@ import 'package:rumah_sehati_mobile/presentation/home/home_menu/tips_item.dart';
 import 'controllers/home_menu.controller.dart';
 
 class HomeMenuScreen extends GetView<HomeMenuController> {
-  const   HomeMenuScreen({Key? key}) : super(key: key);
+  const HomeMenuScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Pallet.white,
       body: SingleChildScrollView(
           child: SizedBox(
-            child: Column(
-              children: [
-                _header(),
-                _menu(),
-                _tips(),
-              ],
-            ),
-          )),
+        child: Column(
+          children: [
+            _header(),
+            _menu(),
+            _tips(),
+          ],
+        ),
+      )),
     );
   }
 
@@ -52,11 +53,11 @@ class HomeMenuScreen extends GetView<HomeMenuController> {
           ),
         ),
         Obx(
-              () => Row(
+          () => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
               3,
-                  (index) => Container(
+              (index) => Container(
                 height: 6,
                 width: 6,
                 margin: const EdgeInsets.only(left: 3),
@@ -69,7 +70,9 @@ class HomeMenuScreen extends GetView<HomeMenuController> {
             ),
           ),
         ),
-        SizedBox(height: Dimension.height16,)
+        SizedBox(
+          height: Dimension.height16,
+        )
       ],
     );
   }
@@ -96,36 +99,41 @@ class HomeMenuScreen extends GetView<HomeMenuController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(
             3,
-                (index) => Padding(
-              padding: const EdgeInsets.only(
-                  top: 16, bottom: 16, left: 24, right: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(3, (index) {
-                  menuIndex++;
-                  return menuIndex > 8
-                      ? SizedBox(width: Dimension.width48)
-                      : _menuItem(controller.menus[menuIndex - 1]);
-                }),
-              ),
-            )),
+            (index) => Padding(
+                  padding: const EdgeInsets.only(
+                      top: 16, bottom: 16, left: 24, right: 24),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(3, (index) {
+                      menuIndex++;
+                      return menuIndex > 8
+                          ? SizedBox(width: Dimension.width48)
+                          : _menuItem(controller.menus[menuIndex - 1]);
+                    }),
+                  ),
+                )),
       ),
     );
   }
 
   Widget _menuItem(HomeMenu homeMenu) {
-    return Column(
-      children: [
-        Image.asset(
-          homeMenu.image,
-          width: Dimension.width48,
-        ),
-        SizedBox(
-          height: Dimension.height8,
-        ),
-        Text(homeMenu.name, style: TextStyles.contentSmall10())
-      ],
-      mainAxisSize: MainAxisSize.min,
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.CALCULATOR);
+      },
+      child: Column(
+        children: [
+          Image.asset(
+            homeMenu.image,
+            width: Dimension.width48,
+          ),
+          SizedBox(
+            height: Dimension.height8,
+          ),
+          Text(homeMenu.name, style: TextStyles.contentSmall10())
+        ],
+        mainAxisSize: MainAxisSize.min,
+      ),
     );
   }
 

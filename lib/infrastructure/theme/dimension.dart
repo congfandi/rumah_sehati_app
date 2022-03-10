@@ -44,7 +44,7 @@ class Dimension {
   static double width18 = 18.w;
   static double width20 = 20.w;
   static double width24 = 24.w;
-  static double width30 = 20.w;
+  static double width30 = 30.w;
   static double width32 = 32.w;
   static double width36 = 36.w;
   static double width40 = 40.w;

@@ -8,11 +8,12 @@ class BaseUi extends StatefulWidget {
       {Key? key,
       required this.title,
       required this.child,
-      this.backgroundColor = Pallet.white})
+      this.backgroundColor = Pallet.white,this.showBackButton = true})
       : super(key: key);
   final String title;
   final Widget child;
   final Color backgroundColor;
+  final bool showBackButton;
 
   @override
   _BaseUiState createState() => _BaseUiState();
@@ -25,7 +26,7 @@ class _BaseUiState extends State<BaseUi> {
       backgroundColor: widget.backgroundColor,
       body: Column(
         children: [
-          AppAppbar(title: widget.title),
+          AppAppbar(title: widget.title,showBackButton: widget.showBackButton),
           Expanded(child: widget.child)
         ],
       ),

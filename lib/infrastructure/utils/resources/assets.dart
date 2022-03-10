@@ -52,4 +52,7 @@ class Assets {
   static const String momIcon = "assets/images/mom_icon.svg";
   static const String dadIcon = "assets/images/dad_icon.svg";
   static const String babyIcon = "assets/images/baby_icon.svg";
+  static const String calculatorImt = "assets/images/calculator_imt.png";
+  static const String calculatorZscore = "assets/images/calculator_zscore.png";
+  static const String calculatorImtKek = "assets/images/calculator_imt_kek.png";
 }

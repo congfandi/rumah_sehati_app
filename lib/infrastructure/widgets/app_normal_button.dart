@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 
-
 class AppNormalButton extends StatelessWidget {
   final String title;
   final Color titleColor;
@@ -29,20 +28,20 @@ class AppNormalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPress,
-      child: Container(
-        width: Get.width,
-        height: Dimension.height45,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), color: buttonColor),
-        margin: EdgeInsets.symmetric(vertical: Dimension.width8),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyles.componentModerate(color: titleColor),
-          ),
-        ),
-      ),
-    );
+            onTap: onPress,
+            child: Container(
+              width: Get.width,
+              height: Dimension.height45,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8), color: buttonColor),
+              margin: EdgeInsets.symmetric(vertical: Dimension.width8),
+              child: Center(
+                child: Text(
+                  title,
+                  style: TextStyles.componentModerate(color: titleColor),
+                ),
+              ),
+            ),
+          );
   }
 }

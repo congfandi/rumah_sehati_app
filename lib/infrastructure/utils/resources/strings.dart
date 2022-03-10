@@ -529,7 +529,7 @@ class Strings {
 
   static const String umum = "Umum";
 
-  static const String umur = "Umur";
+  static const String age = "Umur";
 
   static const String uploadFoto = "Unggah foto";
 
