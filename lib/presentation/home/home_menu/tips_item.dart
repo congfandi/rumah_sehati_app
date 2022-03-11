@@ -20,7 +20,6 @@ class TipsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
       decoration: BoxDecoration(
           color: Pallet.white,
           boxShadow: [
@@ -32,95 +31,89 @@ class TipsItem extends StatelessWidget {
             )
           ],
           borderRadius: BorderRadius.circular(20)),
-      margin: const EdgeInsets.only(
-        left: 24,
-        right: 24,
-        top: 24,
-        bottom: 16,
-      ),
+      height: 120,
       child: Column(children: [
-        ClipRRect(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          child: Image.network(
-            Strings.sampleImage,
-            fit: BoxFit.cover,
-            width: Get.width,
-            height: 120,
+        Expanded(
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            child: Image.network(
+              Strings.sampleImage,
+              fit: BoxFit.cover,
+              width: Get.width,
+            ),
           ),
         ),
-        Expanded(
-          child: Column(
-            children: [
-              Padding(
-                  padding: const EdgeInsets.only(
-                      left: 24, right: 24, top: 16, bottom: 8),
-                  child: Text(
-                    Strings.vaccineReduce,
-                    style: TextStyles.moderateSemiBold(),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  )),
-              Padding(
-                  padding: const EdgeInsets.only(left: 24, right: 24, bottom: 8),
-                  child: Text(
-                    Strings.vaccineReduce,
-                    style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  )),
-              Padding(
-                  padding: const EdgeInsets.only(left: 24, right: 24, bottom: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                          child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                                primary: Pallet.primaryPurple,
-                                backgroundColor: Pallet.primaryPurple,
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: Dimension.width12,
-                                  vertical: Dimension.height4,
-                                ),
-                                shape: const StadiumBorder()),
-                            child: Text(
-                              Strings.healthy,
-                              style: TextStyles.captionModerateSemiBold(
-                                  color: Pallet.white),
-                            ),
-                          )
-                        ],
-                      )),
-                      Expanded(
-                          child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
-                          Icon(
-                            Icons.favorite,
-                            color: Pallet.primaryPurple,
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+                padding: const EdgeInsets.only(
+                    left: 24, right: 24, top: 16, bottom: 8),
+                child: Text(
+                  Strings.vaccineReduce,
+                  style: TextStyles.moderateSemiBold(),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                )),
+            Padding(
+                padding: const EdgeInsets.only(left: 24, right: 24, bottom: 8),
+                child: Text(
+                  Strings.vaccineReduce,
+                  style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                )),
+            Padding(
+                padding: const EdgeInsets.only(left: 24, right: 24, bottom: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                              primary: Pallet.primaryPurple,
+                              backgroundColor: Pallet.primaryPurple,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: Dimension.width12,
+                                vertical: Dimension.height4,
+                              ),
+                              shape: const StadiumBorder()),
+                          child: Text(
+                            Strings.healthy,
+                            style: TextStyles.captionModerateSemiBold(
+                                color: Pallet.white),
                           ),
-                          SizedBox(width: 16),
-                          Icon(
-                            CupertinoIcons.archivebox,
-                            color: Pallet.primaryPurple,
-                          ),
-                          SizedBox(width: 16),
-                          Icon(
-                            Icons.share,
-                            color: Pallet.primaryPurple,
-                          ),
-                        ],
-                      )),
-                    ],
-                  )),
-            ],
-            mainAxisSize: MainAxisSize.min,
-          ),
+                        )
+                      ],
+                    )),
+                    Expanded(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: const [
+                        Icon(
+                          Icons.favorite,
+                          color: Pallet.primaryPurple,
+                        ),
+                        SizedBox(width: 16),
+                        Icon(
+                          CupertinoIcons.archivebox,
+                          color: Pallet.primaryPurple,
+                        ),
+                        SizedBox(width: 16),
+                        Icon(
+                          Icons.share,
+                          color: Pallet.primaryPurple,
+                        ),
+                      ],
+                    )),
+                  ],
+                )),
+          ],
         )
       ]),
     );
