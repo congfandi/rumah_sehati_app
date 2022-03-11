@@ -57,4 +57,5 @@ class Assets {
   static const String calculatorImtKek = "assets/images/calculator_imt_kek.png";
   static const String kmsDigital = "assets/images/kms.png";
   static const String sakitPadaBayi = "assets/images/sakit_bayi.png";
+  static const String baby = "assets/images/baby.png";
 }

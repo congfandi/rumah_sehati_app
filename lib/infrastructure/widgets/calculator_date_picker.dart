@@ -75,8 +75,9 @@ class CalculatorDatePicker extends StatelessWidget {
         firstDate: DateTime.now().subtract(const Duration(days: 2000)),
         lastDate: DateTime.now());
     if (selectedDate != null) {
-      controller.text = DateFormat("dd-MMM-yyyy").format(selectedDate);
-      onSelectedDate(selectedDate)!;
+      controller.text =
+          DateFormat("dd MMMM yyyy", "id_ID").format(selectedDate);
+      onSelectedDate(selectedDate);
     }
   }
 }
