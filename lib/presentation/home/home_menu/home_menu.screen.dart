@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/tips_item.dart';
@@ -119,7 +118,7 @@ class HomeMenuScreen extends GetView<HomeMenuController> {
   Widget _menuItem(HomeMenu homeMenu) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.CALCULATOR);
+        Get.toNamed(homeMenu.route);
       },
       child: Column(
         children: [

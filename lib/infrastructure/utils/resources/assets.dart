@@ -55,4 +55,6 @@ class Assets {
   static const String calculatorImt = "assets/images/calculator_imt.png";
   static const String calculatorZscore = "assets/images/calculator_zscore.png";
   static const String calculatorImtKek = "assets/images/calculator_imt_kek.png";
+  static const String kmsDigital = "assets/images/kms.png";
+  static const String sakitPadaBayi = "assets/images/sakit_bayi.png";
 }

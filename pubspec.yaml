@@ -19,6 +19,9 @@ dependencies:
   logger: 1.1.0
   firebase_core: 1.13.1
   firebase_crashlytics: 2.5.3
+  intl: 0.17.0
+  flutter_localizations: 
+    sdk: flutter
   flutter: 
     sdk: flutter
 
@@ -45,4 +48,3 @@ flutter:
           weight: 700
         - asset: assets/fonts/Montserrat-Italic.ttf
           style: italic
-

@@ -37,7 +37,9 @@ class ZscoreView extends GetView<CalculatorController> {
           SizedBox(height: Dimension.height50),
           AppNormalButton(onPress: () {}, title: Strings.count),
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.reset();
+              },
               child: Text(
                 Strings.reset,
                 style:

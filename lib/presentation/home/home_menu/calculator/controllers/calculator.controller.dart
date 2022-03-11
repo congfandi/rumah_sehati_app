@@ -33,6 +33,10 @@ class CalculatorController extends GetxController {
   void changeMenu(int menu) {
     currentMenuIndex(menu);
   }
+
+  void reset() {
+    menus[currentMenuIndex.value].reset();
+  }
 }
 
 class CalculatorMenu {
@@ -40,10 +44,17 @@ class CalculatorMenu {
   final String logo;
   final String description;
   final Widget child;
-  final TextEditingController ageController = TextEditingController();
-  final TextEditingController weightController = TextEditingController();
-  final TextEditingController heightController = TextEditingController();
-  final TextEditingController lilaController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+  TextEditingController lilaController = TextEditingController();
+
+  reset() {
+    ageController = TextEditingController();
+    weightController = TextEditingController();
+    heightController = TextEditingController();
+    lilaController = TextEditingController();
+  }
 
   CalculatorMenu(
       {required this.name,

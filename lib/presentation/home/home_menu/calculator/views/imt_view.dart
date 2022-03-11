@@ -30,7 +30,9 @@ class ImtView extends GetView<CalculatorController> {
         const Expanded(child: SizedBox()),
         AppNormalButton(onPress: () {}, title: Strings.count),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.reset();
+            },
             child: Text(
               Strings.reset,
               style: TextStyles.componentModerate(color: Pallet.primaryPurple),

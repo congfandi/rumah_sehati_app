@@ -20,6 +20,7 @@ class TipsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 120,
       decoration: BoxDecoration(
           color: Pallet.white,
           boxShadow: [

@@ -17,16 +17,16 @@ ThemeData themeLight = ThemeData(
   fontFamily: 'Montserrat',
   primaryColor: Pallet.createMaterialColor(Pallet.primary),
   colorScheme: ThemeData().colorScheme.copyWith(
-        primary: Pallet.primary,
+        primary: Pallet.primaryPurple,
       ),
 );
 
 /// Dark theme
 ThemeData themeDark = ThemeData(
   fontFamily: 'Montserrat',
-  primaryColor: Pallet.primary,
+  primaryColor: Pallet.primaryPurple,
   colorScheme: ThemeData().colorScheme.copyWith(
-        primary: Pallet.primary,
+        primary: Pallet.primaryPurple,
         brightness: Brightness.dark,
       ),
 );

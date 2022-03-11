@@ -8,6 +8,7 @@
  */
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/navigation/navigation.dart';
@@ -30,8 +31,13 @@ class MyApp extends StatelessWidget {
         },
         child: GetMaterialApp(
           title: Strings.appName,
+          supportedLocales: const [Locale('id', 'ID')],
           debugShowCheckedModeBanner: false,
           theme: themeLight,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate
+          ],
           initialBinding: BindingsBuilder(
             () {
               Get.put(AuthService());

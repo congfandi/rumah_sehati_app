@@ -373,7 +373,7 @@ class Strings {
 
   static const String perawatanDemam = "Perawatan demam pada bayi usia 3 bulan";
 
-  static const String feamale = "Perempuan";
+  static const String female = "Perempuan";
 
   static const String growthBaby = "Perkembangan Janin";
 
@@ -395,7 +395,7 @@ class Strings {
 
   static const String chooseMenuMomNeed = "Pilih menu yang Bunda butuhkan";
 
-  static const String chooseOpsion = "pilih opsi";
+  static const String chooseOption = "pilih opsi";
 
   static const String chooseOne = "Pilih salah satu";
 
