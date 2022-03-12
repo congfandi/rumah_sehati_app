@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class Environments {
   static const String PRODUCTION = 'prod';
   static const String QAS = 'QAS';

@@ -17,7 +17,7 @@ class RekanBundaProvider extends ApiClient {
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((response.statusCode ?? 500) < 300) {
-        apiResponse.onSuccessRequest(path, result!);
+        apiResponse.onSuccessRequest(path, result, response.request?.method ?? "");
       } else {
         apiResponse.onFailedRequest(path, statusCode ?? 500, message ?? "");
       }

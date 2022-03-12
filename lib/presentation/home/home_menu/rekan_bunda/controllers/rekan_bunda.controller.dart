@@ -36,7 +36,7 @@ class RekanBundaController extends GetxController implements ApiResponse {
   void onStartRequest(String path) {}
 
   @override
-  void onSuccessRequest(String path, ResultResponse result) {
-    listGroups.addAll(result.groups ?? []);
+  void onSuccessRequest(String path, ResultResponse? result, String method) {
+    listGroups.addAll(result?.groups ?? []);
   }
 }

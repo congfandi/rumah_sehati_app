@@ -66,8 +66,8 @@ class ProfileController extends GetxController implements ApiResponse {
   void onStartRequest(String path) {}
 
   @override
-  void onSuccessRequest(String path, ResultResponse result) {
-    PrefHelper.to.saveProfile(profile: result.profile!);
+  void onSuccessRequest(String path, ResultResponse? result, String method) {
+    PrefHelper.to.saveProfile(profile: result?.profile ?? Profile());
     setupProfile();
   }
 }

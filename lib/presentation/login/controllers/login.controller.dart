@@ -57,8 +57,8 @@ class LoginController extends GetxController implements ApiResponse {
   }
 
   @override
-  void onSuccessRequest(String path, ResultResponse result) {
+  void onSuccessRequest(String path, ResultResponse? result, String method) {
     AuthService.to
-        .login(token: result.token ?? "", profile: result.profile ?? Profile());
+        .login(token: result?.token ?? "", profile: result?.profile ?? Profile());
   }
 }

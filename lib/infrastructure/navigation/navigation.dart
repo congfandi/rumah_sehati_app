@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../config.dart';
@@ -43,7 +42,7 @@ class Nav {
     ),
     GetPage(
       name: Routes.LOGIN_REGISTER,
-      page: () => LoginRegisterScreen(),
+      page: () => const LoginRegisterScreen(),
       binding: LoginRegisterControllerBinding(),
     ),
     GetPage(
@@ -68,22 +67,22 @@ class Nav {
     ),
     GetPage(
       name: Routes.CALCULATOR,
-      page: () => CalculatorScreen(),
+      page: () => const CalculatorScreen(),
       binding: CalculatorControllerBinding(),
     ),
     GetPage(
       name: Routes.BALITA,
-      page: () => BalitaScreen(),
+      page: () => const BalitaScreen(),
       binding: BalitaControllerBinding(),
     ),
     GetPage(
       name: Routes.IBU_HAMIL,
-      page: () => IbuHamilScreen(),
+      page: () => const IbuHamilScreen(),
       binding: IbuHamilControllerBinding(),
     ),
     GetPage(
       name: Routes.PRAKONSEPSI,
-      page: () => PrakonsepsiScreen(),
+      page: () => const PrakonsepsiScreen(),
       binding: PrakonsepsiControllerBinding(),
     ),
     GetPage(
@@ -98,18 +97,23 @@ class Nav {
     ),
     GetPage(
       name: Routes.REKAN_BUNDA,
-      page: () => RekanBundaScreen(),
+      page: () => const RekanBundaScreen(),
       binding: RekanBundaControllerBinding(),
     ),
     GetPage(
       name: Routes.KONSULTASI_GIZI,
-      page: () => KonsultasiGiziScreen(),
+      page: () => const KonsultasiGiziScreen(),
       binding: KonsultasiGiziControllerBinding(),
     ),
     GetPage(
       name: Routes.SPLASH,
       page: () => const SplashScreen(),
       binding: SplashControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.QUESTIONER,
+      page: () => QuestionerScreen(),
+      binding: QuestionerControllerBinding(),
     ),
   ];
 }

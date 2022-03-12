@@ -14,12 +14,10 @@ class ApiUrl {
   static const login = "/api/v1/auth/login";
   static const register = "/api/v1/auth/register";
   static const changePassword = "/api/v1/auth/password";
-
   static const articles = "/api/v1/article";
   static const faskes = "/api/v1/faskes";
-
   static const groups = "/api/v1/groups";
   static const children = "/api/v1/children";
-
   static const profile = "/api/v1/profile";
+  static const consultation = "/api/v1/consultations";
 }

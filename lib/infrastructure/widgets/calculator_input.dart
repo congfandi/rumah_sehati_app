@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 
-import '../utils/resources/resources.dart';
 
 class CalculatorInput extends StatelessWidget {
   const CalculatorInput(

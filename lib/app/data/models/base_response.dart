@@ -8,6 +8,7 @@
  *
  */
 
+import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation.dart';
 
 import 'article/response/article.dart';
 import 'child/response/child.dart';
@@ -26,7 +27,8 @@ class BaseResponse {
   BaseResponse.fromJson(dynamic json) {
     statusCode = json['statusCode'];
     message = json['message'];
-    result = json['result'] != null ? ResultResponse.fromJson(json['result']) : null;
+    result =
+        json['result'] != null ? ResultResponse.fromJson(json['result']) : null;
   }
 
   int? statusCode;
@@ -50,6 +52,7 @@ class ResultResponse {
   Faskes? faskes;
   List<Group>? groups;
   List<Child>? children;
+  List<Consultation>? consultations;
 
   ResultResponse.fromJson(dynamic json) {
     token = json['token'];
@@ -77,6 +80,13 @@ class ResultResponse {
       children = [];
       json['children'].forEach((v) {
         children?.add(Child.fromJson(v));
+      });
+    }
+
+    if (json['consultations'] != null) {
+      consultations = [];
+      json['consultations'].forEach((v) {
+        consultations?.add(Consultation.fromJson(v));
       });
     }
   }

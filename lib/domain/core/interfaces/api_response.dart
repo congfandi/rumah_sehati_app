@@ -17,5 +17,5 @@ abstract class ApiResponse {
 
   void onFailedRequest(String path, int statusCode, String message);
 
-  void onSuccessRequest(String path, ResultResponse result);
+  void onSuccessRequest(String path, ResultResponse? result,String method);
 }

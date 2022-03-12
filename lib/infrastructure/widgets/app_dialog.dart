@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
 
-import 'app_normal_button.dart';
 
 class AppDialog {
   final BuildContext? context;

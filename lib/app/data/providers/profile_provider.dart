@@ -16,7 +16,7 @@ class ProfileProvider extends ApiClient {
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((statusCode ?? 500) < 300) {
-        apiResponse.onSuccessRequest(path, result!);
+        apiResponse.onSuccessRequest(path, result, response.request?.method ?? "");
       } else {
         apiResponse.onFailedRequest(path, statusCode ?? 500, message ?? "");
       }

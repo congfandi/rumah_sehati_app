@@ -22,4 +22,5 @@ class Routes {
   static const REGISTER = '/register';
   static const REKAN_BUNDA = '/rekan-bunda';
   static const SPLASH = '/splash';
+  static const QUESTIONER = '/questioner';
 }
