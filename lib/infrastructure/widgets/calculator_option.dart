@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 
-
 class CalculatorOption extends StatelessWidget {
   const CalculatorOption(
       {Key? key,
@@ -10,13 +9,15 @@ class CalculatorOption extends StatelessWidget {
       required this.title,
       required this.hint,
       required this.options,
-      required this.icon})
+      required this.icon,
+      this.onSelect})
       : super(key: key);
   final TextEditingController controller;
   final String title;
   final String hint;
   final Widget icon;
   final List<String> options;
+  final Function(String)? onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +85,9 @@ class CalculatorOption extends StatelessWidget {
                 children: options
                     .map((e) => GestureDetector(
                           onTap: () {
+                            if (onSelect != null) {
+                              onSelect!(e);
+                            }
                             controller.text = e;
                             Get.back();
                           },

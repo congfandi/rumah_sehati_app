@@ -96,16 +96,13 @@ class ArticleScreen extends GetView<ArticleController> {
     return Column(
       children: [
         _search(),
-        SizedBox(
-          height: Get.height,
-          child: Obx(
-            () => ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (c, i) =>
-                  ArticleItem(article: controller.listArticle[i]),
-              itemCount: controller.listArticle.length,
-            ),
+        Obx(
+          () => ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (c, i) =>
+                ArticleItem(article: controller.listArticle[i]),
+            itemCount: controller.listArticle.length,
           ),
         )
       ],

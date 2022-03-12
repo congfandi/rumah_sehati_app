@@ -60,4 +60,8 @@ class Assets {
   static const String baby = "assets/images/baby.png";
   static const String article = "assets/images/faskes.svg";
   static const String consultationSend = "assets/images/consultation_send.png";
+  static const String filter = "assets/images/filter.svg";
+  static const String babyAndBalita = "assets/images/baby_and_balita.png";
+  static const String ibuHamil = "assets/images/ibu_hamil.png";
+  static const String ibuMenyusui = "assets/images/ibu_menyusui.png";
 }
