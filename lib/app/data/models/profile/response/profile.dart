@@ -10,13 +10,15 @@
 
 class Profile {
   Profile({
-      this.phone, 
-      this.email, 
-      this.name, 
-      this.birthDate, 
-      this.height, 
-      this.weight, 
-      this.condition,});
+    this.phone,
+    this.photo,
+    this.email,
+    this.name,
+    this.birthDate,
+    this.height,
+    this.weight,
+    this.condition,
+  });
 
   Profile.fromJson(dynamic json) {
     phone = json['phone'];
@@ -26,7 +28,9 @@ class Profile {
     height = json['height'];
     weight = json['weight'];
     condition = json['condition'];
+    photo = json['photo'];
   }
+
   String? phone;
   String? email;
   String? name;
@@ -34,6 +38,7 @@ class Profile {
   int? height;
   int? weight;
   String? condition;
+  String? photo;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -44,7 +49,7 @@ class Profile {
     map['height'] = height;
     map['weight'] = weight;
     map['condition'] = condition;
+    map['photo'] = photo;
     return map;
   }
-
 }

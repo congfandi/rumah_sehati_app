@@ -40,8 +40,16 @@ class HomeScreen extends GetView<HomeController> {
               ),
               label: Strings.babyData),
           BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                Assets.article,
+                color: controller.currentIndex.value == 3
+                    ? Pallet.primaryPurple
+                    : Pallet.grey,
+              ),
+              label: Strings.article),
+          BottomNavigationBarItem(
               icon: CircleAvatar(
-                backgroundColor: controller.currentIndex.value == 3
+                backgroundColor: controller.currentIndex.value == 4
                     ? Pallet.primaryPurple
                     : Pallet.grey,
                 radius: 18,

@@ -1,31 +1,17 @@
-/*
- * Rumah Sehati
- * child.dart
- * Created by Cong Fandi on 8/3/2022
- * email 	: me@congfandi.com
- * website 	: https://www.thengoding.com
- * Copyright © 2022 Cong Fandi. All rights reserved.
- *
- */
+class ChildRequest {
+  ChildRequest({
+      this.fullName, 
+      this.birthDate, 
+      this.gender, 
+      this.motherName, 
+      this.fatherName, 
+      this.fatherBirthday, 
+      this.motherBirthday, 
+      this.height, 
+      this.weight, 
+      this.measuringDate,});
 
-class Child {
-  Child({
-    this.id,
-    this.fullName,
-    this.birthDate,
-    this.gender,
-    this.motherName,
-    this.fatherName,
-    this.fatherBirthday,
-    this.motherBirthday,
-    this.height,
-    this.weight,
-    this.photo,
-    this.measuringDate,
-  });
-
-  Child.fromJson(dynamic json) {
-    id = json['id'];
+  ChildRequest.fromJson(dynamic json) {
     fullName = json['fullName'];
     birthDate = json['birthDate'];
     gender = json['gender'];
@@ -36,10 +22,7 @@ class Child {
     height = json['height'];
     weight = json['weight'];
     measuringDate = json['measuringDate'];
-    photo = json['photo'];
   }
-
-  int? id;
   String? fullName;
   String? birthDate;
   String? gender;
@@ -50,11 +33,9 @@ class Child {
   double? height;
   double? weight;
   String? measuringDate;
-  String? photo;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['id'] = id;
     map['fullName'] = fullName;
     map['birthDate'] = birthDate;
     map['gender'] = gender;
@@ -65,7 +46,7 @@ class Child {
     map['height'] = height;
     map['weight'] = weight;
     map['measuringDate'] = measuringDate;
-    map['photo'] = photo;
     return map;
   }
+
 }

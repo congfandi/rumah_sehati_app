@@ -113,13 +113,23 @@ class Nav {
     ),
     GetPage(
       name: Routes.QUESTIONER,
-      page: () => QuestionerScreen(),
+      page: () => const QuestionerScreen(),
       binding: QuestionerControllerBinding(),
     ),
     GetPage(
       name: Routes.QUESTIONER_DETAIL,
-      page: () => QuestionerDetailScreen(),
+      page: () => const QuestionerDetailScreen(),
       binding: QuestionerDetailControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ARTICLE,
+      page: () => ArticleScreen(),
+      binding: ArticleControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ARTICLE_DETAIL,
+      page: () => ArticleDetailScreen(),
+      binding: ArticleDetailControllerBinding(),
     ),
   ];
 }

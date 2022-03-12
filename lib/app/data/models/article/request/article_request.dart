@@ -10,11 +10,12 @@
 
 class ArticleRequest {
   ArticleRequest({
-      this.category, 
-      this.tags, 
-      this.query, 
-      this.page, 
-      this.perPage,});
+    this.category,
+    this.tags,
+    this.query,
+    this.page,
+    this.perPage,
+  });
 
   ArticleRequest.fromJson(dynamic json) {
     category = json['category'];
@@ -23,6 +24,7 @@ class ArticleRequest {
     page = json['page'];
     perPage = json['perPage'];
   }
+
   String? category;
   String? tags;
   String? query;
@@ -31,12 +33,21 @@ class ArticleRequest {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['category'] = category;
-    map['tags'] = tags;
-    map['query'] = query;
-    map['page'] = page;
-    map['perPage'] = perPage;
+    if (category != null) {
+      map['category'] = category;
+    }
+    if (query != null) {
+      map['query'] = query;
+    }
+    if (page != null) {
+      map['page'] = "$page";
+    }
+    if (perPage != null) {
+      map['perPage'] = "$perPage";
+    }
+    if (tags != null) {
+      map['tags'] = "$perPage";
+    }
     return map;
   }
-
 }

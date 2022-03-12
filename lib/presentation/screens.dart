@@ -1,3 +1,5 @@
+export 'package:rumah_sehati_mobile/presentation/home/article/article.screen.dart';
+export 'package:rumah_sehati_mobile/presentation/home/article/article_detail/article_detail.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/children/children.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/faskes/faskes.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home.screen.dart';

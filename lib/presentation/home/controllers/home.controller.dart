@@ -11,6 +11,7 @@ class HomeController extends GetxController {
     const HomeMenuScreen(),
     const FaskesScreen(),
     const ChildrenScreen(),
+    const ArticleScreen(),
     const ProfileScreen()
   ]);
   RxInt currentIndex = 0.obs;

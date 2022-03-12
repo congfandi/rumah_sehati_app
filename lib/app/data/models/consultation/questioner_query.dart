@@ -23,7 +23,7 @@ class QuestionerQuery {
     if (category != null) {
       map['category'] = category;
     }
-    if (query != null) {
+    if (query != null && (query ?? "").isNotEmpty) {
       map['query'] = query;
     }
     if (page != null) {

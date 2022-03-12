@@ -1,16 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 
 import 'package:get/get.dart';
-import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
-import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 
-import '../../../../../infrastructure/theme/theme.dart';
-import 'controllers/questioner_detail.controller.dart';
+import '../../../../infrastructure/base/base_ui.dart';
+import '../../../../infrastructure/theme/theme.dart';
+import '../../../../infrastructure/utils/resources/resources.dart';
+import 'controllers/article_detail.controller.dart';
 
-class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
-  const QuestionerDetailScreen({Key? key}) : super(key: key);
+class ArticleDetailScreen extends GetView<ArticleDetailController> {
+  const ArticleDetailScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
                       SizedBox(height: Dimension.height24),
                       SizedBox(height: Dimension.height24),
                       Text(
-                        controller.consultation?.answer ?? "",
+                        controller.article?.content ?? "",
                         style: const TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 14,
@@ -53,7 +54,6 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: Dimension.height24),
           Text(
             Strings.tagRelated,
             style: TextStyles.moderateSemiBold(),
@@ -69,7 +69,7 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
                 ),
                 shape: const StadiumBorder()),
             child: Text(
-              controller.consultation?.category ?? "",
+              controller.article?.tags.toString() ?? "",
               style: TextStyles.captionModerateSemiBold(color: Pallet.white),
             ),
           ),
@@ -82,8 +82,17 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
     return Column(
       children: [
         Text(
-          controller.consultation?.question ?? "",
+          controller.article?.title ?? "",
           style: TextStyles.moderateSemiBold(),
+        ),
+        SizedBox(
+          height: Dimension.height14,
+        ),
+        Image.network(
+          controller.article?.cover ?? "",
+          height: 200,
+          width: Get.width,
+          fit: BoxFit.cover,
         ),
         SizedBox(
           height: Dimension.height32,
@@ -94,14 +103,14 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Author :${controller.consultation?.answeredBy ?? ""}",
+                  "Author :${controller.article?.author ?? ""}",
                   style: TextStyles.bodySmallRegular(),
                 ),
                 SizedBox(
                   height: Dimension.height8,
                 ),
                 Text(
-                  (controller.consultation?.createdDate ?? "").toDayAndDate(),
+                  (controller.article?.createdDate ?? "").toDayAndDate(),
                   style: TextStyles.bodySmallRegular(),
                 ),
               ],
@@ -113,6 +122,13 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
                   Icons.favorite,
                   color: Pallet.primaryPurple,
                 )),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                CupertinoIcons.archivebox,
+                color: Pallet.primaryPurple,
+              ),
+            ),
             IconButton(
                 onPressed: () {
                   _share();
@@ -131,7 +147,7 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
     await FlutterShare.share(
         title: 'Rumah Sehati Matindok',
         text: 'Yuk baca artikel ini',
-        linkUrl: controller.consultation?.link ?? "",
+        linkUrl: controller.article?.link ?? "",
         chooserTitle: 'Pilih social media');
   }
 }

@@ -41,11 +41,11 @@ class KonsultasiGiziController extends GetxController implements ApiResponse {
 
   bool _validate() {
     if (category.text.isEmpty) {
-      Get.snackbar(Strings.failed, "Pilih kategory terlebih dahulu");
+      Get.snackbar(Strings.failed, "Pilih kategory terlebih dahulu",backgroundColor: Pallet.white);
       return false;
     }
     if (question.text.isEmpty || question.text.length < 50) {
-      Get.snackbar(Strings.failed, "Pertanyaan minimal 50 karakter");
+      Get.snackbar(Strings.failed, "Pertanyaan minimal 50 karakter",backgroundColor: Pallet.white);
       return false;
     }
     return true;

@@ -443,7 +443,8 @@ class Strings {
 
   static const String allArsipMomPartner =
       "Semua arsip pertanyaan konsultasi rekan bunda";
-
+  static const String allArticle =
+      "Semua pengetahuan seputar kehamilan kini digenggaman bunda";
   static const String semuaDataTerjamin =
       "Semua Data Bunda akan terjamin privasinya dan tidak disebarluaskan.";
 
