@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/base_response.dart';
 import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation.dart';
 import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation_request.dart';
+import 'package:rumah_sehati_mobile/app/data/models/consultation/questioner_query.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/app_dialog.dart';
@@ -65,7 +66,7 @@ class KonsultasiGiziController extends GetxController implements ApiResponse {
 
   @override
   void onReady() {
-    _provider.getConsultation();
+    _provider.getConsultation(query: QuestionerQuery(page: 1, perPage: 5));
     super.onReady();
   }
 

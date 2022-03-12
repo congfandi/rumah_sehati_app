@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
+import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_option.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/konsultasi_gizi/questioner_item.dart';
@@ -137,32 +138,38 @@ class KonsultasiGiziScreen extends GetView<KonsultasiGiziController> {
   }
 
   Widget _archive() {
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 Strings.allArsip,
                 style: TextStyles.moderateSemiBold(),
               ),
-              Text(
-                Strings.seeAll,
-                style: TextStyles.moderateSemiBold(color: Pallet.primaryPurple),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.QUESTIONER);
+                },
+                child: Text(
+                  Strings.seeAll,
+                  style:
+                      TextStyles.moderateSemiBold(color: Pallet.primaryPurple),
+                ),
               ),
             ],
           ),
-          Obx(
-            () => Column(
-              children: controller.listConsultation
-                  .map((element) => QuestionerItem(consultation: element))
-                  .toList(),
-            ),
-          )
-        ],
-      ),
+        ),
+        Obx(
+          () => Column(
+            children: controller.listConsultation
+                .map((element) => QuestionerItem(consultation: element))
+                .toList(),
+          ),
+        )
+      ],
     );
   }
 }
