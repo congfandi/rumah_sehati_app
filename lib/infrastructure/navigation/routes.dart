@@ -19,8 +19,9 @@ class Routes {
   static const PARENTING = '/parenting';
   static const PRAKONSEPSI = '/prakonsepsi';
   static const PROFILE = '/profile';
+  static const QUESTIONER = '/questioner';
   static const REGISTER = '/register';
   static const REKAN_BUNDA = '/rekan-bunda';
   static const SPLASH = '/splash';
-  static const QUESTIONER = '/questioner';
+  static const QUESTIONER_DETAIL = '/questioner-detail';
 }

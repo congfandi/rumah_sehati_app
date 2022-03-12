@@ -13,6 +13,7 @@ export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controlle
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/prakonsepsi.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/profile.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/questioner.controller.binding.dart';
+export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/questioner_detail.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/register.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/rekan_bunda.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/splash.controller.binding.dart'; 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 import '../../config.dart';
@@ -114,6 +115,11 @@ class Nav {
       name: Routes.QUESTIONER,
       page: () => QuestionerScreen(),
       binding: QuestionerControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.QUESTIONER_DETAIL,
+      page: () => QuestionerDetailScreen(),
+      binding: QuestionerDetailControllerBinding(),
     ),
   ];
 }

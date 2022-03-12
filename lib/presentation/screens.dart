@@ -7,6 +7,7 @@ export 'package:rumah_sehati_mobile/presentation/home/home_menu/home_menu.screen
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/ibu_hamil/ibu_hamil.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/konsultasi_gizi/konsultasi_gizi.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/konsultasi_gizi/questioner/questioner.screen.dart';
+export 'package:rumah_sehati_mobile/presentation/home/home_menu/konsultasi_gizi/questioner_detail/questioner_detail.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/menu_harian/menu_harian.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/parenting/parenting.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/prakonsepsi/prakonsepsi.screen.dart';
