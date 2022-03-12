@@ -7,6 +7,7 @@ import '../../../../../infrastructure/utils/resources/resources.dart';
 import '../../../../../infrastructure/widgets/calculator_option.dart';
 import '../../../article/article_item.dart';
 import '../controllers/menu_harian.controller.dart';
+import 'more_menu_view.dart';
 
 class IbuHamilView extends GetView<MenuHarianController> {
   const IbuHamilView({Key? key}) : super(key: key);
@@ -35,6 +36,28 @@ class IbuHamilView extends GetView<MenuHarianController> {
             onSelect: (value){
               controller.filter(value);
             },),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                Strings.breakfastMenu,
+                style: TextStyles.moderateSemiBold(),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(const MoreMenuView(), arguments: controller.menus[1]);
+                },
+                child: Text(
+                  Strings.seeAll,
+                  style:
+                  TextStyles.moderateSemiBold(color: Pallet.primaryPurple),
+                ),
+              ),
+            ],
+          ),
         ),
         Obx(
               () => ListView.builder(
