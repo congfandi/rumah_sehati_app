@@ -11,6 +11,7 @@
 import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation.dart';
 
 import 'article/response/article.dart';
+import 'auth/response/auth_response.dart';
 import 'child/response/child.dart';
 import 'faskes/response/faskes.dart';
 import 'group/response/group.dart';
@@ -45,7 +46,6 @@ class BaseResponse {
 }
 
 class ResultResponse {
-  String? token;
   Profile? profile;
   List<Article>? articles;
   Meta? meta;
@@ -53,9 +53,11 @@ class ResultResponse {
   List<Group>? groups;
   List<Child>? children;
   List<Consultation>? consultations;
+  AuthResponse? authResponse;
 
   ResultResponse.fromJson(dynamic json) {
-    token = json['token'];
+    authResponse =
+        json['login'] == null ? null : AuthResponse.fromJson(json['login']);
     profile =
         json['profile'] == null ? null : Profile.fromJson(json['profile']);
     if (json['articles'] != null) {

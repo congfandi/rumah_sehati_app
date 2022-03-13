@@ -15,8 +15,6 @@ class Profile {
     this.email,
     this.name,
     this.birthDate,
-    this.height,
-    this.weight,
     this.condition,
   });
 
@@ -25,8 +23,6 @@ class Profile {
     email = json['email'];
     name = json['name'];
     birthDate = json['birthDate'];
-    height = json['height'];
-    weight = json['weight'];
     condition = json['condition'];
     photo = json['photo'];
   }
@@ -35,8 +31,6 @@ class Profile {
   String? email;
   String? name;
   String? birthDate;
-  int? height;
-  int? weight;
   String? condition;
   String? photo;
 
@@ -46,8 +40,6 @@ class Profile {
     map['email'] = email;
     map['name'] = name;
     map['birthDate'] = birthDate;
-    map['height'] = height;
-    map['weight'] = weight;
     map['condition'] = condition;
     map['photo'] = photo;
     return map;

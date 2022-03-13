@@ -25,48 +25,33 @@ class AppInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Pallet.white,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Pallet.grey)),
-      padding: EdgeInsets.only(
-          left: Dimension.width8,
-          right: Dimension.width8,
-          top: Dimension.height8,
-          bottom: Dimension.height2),
-      height: Dimension.height60,
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  label,
-                  style: TextStyles.captionModerateRegular(),
-                ),
-                Expanded(
-                  child: TextFormField(
-                    controller: controller,
-                    obscureText: !showText,
-                    onChanged: onChanged,
-                    readOnly: readOnly,
-                    style: TextStyles.bodySmallRegular(),
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintStyle: TextStyles.bodySmallItalic(color: Pallet.grey),
-                      hintText: hintText,
-                    ),
-                    keyboardType: inputType,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          icon ?? const SizedBox(),
-        ],
+    return Column(children: [
+      Text(label, style: TextStyles.bodySmallMedium()),
+      SizedBox(
+        height: Dimension.height8,
       ),
-    );
+      Container(
+        decoration: BoxDecoration(
+            color: Pallet.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 4,
+                blurRadius: 20,
+                offset: const Offset(0, 3),
+              )
+            ],
+            borderRadius: BorderRadius.circular(10)),
+        padding: const EdgeInsets.only(left: 16, right: 16),
+        child: TextFormField(
+          keyboardType: inputType,
+          controller: controller,
+          readOnly: readOnly,
+          obscureText: !showText,
+          decoration:
+              InputDecoration(hintText: hintText, border: InputBorder.none),
+        ),
+      )
+    ], crossAxisAlignment: CrossAxisAlignment.start);
   }
 }

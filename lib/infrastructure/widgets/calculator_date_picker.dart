@@ -10,7 +10,10 @@ class CalculatorDatePicker extends StatelessWidget {
       required this.title,
       required this.hint,
       required this.onSelectedDate,
-      required this.icon})
+      this.icon = const Icon(
+        Icons.date_range,
+        color: Pallet.primaryPurple,
+      )})
       : super(key: key);
   final TextEditingController controller;
   final String title;

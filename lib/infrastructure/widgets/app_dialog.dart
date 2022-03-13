@@ -34,6 +34,8 @@ class AppDialog {
     dialog();
   }
 
+  Widget get iconFailed => const Icon(Icons.cancel,color: Pallet.danger,);
+
   dialog() {
     showDialog(
       context: context!,

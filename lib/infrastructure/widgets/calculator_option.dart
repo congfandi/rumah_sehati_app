@@ -9,7 +9,10 @@ class CalculatorOption extends StatelessWidget {
       required this.title,
       required this.hint,
       required this.options,
-      required this.icon,
+      this.icon = const Icon(
+        Icons.keyboard_arrow_down,
+        color: Pallet.primaryPurple,
+      ),
       this.onSelect})
       : super(key: key);
   final TextEditingController controller;

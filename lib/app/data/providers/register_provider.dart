@@ -11,21 +11,27 @@ class RegisterProvider extends ApiClient {
     super.onInit();
   }
 
-  Future<void> login(Profile request) async {
+  Future<void> register(Profile request) async {
     String path = ApiUrl.register;
     apiResponse.onStartRequest(path);
-    var response = await post(path, request.toJson());
-    apiResponse.onFinishRequest(path);
-    if (response.isOk) {
-      if ((response.statusCode ?? 500) < 300) {
-        apiResponse.onSuccessRequest(
-            path, result, response.request?.method ?? "");
+    try {
+      var response = await post(path, request.toJson(),);
+      apiResponse.onFinishRequest(path);
+      if (response.isOk) {
+        if ((response.statusCode ?? 500) < 300) {
+          apiResponse.onSuccessRequest(
+              path, result, response.request?.method ?? "");
+        } else {
+          apiResponse.onFailedRequest(path, statusCode ?? 500, message ?? "");
+        }
       } else {
-        apiResponse.onFailedRequest(path, statusCode ?? 500, message ?? "");
+        apiResponse.onFailedRequest(
+            path, response.statusCode ?? 0, response.statusText ?? "");
       }
-    } else {
+    } on Exception catch (e) {
+      apiResponse.onFinishRequest(path);
       apiResponse.onFailedRequest(
-          path, response.statusCode ?? 0, response.statusText ?? "");
+          path, 500, e.toString());
     }
   }
 }

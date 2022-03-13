@@ -23,8 +23,6 @@ class ProfileController extends GetxController implements ApiResponse {
       Strings.phoneNumber: profile?.phone ?? "",
       Strings.email: profile?.email ?? "",
       Strings.dateOfBirth: profile?.birthDate ?? "",
-      Strings.tinggiBadan: "${profile?.height} cm",
-      Strings.weightBody: "${profile?.weight} Kg",
       Strings.momStatus: profile?.condition ?? "",
     });
   }
