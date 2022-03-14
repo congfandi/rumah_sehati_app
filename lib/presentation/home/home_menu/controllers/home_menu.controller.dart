@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:rumah_sehati_mobile/app/data/models/profile/response/profile.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 
 import '../../../../infrastructure/navigation/routes.dart';
+import '../../../../infrastructure/utils/helpers/pref_helper.dart';
 
 class HomeMenuController extends GetxController {
   List<HomeMenu> menus = [
@@ -40,6 +42,12 @@ class HomeMenuController extends GetxController {
 
   void onTipsChanged(int page) {
     currentIndexTips(page);
+  }
+
+  Rx<Profile>? profile;
+
+  getProfile() {
+    profile = Rx(PrefHelper.to.getProfile()!);
   }
 }
 
