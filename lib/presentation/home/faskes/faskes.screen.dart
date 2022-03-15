@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
-import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
 
 import 'controllers/faskes.controller.dart';
 import 'faskes_item.dart';
@@ -13,39 +13,36 @@ class FaskesScreen extends GetView<FaskesController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const AppAppbar(
-            title: Strings.faskes,
-            showBackButton: false,
+    controller.getFaskes();
+    return BaseUi(
+        title: Strings.faskes,
+        child: SingleChildScrollView(
+          child: SizedBox(
+            height: Get.height,
+            child: Column(
+              children: [_header(), _listFaskes()],
+              crossAxisAlignment: CrossAxisAlignment.start,
+            ),
           ),
-          Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: SingleChildScrollView(
-                  child: SizedBox(
-                    height: Get.height,
-                    child: Column(
-                      children: [
-                        Text(
-                          Strings.healthyFasility,
-                          style: TextStyles.titleHero(),
-                        ),
-                        SizedBox(height: Dimension.height16),
-                        Text(
-                          Strings.fasilityAndHealthy,
-                          style:
-                          TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-                        ),
-                        _search(),
-                        _listFaskes()
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
-                  ),
-                ),
-              )),
+        ));
+  }
+
+  Widget _header() {
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            Strings.healthyFasility,
+            style: TextStyles.titleHero(),
+          ),
+          SizedBox(height: Dimension.height16),
+          Text(
+            Strings.fasilityAndHealthy,
+            style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+          ),
+          _search(),
         ],
       ),
     );
@@ -77,15 +74,25 @@ class FaskesScreen extends GetView<FaskesController> {
               Icons.search,
               color: Pallet.primaryPurple,
             )),
+        onSaved: (key) {
+          controller.search(key);
+        },
       ),
     );
   }
 
   Widget _listFaskes() {
-    return Expanded(
-      child: ListView.builder(itemBuilder: (c, i) {
-        return const FaskesItem();
-      }),
+    return Obx(
+      () => ListView.builder(
+        itemBuilder: (c, i) {
+          return FaskesItem(
+            faskes: controller.listFaskes[i],
+          );
+        },
+        itemCount: controller.listFaskes.length,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+      ),
     );
   }
 }

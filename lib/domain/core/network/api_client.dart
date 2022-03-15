@@ -25,7 +25,7 @@ class ApiClient extends GetConnect implements BaseResponse {
     httpClient.addRequestModifier<dynamic>((request) async {
       if (PrefHelper.to.getToken() != null) {
         request.headers
-            .addAll({"Authorization": "Bearer ${PrefHelper.to.getToken()}"});
+            .addAll({"Authorization": PrefHelper.to.getToken() ?? ""});
       }
       return request;
     });

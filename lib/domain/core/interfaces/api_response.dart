@@ -11,6 +11,7 @@
 import '../../../app/data/models/base_response.dart';
 
 abstract class ApiResponse {
+
   void onFinishRequest(String path);
 
   void onStartRequest(String path);

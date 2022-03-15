@@ -49,7 +49,7 @@ class ResultResponse {
   Profile? profile;
   List<Article>? articles;
   Meta? meta;
-  Faskes? faskes;
+  List<Faskes>? faskes;
   List<Group>? groups;
   List<Child>? children;
   List<Consultation>? consultations;
@@ -68,8 +68,12 @@ class ResultResponse {
     }
 
     meta = json['meta'] == null ? null : Meta.fromJson(json['meta']);
-
-    faskes = json['faskes'] == null ? null : Faskes.fromJson(json['faskes']);
+    if (json['faskes'] != null) {
+      faskes = [];
+      json['faskes'].forEach((v) {
+        faskes?.add(Faskes.fromJson(v));
+      });
+    }
 
     if (json['groups'] != null) {
       groups = [];

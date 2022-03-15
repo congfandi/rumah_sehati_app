@@ -8,7 +8,10 @@
  */
 
 class ApiUrl {
-  static const baseUrl = "https://sehatidmf.com";
+  static const baseUrl =
+      "https://6ab7fc56-3766-4173-b737-5154309e32c5.mock.pstmn.io";
+
+  // static const baseUrl = "https://sehatidmf.com";
 
   static const login = "/api/v1/auth/login";
   static const register = "/api/v1/auth/register";

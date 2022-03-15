@@ -32,30 +32,34 @@ class RegisterController extends GetxController implements ApiResponse {
 
   bool _validate() {
     if (name.text.isEmpty) {
-      Get.snackbar(Strings.failed, "Nama harus di isi",backgroundColor: Pallet.white);
+      Get.snackbar(Strings.failed, "Nama harus di isi",
+          backgroundColor: Pallet.white);
       return false;
     }
     if (condition.text.isEmpty) {
-      Get.snackbar(Strings.failed, "Kondisi bunda harus di pilih",backgroundColor: Pallet.white);
+      Get.snackbar(Strings.failed, "Kondisi bunda harus di pilih",
+          backgroundColor: Pallet.white);
       return false;
     }
     if (password.text.length < 8) {
-      Get.snackbar(Strings.failed, "Password minimal 8 karakter",backgroundColor: Pallet.white);
+      Get.snackbar(Strings.failed, "Password minimal 8 karakter",
+          backgroundColor: Pallet.white);
       return false;
     }
     if (password.text != retypePassword.text) {
       Get.snackbar(
-          Strings.failed, "Password tidak sama dengan konfirmasi password",backgroundColor: Pallet.white);
+          Strings.failed, "Password tidak sama dengan konfirmasi password",
+          backgroundColor: Pallet.white);
       return false;
     }
     if (birthDate.text.isEmpty) {
-      Get.snackbar(
-          Strings.failed, "Tanggal lahir harus di isi",backgroundColor: Pallet.white);
+      Get.snackbar(Strings.failed, "Tanggal lahir harus di isi",
+          backgroundColor: Pallet.white);
       return false;
     }
     if (phone.text.isEmpty && email.text.isEmpty) {
-      Get.snackbar(
-          Strings.failed, "Isi email atau phone saja",backgroundColor: Pallet.white);
+      Get.snackbar(Strings.failed, "Isi email atau phone saja",
+          backgroundColor: Pallet.white);
       return false;
     }
     return true;
@@ -103,7 +107,8 @@ class RegisterController extends GetxController implements ApiResponse {
 
   @override
   void onSuccessRequest(String path, ResultResponse? result, String method) {
-    AuthService.to
-        .login(token: result?.authResponse?.token ?? "", profile: result?.authResponse?.profile ?? Profile());
+    AuthService.to.login(
+        token: result?.authResponse?.token ?? "",
+        profile: result?.authResponse?.profile ?? Profile());
   }
 }

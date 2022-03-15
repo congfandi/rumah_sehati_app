@@ -9,13 +9,15 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:maps_launcher/maps_launcher.dart';
+import 'package:rumah_sehati_mobile/app/data/models/faskes/response/faskes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
 
-
 class FaskesItem extends StatelessWidget {
-  const FaskesItem({Key? key}) : super(key: key);
+  const FaskesItem({Key? key, required this.faskes}) : super(key: key);
+  final Faskes? faskes;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class FaskesItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(5),
             child: Image.network(
-              Strings.sampleImage,
+              faskes?.cover ?? "",
               width: 75,
               height: 108,
               fit: BoxFit.cover,
@@ -51,50 +53,21 @@ class FaskesItem extends StatelessWidget {
               child: Column(
             children: [
               Text(
-                Strings.puskesmasMedang,
+                faskes?.name ?? "",
                 style: TextStyles.moderateSemiBold(),
               ),
               SizedBox(
                 height: Dimension.height8,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Icon(
-                        Icons.navigation_sharp,
-                        color: Pallet.lightBlack,
-                        size: 20,
-                      ),
-                      Text(Strings.waruSidoarjo,
-                          style: TextStyles.bodySmallMedium(
-                              color: Pallet.lightBlack))
-                    ],
-                  )),
-                  Expanded(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Icon(
-                        Icons.navigation_sharp,
-                        color: Pallet.lightBlack,
-                        size: 20,
-                      ),
-                      Text("300 " + Strings.km,
-                          style: TextStyles.bodySmallMedium(
-                              color: Pallet.lightBlack))
-                    ],
-                  ))
-                ],
-              ),
-              Row(
                 children: [
                   SizedBox(
                     child: AppNormalButton(
-                        onPress: () {}, title: Strings.visitLocation),
+                        onPress: () => MapsLauncher.launchCoordinates(
+                            faskes?.latitude ?? 0.0,
+                            faskes?.longitude ?? 0.0,
+                            'Fasilitas Kesehatan'),
+                        title: Strings.visitLocation),
                     width: 120,
                   )
                 ],

@@ -1,9 +1,9 @@
 
-import 'package:rumah_sehati_mobile/app/data/models/consultation/questioner_query.dart';
 
 import '../../../domain/core/interfaces/api_response.dart';
 import '../../../domain/core/network/api_client.dart';
 import '../../../domain/core/network/api_url.dart';
+import '../models/faskes/request/faskes_query.dart';
 
 class FaskesProvider extends ApiClient {
   ApiResponse apiResponse;
@@ -12,7 +12,7 @@ class FaskesProvider extends ApiClient {
     super.onInit();
   }
 
-  Future<void> getFaskes({required QuestionerQuery query}) async {
+  Future<void> getFaskes({required FaskesQuery query}) async {
     String path = ApiUrl.faskes;
     apiResponse.onStartRequest(path);
     var response = await get(path, query: query.toJson());
