@@ -123,12 +123,12 @@ class Nav {
     ),
     GetPage(
       name: Routes.ARTICLE,
-      page: () => ArticleScreen(),
+      page: () => const ArticleScreen(),
       binding: ArticleControllerBinding(),
     ),
     GetPage(
       name: Routes.ARTICLE_DETAIL,
-      page: () => ArticleDetailScreen(),
+      page: () => const ArticleDetailScreen(),
       binding: ArticleDetailControllerBinding(),
     ),
   ];

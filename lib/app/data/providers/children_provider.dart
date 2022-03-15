@@ -1,4 +1,3 @@
-
 import 'package:rumah_sehati_mobile/app/data/models/child/request/child_request.dart';
 
 import '../../../domain/core/interfaces/api_response.dart';
@@ -31,7 +30,7 @@ class ChildrenProvider extends ApiClient {
   }
 
   Future<void> deleteChildren({required int childId}) async {
-    String path = ApiUrl.children;
+    String path = ApiUrl.children + '/$childId';
     apiResponse.onStartRequest(path);
     var response = await delete(path);
     apiResponse.onFinishRequest(path);

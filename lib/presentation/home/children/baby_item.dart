@@ -10,12 +10,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 
-
 class BabyItem extends StatelessWidget {
-  const BabyItem({Key? key}) : super(key: key);
+  const BabyItem({Key? key, required this.child}) : super(key: key);
+  final Child child;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class BabyItem extends StatelessWidget {
           ],
           borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16,left: 16,right: 16),
       child: Row(
         children: [
           Image.asset(Assets.boy, width: 50, height: 50),
@@ -45,7 +46,7 @@ class BabyItem extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      Strings.kharisma,
+                      child.fullName ?? "",
                       style: TextStyles.moderateSemiBold(),
                     ),
                     SizedBox(width: Dimension.width4),
@@ -59,10 +60,11 @@ class BabyItem extends StatelessWidget {
                   height: Dimension.height8,
                 ),
                 Row(children: [
-                  SvgPicture.asset(Assets.babyIcon, color: Pallet.primaryPurple),
+                  SvgPicture.asset(Assets.babyIcon,
+                      color: Pallet.primaryPurple),
                   SizedBox(width: Dimension.width8),
                   Text(
-                    "2 tahun 5 bulan",
+                    child.birthDate ?? "",
                     style:
                         TextStyles.bodySmallMedium(color: Pallet.primaryPurple),
                   )
@@ -71,21 +73,23 @@ class BabyItem extends StatelessWidget {
                 Row(
                   children: [
                     Row(children: [
-                      SvgPicture.asset(Assets.dadIcon, color: Pallet.lightBlack),
+                      SvgPicture.asset(Assets.dadIcon,
+                          color: Pallet.lightBlack),
                       SizedBox(width: Dimension.width8),
                       Text(
-                        "Ajie (27 Th)",
-                        style:
-                            TextStyles.bodySmallMedium(color: Pallet.lightBlack),
+                        child.fatherName ?? "",
+                        style: TextStyles.bodySmallMedium(
+                            color: Pallet.lightBlack),
                       )
                     ]),
                     Row(children: [
-                      SvgPicture.asset(Assets.momIcon, color: Pallet.lightBlack),
+                      SvgPicture.asset(Assets.momIcon,
+                          color: Pallet.lightBlack),
                       SizedBox(width: Dimension.width8),
                       Text(
-                        "Ani (27 Th)",
-                        style:
-                            TextStyles.bodySmallMedium(color: Pallet.lightBlack),
+                        child.motherName ?? "",
+                        style: TextStyles.bodySmallMedium(
+                            color: Pallet.lightBlack),
                       )
                     ], mainAxisAlignment: MainAxisAlignment.end),
                   ],

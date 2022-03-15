@@ -11,6 +11,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/extension/list_print.dart';
 import '../../../app/data/models/base_response.dart';
+import '../../../config.dart';
 import '../../../infrastructure/dal/services/crashlytics_service.dart';
 import '../../../infrastructure/utils/helpers/log_helper.dart';
 import '../../../infrastructure/utils/helpers/pref_helper.dart';
@@ -19,7 +20,7 @@ import 'api_url.dart';
 class ApiClient extends GetConnect implements BaseResponse {
   @override
   void onInit() {
-    httpClient.baseUrl = ApiUrl.baseUrl;
+    httpClient.baseUrl = ConfigEnvironments.getEnvironments()['url'];
     httpClient.defaultContentType = "application/json";
     httpClient.timeout = const Duration(seconds: 10);
     httpClient.addRequestModifier<dynamic>((request) async {
