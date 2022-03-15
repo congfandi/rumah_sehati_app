@@ -15,7 +15,10 @@ class RegisterProvider extends ApiClient {
     String path = ApiUrl.register;
     apiResponse.onStartRequest(path);
     try {
-      var response = await post(path, request.toJson(),);
+      var response = await post(
+        path,
+        request.toJson(),
+      );
       apiResponse.onFinishRequest(path);
       if (response.isOk) {
         if ((response.statusCode ?? 500) < 300) {
@@ -25,13 +28,11 @@ class RegisterProvider extends ApiClient {
           apiResponse.onFailedRequest(path, statusCode ?? 500, message ?? "");
         }
       } else {
-        apiResponse.onFailedRequest(
-            path, response.statusCode ?? 0, response.statusText ?? "");
+        apiResponse.onFailedRequest(path, statusCode ?? 0, message ?? "");
       }
     } on Exception catch (e) {
       apiResponse.onFinishRequest(path);
-      apiResponse.onFailedRequest(
-          path, 500, e.toString());
+      apiResponse.onFailedRequest(path, 500, e.toString());
     }
   }
 }

@@ -18,13 +18,14 @@ class LoginProvider extends ApiClient {
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((response.statusCode ?? 500) < 300) {
-        apiResponse.onSuccessRequest(path, result, response.request?.method ?? "");
+        apiResponse.onSuccessRequest(
+            path, result, response.request?.method ?? "");
       } else {
         apiResponse.onFailedRequest(path, statusCode ?? 500, message ?? "");
       }
     } else {
       apiResponse.onFailedRequest(
-          path, response.statusCode ?? 0, response.statusText ?? "");
+          path, response.statusCode ?? 0, message ?? "");
     }
   }
 }

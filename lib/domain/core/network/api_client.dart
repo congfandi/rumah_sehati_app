@@ -47,8 +47,9 @@ class ApiClient extends GetConnect implements BaseResponse {
           statusCode = baseResponse.statusCode;
           result = baseResponse.result;
         } else {
+          BaseResponse baseResponse = BaseResponse.fromJson(response.body);
           statusCode = response.statusCode ?? 500;
-          message = response.statusText;
+          message = baseResponse.message;
           Crashlytics.apiError(error: response.statusText);
         }
       } on Exception catch (e) {
