@@ -136,5 +136,10 @@ class Nav {
       page: () => AddChildScreen(),
       binding: AddChildControllerBinding(),
     ),
+    GetPage(
+      name: Routes.EDIT_CHILD,
+      page: () => EditChildScreen(),
+      binding: EditChildControllerBinding(),
+    ),
   ];
 }

@@ -29,6 +29,25 @@ class ChildrenProvider extends ApiClient {
     }
   }
 
+  Future<void> update(
+      {required ChildRequest request, required int childId}) async {
+    String path = ApiUrl.children + "/$childId";
+    apiResponse.onStartRequest(path);
+    var response = await patch(path, request.toJson());
+    apiResponse.onFinishRequest(path);
+    if (response.isOk) {
+      if ((response.statusCode ?? 500) < 300) {
+        apiResponse.onSuccessRequest(
+            path, result, response.request?.method ?? "");
+      } else {
+        apiResponse.onFailedRequest(path, statusCode ?? 500, message ?? "");
+      }
+    } else {
+      apiResponse.onFailedRequest(
+          path, response.statusCode ?? 0, response.statusText ?? "");
+    }
+  }
+
   Future<void> deleteChildren({required int childId}) async {
     String path = ApiUrl.children + '/$childId';
     apiResponse.onStartRequest(path);

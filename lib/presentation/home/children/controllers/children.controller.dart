@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/base_response.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
-import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 
 import '../../../../app/data/providers/children_provider.dart';
 import '../../../../domain/core/interfaces/api_response.dart';
@@ -10,10 +9,6 @@ class ChildrenController extends GetxController implements ApiResponse {
   late final ChildrenProvider _provider = ChildrenProvider(this);
   RxList<Child> children = RxList<Child>();
   RxBool isLoading = RxBool(true);
-
-  goToEditPage() {
-    Get.toNamed(Routes.ADD_CHILD);
-  }
 
   deleteChild(int childId) {
     _provider.deleteChildren(childId: childId);

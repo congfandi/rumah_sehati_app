@@ -3,16 +3,17 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:rumah_sehati_mobile/app/data/models/base_response.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/request/child_request.dart';
+import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
 import 'package:rumah_sehati_mobile/app/data/providers/children_provider.dart';
-import 'package:rumah_sehati_mobile/infrastructure/theme/pallet.dart';
-import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
-import 'package:rumah_sehati_mobile/infrastructure/widgets/app_dialog.dart';
-import 'package:rumah_sehati_mobile/infrastructure/widgets/app_loading.dart';
+import 'package:rumah_sehati_mobile/domain/core/interfaces/api_response.dart';
+import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
+import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
+import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
+import 'package:rumah_sehati_mobile/presentation/home/children/controllers/children.controller.dart';
 
-import '../../../../../domain/core/interfaces/api_response.dart';
-import '../../controllers/children.controller.dart';
+import '../../../../../infrastructure/utils/resources/resources.dart';
 
-class AddChildController extends GetxController implements ApiResponse {
+class EditChildController extends GetxController implements ApiResponse {
   RxInt step = 0.obs;
   final TextEditingController name = TextEditingController();
   final TextEditingController birthDte = TextEditingController();
@@ -29,6 +30,7 @@ class AddChildController extends GetxController implements ApiResponse {
   DateTime? fatherBirthDateSelected;
   DateTime? posyanduDateSelected;
   late final ChildrenProvider _provider = ChildrenProvider(this);
+  Child? child;
 
   void _errorMessage(String description) {
     Get.snackbar(Strings.failed, description, backgroundColor: Pallet.white);
@@ -84,12 +86,9 @@ class AddChildController extends GetxController implements ApiResponse {
     return true;
   }
 
-  void addChildren() {
-    if (step.value == 0 && _validateFirst()) {
-      _setStep();
-    }
-    if (step.value == 1 && _validateLast()) {
-      _provider.create(
+  void updateChild() {
+    if (_validateLast()) {
+      _provider.update(
           request: ChildRequest(
               birthDate:
                   DateFormat("yyyy-MM-dd", "id_ID").format(babyBirthDate!),
@@ -103,13 +102,40 @@ class AddChildController extends GetxController implements ApiResponse {
               height: double.parse(height.text),
               fatherName: fatherName.text,
               fullName: name.text,
-              gender: gender.text == "Perempuan" ? "feamle" : "male",
-              weight: double.parse(weight.text)));
+              gender: gender.text == "Perempuan" ? "female" : "male",
+              weight: double.parse(weight.text)),
+          childId: child?.id ?? 0);
     }
   }
 
-  _setStep() {
-    step(step.value + 1);
+  setStep() {
+    if (_validateFirst()) {
+      step(step.value + 1);
+    }
+  }
+
+  _setupChild() {
+    child = Get.arguments;
+    name.text = child?.fullName ?? "";
+    birthDte.text = (child?.birthDate ?? "").toDateString();
+    gender.text = child?.gender ?? "";
+    motherName.text = child?.motherName ?? "";
+    fatherName.text = child?.fatherName ?? "";
+    fatherBirthDate.text = (child?.fatherBirthday ?? "").toDateString();
+    motherBirthDate.text = (child?.motherBirthday ?? "").toDateString();
+    height.text = "${child?.height}";
+    weight.text = "${child?.weight}";
+    posyanduDate.text = (child?.measuringDate ?? "").toDateString();
+    babyBirthDate = (child?.birthDate ?? "").toDate();
+    fatherBirthDateSelected = (child?.fatherBirthday ?? "").toDate();
+    motherBirthDateSelected = (child?.motherBirthday ?? "").toDate();
+    posyanduDateSelected = (child?.measuringDate ?? "").toDate();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    _setupChild();
   }
 
   @override

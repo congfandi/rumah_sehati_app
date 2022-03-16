@@ -1,0 +1,138 @@
+{
+  "statusCode": 200,
+  "message": "Success",
+  "result": {
+    "children": [
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate":"1994-10-20",
+        "gender":"female",
+        "motherName":"Rita",
+        "fatherName":"Riko",
+        "fatherBirthday":"1994-10-20",
+        "motherBirthday":"1994-10-20",
+        "height":12.456,
+        "weight":123.345,
+        "measuringDate":"1994-10-20",
+        "photo":"https://i.pravatar.cc/300"
+      },
+      {
+        "id": 2,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate":"1994-10-20",
+        "gender":"female",
+        "motherName":"Rita",
+        "fatherName":"Riko",
+        "fatherBirthday":"1994-10-20",
+        "motherBirthday":"1994-10-20",
+        "height":12.456,
+        "weight":123.345,
+        "measuringDate":"1994-10-20",
+        "photo":"https://i.pravatar.cc/300"
+      },
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate":"1994-10-20",
+        "gender":"female",
+        "motherName":"Rita",
+        "fatherName":"Riko",
+        "fatherBirthday":"1994-10-20",
+        "motherBirthday":"1994-10-20",
+        "height":12.456,
+        "weight":123.345,
+        "measuringDate":"1994-10-20",
+        "photo":"https://i.pravatar.cc/300"
+      },
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate": "1994-10-20",
+        "gender": "female",
+        "motherName": "Rita",
+        "fatherName": "Riko",
+        "fatherBirthday": "1994-10-20",
+        "motherBirthday": "1994-10-20",
+        "height": 12.456,
+        "weight": 123.345,
+        "measuringDate": "1994-10-20",
+        "photo": "https://i.pravatar.cc/300"
+      },
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate": "1994-10-20",
+        "gender": "female",
+        "motherName": "Rita",
+        "fatherName": "Riko",
+        "fatherBirthday": "1994-10-20",
+        "motherBirthday": "1994-10-20",
+        "height": 12.456,
+        "weight": 123.345,
+        "measuringDate": "1994-10-20",
+        "photo": "https://i.pravatar.cc/300"
+      },
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate": "1994-10-20",
+        "gender": "female",
+        "motherName": "Rita",
+        "fatherName": "Riko",
+        "fatherBirthday": "1994-10-20",
+        "motherBirthday": "1994-10-20",
+        "height": 12.456,
+        "weight": 123.345,
+        "measuringDate": "1994-10-20",
+        "photo": "https://i.pravatar.cc/300"
+      },
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate": "1994-10-20",
+        "gender": "female",
+        "motherName": "Rita",
+        "fatherName": "Riko",
+        "fatherBirthday": "1994-10-20",
+        "motherBirthday": "1994-10-20",
+        "height": 12.456,
+        "weight": 123.345,
+        "measuringDate": "1994-10-20",
+        "photo": "https://i.pravatar.cc/300"
+      },
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate": "1994-10-20",
+        "gender": "female",
+        "motherName": "Rita",
+        "fatherName": "Riko",
+        "fatherBirthday": "1994-10-20",
+        "motherBirthday": "1994-10-20",
+        "height": 12.456,
+        "weight": 123.345,
+        "measuringDate": "1994-10-20",
+        "photo": "https://i.pravatar.cc/300"
+      },
+      {
+        "id": 1,
+        "fullName": "Kharisma Dwi Adinda",
+        "birthDate": "1994-10-20",
+        "gender": "female",
+        "motherName": "Rita",
+        "fatherName": "Riko",
+        "fatherBirthday": "1994-10-20",
+        "motherBirthday": "1994-10-20",
+        "height": 12.456,
+        "weight": 123.345,
+        "measuringDate": "1994-10-20",
+        "photo": "https://i.pravatar.cc/300"
+      }
+    ],
+    "meta": {
+      "currentPage": 1,
+      "totalPage": 10
+    }
+  }
+}

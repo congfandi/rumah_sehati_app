@@ -5,6 +5,7 @@ class Routes {
     return SPLASH;
   }
 
+  static const ADD_CHILD = '/add-child';
   static const ARTICLE = '/article';
   static const ARTICLE_DETAIL = '/article-detail';
   static const BALITA = '/balita';
@@ -26,5 +27,5 @@ class Routes {
   static const REGISTER = '/register';
   static const REKAN_BUNDA = '/rekan-bunda';
   static const SPLASH = '/splash';
-  static const ADD_CHILD = '/add-child';
+  static const EDIT_CHILD = '/edit-child';
 }

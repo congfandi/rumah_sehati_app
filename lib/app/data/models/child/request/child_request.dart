@@ -1,15 +1,16 @@
 class ChildRequest {
-  ChildRequest({
-      this.fullName, 
-      this.birthDate, 
-      this.gender, 
-      this.motherName, 
-      this.fatherName, 
-      this.fatherBirthday, 
-      this.motherBirthday, 
-      this.height, 
-      this.weight, 
-      this.measuringDate,});
+  ChildRequest(
+      {this.fullName,
+      this.birthDate,
+      this.gender,
+      this.motherName,
+      this.fatherName,
+      this.fatherBirthday,
+      this.motherBirthday,
+      this.height,
+      this.weight,
+      this.measuringDate,
+      this.photo});
 
   ChildRequest.fromJson(dynamic json) {
     fullName = json['fullName'];
@@ -23,6 +24,7 @@ class ChildRequest {
     weight = json['weight'];
     measuringDate = json['measuringDate'];
   }
+
   String? fullName;
   String? birthDate;
   String? gender;
@@ -33,20 +35,43 @@ class ChildRequest {
   double? height;
   double? weight;
   String? measuringDate;
+  String? photo;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['fullName'] = fullName;
-    map['birthDate'] = birthDate;
-    map['gender'] = gender;
-    map['motherName'] = motherName;
-    map['fatherName'] = fatherName;
-    map['fatherBirthday'] = fatherBirthday;
-    map['motherBirthday'] = motherBirthday;
-    map['height'] = height;
-    map['weight'] = weight;
-    map['measuringDate'] = measuringDate;
+    if (fullName != null) {
+      map['fullName'] = fullName;
+    }
+    if (birthDate != null) {
+      map['birthDate'] = birthDate;
+    }
+    if (gender != null) {
+      map['gender'] = gender;
+    }
+    if (motherName != null) {
+      map['motherName'] = motherName;
+    }
+    if (fatherName != null) {
+      map['fatherName'] = fatherName;
+    }
+    if (fatherBirthday != null) {
+      map['fatherBirthday'] = fatherBirthday;
+    }
+    if (motherBirthday != null) {
+      map['motherBirthday'] = motherBirthday;
+    }
+    if (height != null) {
+      map['height'] = height;
+    }
+    if (height != null) {
+      map['weight'] = weight;
+    }
+    if (measuringDate != null) {
+      map['measuringDate'] = measuringDate;
+    }
+    if (photo != null) {
+      map['photo'] = photo;
+    }
     return map;
   }
-
 }

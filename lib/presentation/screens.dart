@@ -2,6 +2,7 @@ export 'package:rumah_sehati_mobile/presentation/home/article/article.screen.dar
 export 'package:rumah_sehati_mobile/presentation/home/article/article_detail/article_detail.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/children/add_child/add_child.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/children/children.screen.dart';
+export 'package:rumah_sehati_mobile/presentation/home/children/edit_child/edit_child.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/faskes/faskes.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/balita.screen.dart';

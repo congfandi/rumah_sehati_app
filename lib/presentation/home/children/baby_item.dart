@@ -12,7 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
+import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
+import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/presentation/home/children/controllers/children.controller.dart';
 
@@ -79,7 +81,7 @@ class BabyItem extends GetView<ChildrenController> {
                       color: Pallet.primaryPurple),
                   SizedBox(width: Dimension.width8),
                   Text(
-                    child.birthDate ?? "",
+                    (child.birthDate ?? "").ageBaby(),
                     style:
                         TextStyles.bodySmallMedium(color: Pallet.primaryPurple),
                   )
@@ -92,7 +94,9 @@ class BabyItem extends GetView<ChildrenController> {
                           color: Pallet.lightBlack),
                       SizedBox(width: Dimension.width8),
                       Text(
-                        child.fatherName ?? "",
+                        "${child.fatherName}(" +
+                            (child.fatherBirthday ?? "").age() +
+                            ")",
                         style: TextStyles.bodySmallMedium(
                             color: Pallet.lightBlack),
                       )
@@ -102,7 +106,9 @@ class BabyItem extends GetView<ChildrenController> {
                           color: Pallet.lightBlack),
                       SizedBox(width: Dimension.width8),
                       Text(
-                        child.motherName ?? "",
+                        "${child.motherName}(" +
+                            (child.motherBirthday ?? "").age() +
+                            ")",
                         style: TextStyles.bodySmallMedium(
                             color: Pallet.lightBlack),
                       )
@@ -136,12 +142,12 @@ class BabyItem extends GetView<ChildrenController> {
                 children: ["Edit", "Delete"]
                     .map((e) => GestureDetector(
                           onTap: () {
+                            Get.back();
                             if (e == "Delete") {
                               controller.deleteChild(child.id ?? 0);
                             } else {
-                              controller.goToEditPage();
+                              Get.toNamed(Routes.EDIT_CHILD, arguments: child);
                             }
-                            Get.back();
                           },
                           child: Column(
                             children: [

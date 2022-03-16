@@ -18,6 +18,7 @@ class ChildrenScreen extends GetView<ChildrenController> {
     controller.onReady();
     return BaseUi(
         title: Strings.babyData,
+        showBackButton: false,
         child: SingleChildScrollView(
           child: Column(
             children: [
