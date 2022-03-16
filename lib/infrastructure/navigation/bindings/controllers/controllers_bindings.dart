@@ -1,3 +1,4 @@
+export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/add_child.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/article.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/article_detail.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/balita.controller.binding.dart';

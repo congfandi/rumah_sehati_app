@@ -194,7 +194,7 @@ class Strings {
 
   static const String momFeed = "Ibu Menyusui";
 
-  static const String babyIdentity = "identitas diri child";
+  static const String babyIdentity = "identitas diri anak";
 
   static const String imt = "IMT";
 
@@ -300,7 +300,7 @@ class Strings {
 
   static const String inputLiLa = "masukkan LiLa";
 
-  static const String inputBabyName = "masukkan nama child";
+  static const String inputBabyName = "masukkan nama anak";
 
   static const String inputBabyFatherName = "masukkan nama ayah kandung";
 
@@ -492,13 +492,14 @@ class Strings {
 
   static const String dateToPosyandu = "Tanggal ke Posyandu";
 
-  static const String dateOfBirth = "Tanggal Kelahiran child";
+  static const String dateOfBirth = "Tanggal Kelahiran anak";
 
   static const String birthDate = "Tanggal Lahir";
 
   static const String birthDateFather = "Tanggal Lahir Ayah Kandung";
+  static const String tanggalLahirAnak = "Tanggal Lahir anak";
 
-  static const String bierthDateMother = "Tanggal Lahir Ibu Kandung";
+  static const String birthDateMother = "Tanggal Lahir Ibu Kandung";
 
   static const String datePosyandu = "Tanggal Posyandu";
 

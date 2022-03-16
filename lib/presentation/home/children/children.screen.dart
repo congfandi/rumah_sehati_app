@@ -6,6 +6,7 @@ import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 
+import '../../../infrastructure/navigation/routes.dart';
 import 'baby_item.dart';
 import 'controllers/children.controller.dart';
 
@@ -61,13 +62,20 @@ class ChildrenScreen extends GetView<ChildrenController> {
                   style: TextStyles.titleHero(),
                 ),
               ),
-              const Icon(
-                Icons.add,
-                color: Pallet.primaryPurple,
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.ADD_CHILD);
+                },
+                child: Row(children: [
+                  const Icon(
+                    Icons.add,
+                    color: Pallet.primaryPurple,
+                  ),
+                  Text(Strings.babyData,
+                      style: TextStyles.componentModerate(
+                          color: Pallet.primaryPurple)),
+                ]),
               ),
-              Text(Strings.babyData,
-                  style: TextStyles.componentModerate(
-                      color: Pallet.primaryPurple)),
             ],
           ),
           SizedBox(

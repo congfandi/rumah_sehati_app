@@ -58,7 +58,7 @@ class Assets {
   static const String kmsDigital = "assets/images/kms.png";
   static const String sakitPadaBayi = "assets/images/sakit_bayi.png";
   static const String baby = "assets/images/baby.png";
-  static const String article = "assets/images/faskes.svg";
+  static const String article = "assets/images/article.svg";
   static const String consultationSend = "assets/images/consultation_send.png";
   static const String filter = "assets/images/filter.svg";
   static const String babyAndBalita = "assets/images/baby_and_balita.png";

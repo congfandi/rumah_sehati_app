@@ -6,6 +6,7 @@ class Routes {
   }
 
   static const ARTICLE = '/article';
+  static const ARTICLE_DETAIL = '/article-detail';
   static const BALITA = '/balita';
   static const CALCULATOR = '/calculator';
   static const CHILDREN = '/children';
@@ -25,5 +26,5 @@ class Routes {
   static const REGISTER = '/register';
   static const REKAN_BUNDA = '/rekan-bunda';
   static const SPLASH = '/splash';
-  static const ARTICLE_DETAIL = '/article-detail';
+  static const ADD_CHILD = '/add-child';
 }

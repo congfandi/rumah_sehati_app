@@ -10,11 +10,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
+import 'package:rumah_sehati_mobile/presentation/home/children/controllers/children.controller.dart';
 
-class BabyItem extends StatelessWidget {
+class BabyItem extends GetView<ChildrenController> {
   const BabyItem({Key? key, required this.child}) : super(key: key);
   final Child child;
 
@@ -33,10 +35,12 @@ class BabyItem extends StatelessWidget {
           ],
           borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.only(bottom: 16,left: 16,right: 16),
+      margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
       child: Row(
         children: [
-          Image.asset(Assets.boy, width: 50, height: 50),
+          CircleAvatar(
+            foregroundImage: NetworkImage(child.photo ?? ""),
+          ),
           SizedBox(
             width: Dimension.width16,
           ),
@@ -45,14 +49,25 @@ class BabyItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      child.fullName ?? "",
-                      style: TextStyles.moderateSemiBold(),
+                    Expanded(
+                      child: Text(
+                        child.fullName ?? "",
+                        style: TextStyles.moderateSemiBold(),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     SizedBox(width: Dimension.width4),
                     SvgPicture.asset(
-                      Assets.boyIcon,
+                      child.gender == "male" ? Assets.boyIcon : Assets.girlIcon,
                       color: Pallet.primaryPurple,
+                    ),
+                    SizedBox(width: Dimension.width8),
+                    GestureDetector(
+                      child: const Icon(Icons.more_vert),
+                      onTap: () {
+                        openDialog();
+                      },
                     )
                   ],
                 ),
@@ -102,5 +117,59 @@ class BabyItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void openDialog() {
+    showDialog(
+        context: Get.context!,
+        builder: (_) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: EdgeInsets.zero,
+            content: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: Pallet.white),
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: ["Edit", "Delete"]
+                    .map((e) => GestureDetector(
+                          onTap: () {
+                            if (e == "Delete") {
+                              controller.deleteChild(child.id ?? 0);
+                            } else {
+                              controller.goToEditPage();
+                            }
+                            Get.back();
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    e,
+                                    style: TextStyles.bodySmallMedium(
+                                        color: Pallet.jetBlack),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                  height: Dimension.height40,
+                                  width: Get.width),
+                              e == "Delete"
+                                  ? const SizedBox()
+                                  : Container(
+                                      width: Get.width,
+                                      height: 1,
+                                      color: Pallet.lightBlack)
+                            ],
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                          ),
+                        ))
+                    .toList(),
+              ),
+            ),
+          );
+        });
   }
 }

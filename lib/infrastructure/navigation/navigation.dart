@@ -88,7 +88,7 @@ class Nav {
     ),
     GetPage(
       name: Routes.MENU_HARIAN,
-      page: () => MenuHarianScreen(),
+      page: () => const MenuHarianScreen(),
       binding: MenuHarianControllerBinding(),
     ),
     GetPage(
@@ -130,6 +130,11 @@ class Nav {
       name: Routes.ARTICLE_DETAIL,
       page: () => const ArticleDetailScreen(),
       binding: ArticleDetailControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.ADD_CHILD,
+      page: () => AddChildScreen(),
+      binding: AddChildControllerBinding(),
     ),
   ];
 }
