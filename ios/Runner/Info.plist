@@ -46,5 +46,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>we need photo of our users just for showing who he is</string>
 </dict>
 </plist>
