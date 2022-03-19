@@ -15,44 +15,51 @@ class BalitaScreen extends GetView<BalitaController> {
   Widget build(BuildContext context) {
     return BaseUi(
         title: Strings.baby,
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [_menu(), _description(), _child()],
+        child: SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [_menu(), _description(), _child()],
+            ),
           ),
         ));
   }
 
   Widget _description() {
-    return Obx(
-      () => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: Dimension.height24),
-          Text(controller.menus[controller.currentMenuIndex.value].name,
-              style: TextStyles.titleHero()),
-          SizedBox(height: Dimension.height8),
-          Text(controller.menus[controller.currentMenuIndex.value].description,
-              style: TextStyles.bodySmallRegular(color: Pallet.lightBlack)),
-        ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, right: 24),
+      child: Obx(
+        () => Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: Dimension.height24),
+            Text(controller.menus[controller.currentMenuIndex.value].name,
+                style: TextStyles.titleHero()),
+            SizedBox(height: Dimension.height8),
+            Text(controller.menus[controller.currentMenuIndex.value].description,
+                style: TextStyles.bodySmallRegular(color: Pallet.lightBlack)),
+          ],
+        ),
       ),
     );
   }
 
   Widget _child() {
-    return Expanded(
-        child: Obx(
-            () => controller.menus[controller.currentMenuIndex.value].child));
+    return Obx(() => controller.menus[controller.currentMenuIndex.value].child);
   }
 
   Widget _menu() {
-    return Row(
-      children: [
-        _menuItem(0),
-        SizedBox(width: Dimension.width16),
-        _menuItem(1)
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
+      child: Row(
+        children: [
+          _menuItem(0),
+          SizedBox(width: Dimension.width16),
+          _menuItem(1)
+        ],
+      ),
     );
   }
 

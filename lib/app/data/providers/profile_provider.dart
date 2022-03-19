@@ -32,7 +32,7 @@ class ProfileProvider extends ApiClient {
   updateProfile({required Profile profile}) async {
     String path = ApiUrl.profile;
     apiResponse.onStartRequest(path);
-    var response = await put(path, profile.toJson());
+    var response = await patch(path, profile.toJson());
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((response.statusCode ?? 500) < 300) {

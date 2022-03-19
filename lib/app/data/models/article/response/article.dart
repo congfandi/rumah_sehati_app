@@ -25,7 +25,7 @@ class Article {
   });
 
   Article.fromJson(dynamic json) {
-    id = json['id'];
+    id = int.parse(json["id"]);
     title = json['title'];
     cover = json['cover'];
     author = json['author'];

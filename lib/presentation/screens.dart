@@ -16,6 +16,7 @@ export 'package:rumah_sehati_mobile/presentation/home/home_menu/menu_harian/menu
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/parenting/parenting.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/prakonsepsi/prakonsepsi.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/rekan_bunda/rekan_bunda.screen.dart';
+export 'package:rumah_sehati_mobile/presentation/home/profile/edit_profile/edit_profile.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/profile/profile.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/login/login.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/login_register/login_register.screen.dart';

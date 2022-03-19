@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 
@@ -51,9 +52,11 @@ class ProfileScreen extends GetView<ProfileController> {
         SizedBox(
           height: Dimension.height16,
         ),
-        Text(
-          "Bunda Piara",
-          style: TextStyles.titleLarge(),
+        Obx(
+          () => Text(
+            controller.isLoading.isTrue ? "" : controller.profile?.name ?? "",
+            style: TextStyles.titleLarge(),
+          ),
         ),
         SizedBox(
           height: Dimension.height8,
@@ -75,16 +78,25 @@ class ProfileScreen extends GetView<ProfileController> {
                 Strings.personalInformation,
                 style: TextStyles.captionModerateSemiBold(),
               )),
-              const Icon(
-                Icons.edit,
-                color: Pallet.primaryPurple,
-                size: 16,
-              ),
-              SizedBox(width: Dimension.width8),
-              Text(
-                Strings.edit,
-                style: TextStyles.captionModerateSemiBold(
-                    color: Pallet.primaryPurple),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.EDIT_PROFILE);
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.edit,
+                      color: Pallet.primaryPurple,
+                      size: 16,
+                    ),
+                    SizedBox(width: Dimension.width8),
+                    Text(
+                      Strings.edit,
+                      style: TextStyles.captionModerateSemiBold(
+                          color: Pallet.primaryPurple),
+                    )
+                  ],
+                ),
               )
             ],
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

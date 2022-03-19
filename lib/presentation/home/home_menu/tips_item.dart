@@ -32,6 +32,7 @@ class TipsItem extends StatelessWidget {
           ],
           borderRadius: BorderRadius.circular(20)),
       height: 120,
+      margin: const EdgeInsets.only(left: 24, right: 24),
       child: Column(children: [
         Expanded(
           child: ClipRRect(
@@ -41,6 +42,7 @@ class TipsItem extends StatelessWidget {
               Strings.sampleImage,
               fit: BoxFit.cover,
               width: Get.width,
+              height: 120,
             ),
           ),
         ),

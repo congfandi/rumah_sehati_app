@@ -17,7 +17,7 @@ class Group {
       this.description,});
 
   Group.fromJson(dynamic json) {
-    id = json['id'];
+    id = int.parse(json["id"]);
     name = json['name'];
     link = json['link'];
     cover = json['cover'];

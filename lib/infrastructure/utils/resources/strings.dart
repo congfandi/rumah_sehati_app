@@ -337,7 +337,7 @@ class Strings {
 
   static const String breakfastMenu = "Menu Sarapan";
 
-  static const String breastFeed = "Menyusui";
+  static const String menyusui = "Menyusui";
 
   static const String min8 = "min. 8 karakter";
 

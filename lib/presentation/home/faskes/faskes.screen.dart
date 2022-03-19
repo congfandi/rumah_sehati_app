@@ -16,9 +16,10 @@ class FaskesScreen extends GetView<FaskesController> {
     controller.getFaskes();
     return BaseUi(
         title: Strings.faskes,
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: Get.height,
+        showBackButton: false,
+        child: SizedBox(
+          height: Get.height,
+          child: SingleChildScrollView(
             child: Column(
               children: [_header(), _listFaskes()],
               crossAxisAlignment: CrossAxisAlignment.start,

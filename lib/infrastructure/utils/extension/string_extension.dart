@@ -11,7 +11,7 @@ extension StringExtension on String {
     DateTime today = DateTime.now();
     int totalDay = today.difference(birthDate).inDays;
     int year = totalDay ~/ 360;
-    int month = totalDay ~/ 30;
+    int month = (totalDay ~/ 30) % 12;
     int days = totalDay % 7;
     return "$year tahun $month bulan $days hari";
   }

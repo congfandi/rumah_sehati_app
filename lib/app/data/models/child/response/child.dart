@@ -25,7 +25,7 @@ class Child {
   });
 
   Child.fromJson(dynamic json) {
-    id = json['id'];
+    id = int.parse(json["id"]);
     fullName = json['fullName'];
     birthDate = json['birthDate'];
     gender = json['gender'];

@@ -17,7 +17,7 @@ class Faskes {
       this.cover,});
 
   Faskes.fromJson(dynamic json) {
-    id = json['id'];
+    id = int.parse(json["id"]);
     name = json['name'];
     latitude = json['latitude'];
     longitude = json['longitude'];

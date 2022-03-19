@@ -16,15 +16,18 @@ class ProfileController extends GetxController implements ApiResponse {
   RxMap<String, String> dataProfile = RxMap();
 
   late final ProfileProvider _provider = ProfileProvider(this);
+  Profile? profile;
+  RxBool isLoading = true.obs;
 
   void setupProfile() {
-    Profile? profile = PrefHelper.to.getProfile();
+    profile = PrefHelper.to.getProfile();
     dataProfile({
       Strings.phoneNumber: profile?.phone ?? "",
       Strings.email: profile?.email ?? "",
       Strings.dateOfBirth: profile?.birthDate ?? "",
       Strings.momStatus: profile?.condition ?? "",
     });
+    isLoading(false);
   }
 
   void logout() {
@@ -61,7 +64,9 @@ class ProfileController extends GetxController implements ApiResponse {
   void onFinishRequest(String path) {}
 
   @override
-  void onStartRequest(String path) {}
+  void onStartRequest(String path) {
+    isLoading(true);
+  }
 
   @override
   void onSuccessRequest(String path, ResultResponse? result, String method) {

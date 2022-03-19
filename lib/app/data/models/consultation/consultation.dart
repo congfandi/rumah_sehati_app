@@ -10,7 +10,7 @@ class Consultation {
       this.question,});
 
   Consultation.fromJson(dynamic json) {
-    id = json['id'];
+    id = int.parse(json["id"]);
     answer = json['answer'];
     link = json['link'];
     category = json['category'];

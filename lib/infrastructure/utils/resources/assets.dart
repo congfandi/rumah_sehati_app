@@ -64,4 +64,9 @@ class Assets {
   static const String babyAndBalita = "assets/images/baby_and_balita.png";
   static const String ibuHamil = "assets/images/ibu_hamil.png";
   static const String ibuMenyusui = "assets/images/ibu_menyusui.png";
+  static const String parenting0 = "assets/images/parenting_0.png";
+  static const String parenting1 = "assets/images/parenting_1.png";
+  static const String parentingUmum = "assets/images/parenting_umum.png";
+  static const String parentingMenyusui =
+      "assets/images/parenting_menyusui.png";
 }
