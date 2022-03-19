@@ -68,11 +68,13 @@ class RegisterController extends GetxController implements ApiResponse {
   register() {
     if (_validate()) {
       _provider.register(Profile(
-          email: email.text,
-          condition: condition.text,
-          name: name.text,
-          birthDate: birthDate.text,
-          phone: phone.text));
+        email: email.text,
+        condition: condition.text,
+        name: name.text,
+        birthDate: birthDate.text,
+        phone: phone.text,
+        password: password.text,
+      ));
     }
   }
 

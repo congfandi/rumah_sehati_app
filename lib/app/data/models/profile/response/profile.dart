@@ -16,6 +16,7 @@ class Profile {
     this.name,
     this.birthDate,
     this.condition,
+    this.password,
   });
 
   Profile.fromJson(dynamic json) {
@@ -33,6 +34,7 @@ class Profile {
   String? birthDate;
   String? condition;
   String? photo;
+  String? password;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -42,6 +44,7 @@ class Profile {
     map['birthDate'] = birthDate;
     map['condition'] = condition;
     map['photo'] = photo;
+    map['password'] = password;
     return map;
   }
 }
