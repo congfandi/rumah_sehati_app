@@ -10,8 +10,9 @@ class Environments {
 }
 
 class ConfigEnvironments {
-  static String get _currentEnvironments => Environments.LOCAL;
-      // kDebugMode ? Environments.LOCAL : Environments.PRODUCTION;
+  static String get _currentEnvironments => Environments.PRODUCTION;
+
+  // kDebugMode ? Environments.LOCAL : Environments.PRODUCTION;
   static final List<Map<String, String>> _availableEnvironments = [
     {
       'env': Environments.LOCAL,
