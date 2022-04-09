@@ -137,14 +137,19 @@ class LoginRegisterScreen extends GetView<LoginRegisterController> {
             ),
             AppNormalButton(
               onPress: () {
-                Get.toNamed(Routes.REGISTER);
+                Get.toNamed(Routes.REGISTER, arguments: false);
               },
               title: Strings.registerWithPhone,
               buttonColor: Pallet.primaryPurple,
               titleColor: Pallet.white,
             ),
-            SizedBox(
-              height: Dimension.height8,
+            AppNormalButton(
+              onPress: () {
+                Get.toNamed(Routes.REGISTER, arguments: true);
+              },
+              title: Strings.registerWithEmail,
+              buttonColor: Pallet.primaryPurple,
+              titleColor: Pallet.white,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

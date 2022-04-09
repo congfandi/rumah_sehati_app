@@ -171,6 +171,8 @@ class HomeMenuScreen extends GetView<HomeMenuController> {
                         Text(
                           "Halo ${controller.profile?.value.name}",
                           style: TextStyles.titleLarge(color: Pallet.white),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         SizedBox(
                           height: Dimension.height8,

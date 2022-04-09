@@ -17,8 +17,8 @@ class Meta {
     currentPage = json['currentPage'];
     totalPage = json['totalPage'];
   }
-  int? currentPage;
-  int? totalPage;
+  String? currentPage;
+  String? totalPage;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

@@ -75,7 +75,7 @@ class CalculatorDatePicker extends StatelessWidget {
         context: Get.context!,
         locale: const Locale('id', 'ID'),
         initialDate: DateTime.now(),
-        firstDate: DateTime.now().subtract(const Duration(days: 2000)),
+        firstDate: DateTime.now().subtract(const Duration(days: 18000)),
         lastDate: DateTime.now());
     if (selectedDate != null) {
       controller.text =

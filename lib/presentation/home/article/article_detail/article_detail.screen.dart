@@ -110,18 +110,12 @@ class ArticleDetailScreen extends GetView<ArticleDetailController> {
                   height: Dimension.height8,
                 ),
                 Text(
-                  (controller.article?.createdDate ?? "").toDayAndDate(),
+                  (controller.article?.createdDate ?? "").toDayAndDate(format: "yyyy-MM-dd HH:mm:ss"),
                   style: TextStyles.bodySmallRegular(),
                 ),
               ],
             ),
             const Expanded(child: SizedBox()),
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite,
-                  color: Pallet.primaryPurple,
-                )),
             IconButton(
               onPressed: () {},
               icon: const Icon(

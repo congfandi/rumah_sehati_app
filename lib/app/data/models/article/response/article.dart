@@ -22,6 +22,7 @@ class Article {
     this.link,
     this.tags,
     this.createdDate,
+    this.category
   });
 
   Article.fromJson(dynamic json) {
@@ -31,8 +32,9 @@ class Article {
     author = json['author'];
     content = json['content'];
     link = json['link'];
-    tags = json['tags'] != null ? json['tags'].cast<String>() : [];
+    tags = json['tags'] != null ? (json['tags'] as String).split(",") : [];
     createdDate = json['createdDate'];
+    category = json['category'];
   }
 
   @HiveField(0)
@@ -51,6 +53,8 @@ class Article {
   List<String>? tags;
   @HiveField(7)
   String? createdDate;
+  @HiveField(8)
+  String? category;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -62,6 +66,7 @@ class Article {
     map['link'] = link;
     map['tags'] = tags;
     map['createdDate'] = createdDate;
+    map['category'] = category;
     return map;
   }
 }

@@ -18,6 +18,7 @@ class RegisterScreen extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.isEmail = Get.arguments as bool;
     return BaseUi(
         title: "Daftar",
         child: SingleChildScrollView(
@@ -39,18 +40,27 @@ class RegisterScreen extends GetView<RegisterController> {
   Widget _header() {
     return Row(
       children: [
-        Container(
-          width: Dimension.width100,
-          height: Dimension.width100,
-          decoration: BoxDecoration(
-              color: const Color(0xFFEBEBEB),
-              borderRadius: BorderRadius.circular(50),
-              border: Border.all(color: Pallet.grey)),
-          child: Center(
-            child: Obx(() => controller.isAvailableImage.isFalse
-                ? SvgPicture.asset(Assets.iconUser)
-                : Image.file(File(controller.photo?.path ?? ""))),
-          ),
+        Obx(
+          () => controller.imagePath.value == ""
+              ? Container(
+                  width: Dimension.width100,
+                  height: Dimension.width100,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFFEBEBEB),
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border.all(color: Pallet.grey)),
+                  child: Center(child: SvgPicture.asset(Assets.iconUser)),
+                )
+              : CircleAvatar(
+                  backgroundColor: Pallet.grey,
+                  child: CircleAvatar(
+                    backgroundImage: FileImage(
+                      File(controller.imagePath.value),
+                    ),
+                    radius: Dimension.width40,
+                  ),
+                  radius: Dimension.width42,
+                ),
         ),
         SizedBox(
           width: Dimension.width16,
@@ -108,22 +118,34 @@ class RegisterScreen extends GetView<RegisterController> {
         SizedBox(
           height: Dimension.height16,
         ),
-        AppInput(
-            controller: controller.phone,
-            label: Strings.phoneNumber,
-            inputType: TextInputType.phone,
-            hintText: Strings.fillPhoneNumber),
-        SizedBox(
-          height: Dimension.height16,
-        ),
-        AppInput(
-            controller: controller.email,
-            label: Strings.email,
-            inputType: TextInputType.emailAddress,
-            hintText: Strings.yourEmailDotCom),
-        SizedBox(
-          height: Dimension.height16,
-        ),
+        !controller.isEmail
+            ? Column(
+                children: [
+                  AppInput(
+                      controller: controller.phone,
+                      label: Strings.phoneNumber,
+                      inputType: TextInputType.phone,
+                      hintText: Strings.fillPhoneNumber),
+                  SizedBox(
+                    height: Dimension.height16,
+                  ),
+                ],
+              )
+            : const SizedBox(),
+        controller.isEmail
+            ? Column(
+                children: [
+                  AppInput(
+                      controller: controller.email,
+                      label: Strings.email,
+                      inputType: TextInputType.emailAddress,
+                      hintText: Strings.yourEmailDotCom),
+                  SizedBox(
+                    height: Dimension.height16,
+                  ),
+                ],
+              )
+            : const SizedBox(),
         AppInput(
             controller: controller.password,
             label: Strings.password,

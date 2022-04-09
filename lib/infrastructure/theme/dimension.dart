@@ -48,6 +48,9 @@ class Dimension {
   static double width32 = 32.w;
   static double width36 = 36.w;
   static double width40 = 40.w;
+  static double width42 = 42.w;
+  static double width44 = 44.w;
+  static double width46 = 46.w;
   static double width48 = 48.w;
   static double width50 = 50.w;
   static double width60 = 60.w;

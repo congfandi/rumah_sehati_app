@@ -118,7 +118,8 @@ class Strings {
 
   static const String register = "Daftar";
 
-  static const String registerWithPhone = "Daftar dengan email/ no. handphone";
+  static const String registerWithPhone = "Daftar dengan no.telpon";
+  static const String registerWithEmail = "Daftar dengan email";
 
   static const String babyData = "Data Anak";
 

@@ -23,8 +23,8 @@ class Profile {
     phone = json['phone'];
     email = json['email'];
     name = json['name'];
-    birthDate = json['birthDate'];
-    condition = json['condition'];
+    birthDate = json['birthdate'];
+    condition = json['condition_mom'];
     photo = json['photo'];
   }
 
@@ -37,6 +37,18 @@ class Profile {
   String? password;
 
   Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['phone'] = phone;
+    map['email'] = email;
+    map['name'] = name;
+    map['birthDate'] = birthDate;
+    map['condition_mom'] = condition;
+    map['photo'] = photo;
+    map['password'] = password;
+    return map;
+  }
+
+  Map<String, dynamic> toRegister() {
     final map = <String, dynamic>{};
     map['phone'] = phone;
     map['email'] = email;

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/profile/response/profile.dart';
 import 'package:rumah_sehati_mobile/domain/core/network/api_url.dart';
 
@@ -11,13 +14,21 @@ class RegisterProvider extends ApiClient {
     super.onInit();
   }
 
-  Future<void> register(Profile request) async {
+  Future<void> register(
+      {required Profile request, required String filePath}) async {
     String path = ApiUrl.register;
     apiResponse.onStartRequest(path);
+    Map<String, dynamic> body = request.toRegister();
+    if (filePath != "") {
+      body.addAll({
+        "picture": MultipartFile(File(filePath),
+            filename: "${DateTime.now().millisecondsSinceEpoch}.jpg")
+      });
+    }
     try {
       var response = await post(
         path,
-        request.toJson(),
+        FormData(body),
       );
       apiResponse.onFinishRequest(path);
       if (response.isOk) {

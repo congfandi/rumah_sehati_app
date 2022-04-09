@@ -43,6 +43,7 @@ class ArticleItem extends StatelessWidget {
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                   padding: const EdgeInsets.only(
@@ -84,7 +85,7 @@ class ArticleItem extends StatelessWidget {
                                 ),
                                 shape: const StadiumBorder()),
                             child: Text(
-                              Strings.healthy,
+                              article.category ?? "",
                               style: TextStyles.captionModerateSemiBold(
                                   color: Pallet.white),
                             ),
@@ -95,11 +96,6 @@ class ArticleItem extends StatelessWidget {
                           child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: const [
-                          Icon(
-                            Icons.favorite,
-                            color: Pallet.primaryPurple,
-                          ),
-                          SizedBox(width: 16),
                           Icon(
                             CupertinoIcons.archivebox,
                             color: Pallet.primaryPurple,

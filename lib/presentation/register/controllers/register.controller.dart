@@ -21,7 +21,8 @@ class RegisterController extends GetxController implements ApiResponse {
   final TextEditingController birthDate = TextEditingController();
   final TextEditingController condition = TextEditingController();
   late final AppLoading _loading = AppLoading();
-  RxBool isAvailableImage = RxBool(false);
+  RxString imagePath = RxString("");
+  bool isEmail = true;
   late final RegisterProvider _provider = RegisterProvider(this);
   XFile? photo;
   final List<String> userConditions = [
@@ -57,24 +58,39 @@ class RegisterController extends GetxController implements ApiResponse {
           backgroundColor: Pallet.white);
       return false;
     }
-    if (phone.text.isEmpty && email.text.isEmpty) {
-      Get.snackbar(Strings.failed, "Isi email atau phone saja",
-          backgroundColor: Pallet.white);
-      return false;
+    if (!isEmail) {
+      if (phone.text.isEmpty) {
+        Get.snackbar(Strings.failed, "Phone required",
+            backgroundColor: Pallet.white);
+        return false;
+      }
+    }
+    if (isEmail) {
+      if (email.text.isEmpty) {
+        Get.snackbar(Strings.failed, "Email required",
+            backgroundColor: Pallet.white);
+        return false;
+      }
     }
     return true;
   }
 
   register() {
     if (_validate()) {
-      _provider.register(Profile(
-        email: email.text,
-        condition: condition.text,
-        name: name.text,
-        birthDate: birthDate.text,
-        phone: phone.text,
-        password: password.text,
-      ));
+      _provider.register(
+          request: Profile(
+            email: email.text.isEmpty
+                ? "0000${DateTime.now().millisecondsSinceEpoch}aaaa@gmail.com"
+                : email.text,
+            condition: condition.text,
+            name: name.text,
+            birthDate: birthDate.text,
+            phone: phone.text.isEmpty
+                ? "0000${DateTime.now().millisecondsSinceEpoch}"
+                : phone.text,
+            password: password.text,
+          ),
+          filePath: imagePath.value);
     }
   }
 
@@ -84,7 +100,7 @@ class RegisterController extends GetxController implements ApiResponse {
         source: isGallery ? ImageSource.gallery : ImageSource.camera);
     if (image != null) {
       photo = image;
-      isAvailableImage(true);
+      imagePath.value = image.path;
     }
   }
 
