@@ -102,7 +102,7 @@ class LoginRegisterScreen extends GetView<LoginRegisterController> {
           ),
           Positioned(
             child: Image.asset(
-              Assets.logo,
+              Assets.newLogo,
               height: Dimension.height40,
             ),
             top: 50,

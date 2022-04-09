@@ -18,7 +18,11 @@ class RegisterScreen extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.isEmail = Get.arguments as bool;
+    if (Get.arguments == null) {
+      controller.isEmail = false;
+    } else {
+      controller.isEmail = Get.arguments as bool;
+    }
     return BaseUi(
         title: "Daftar",
         child: SingleChildScrollView(

@@ -45,9 +45,17 @@ class ProfileScreen extends GetView<ProfileController> {
         SizedBox(
           height: Dimension.height16,
         ),
-        const CircleAvatar(
-          foregroundImage: NetworkImage(Strings.sampleImage),
-          radius: 45,
+        Obx(
+          () => controller.isLoading.isTrue
+              ? const CircleAvatar(
+                  foregroundImage: NetworkImage(Strings.sampleImage),
+                  radius: 45,
+                )
+              : CircleAvatar(
+                  foregroundImage:
+                      NetworkImage(controller.profile?.photo ?? ""),
+                  radius: 45,
+                ),
         ),
         SizedBox(
           height: Dimension.height16,
