@@ -87,6 +87,7 @@ class Dimension {
   static double height45 = 45.h;
   static double height50 = 50.h;
   static double height60 = 60.h;
+  static double height64   = 64.h;
   static double height80 = 80.h;
   static double height100 = 100.h;
   static double height120 = 120.h;

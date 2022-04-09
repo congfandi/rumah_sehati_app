@@ -29,20 +29,14 @@ class SplashScreen extends GetView<SplashController> {
                 SizedBox(
                   height: Dimension.height60,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Get.rootDelegate.offAndToNamed(Routes.LOGIN_REGISTER);
-                  },
-                  child: Image.asset(
-                    Assets.logo,
-                    width: Dimension.width169,
-                    height: Dimension.height60,
-                  ),
+                Image.asset(
+                  Assets.newLogo,
+                  height: Dimension.height64,
                 ),
                 SizedBox(
                   height: Dimension.height40,
                 ),
-                Expanded(child: Image.asset(Assets.splashImage)),
+                const Expanded(child: SizedBox()),
                 SizedBox(
                   width: Get.width,
                   child: Padding(
@@ -62,7 +56,7 @@ class SplashScreen extends GetView<SplashController> {
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(
                       "Ruang bagi Bunda untuk Berbagi dan\nBelajar Bersama",
-                      style: TextStyles.bodySmallMedium(color: Pallet.grey),
+                      style: TextStyles.moderateSemiBold(color: Pallet.lightBlack),
                     ),
                   ),
                 ),
@@ -71,7 +65,7 @@ class SplashScreen extends GetView<SplashController> {
                 ),
                 _pertamina(),
                 SizedBox(
-                  height: Dimension.height60,
+                  height: Dimension.height30,
                 )
               ],
             ),
@@ -84,17 +78,37 @@ class SplashScreen extends GetView<SplashController> {
   Widget _pertamina() {
     return Column(
       children: [
-        Text(
-          Strings.poweredBy,
-          style: TextStyles.captionModerateRegular(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Center(
+                child: Image.asset(
+                  Assets.kab,
+                  width: 40,
+                  height: 40,
+                ),
+              ),
+            ),
+            Image.asset(
+              Assets.logoPertamina,
+              width: 173,
+              height: 40,
+            ),
+            Expanded(
+              child: SizedBox(
+                width: Dimension.width16,
+              ),
+            ),
+          ],
         ),
         SizedBox(
           height: Dimension.height8,
         ),
-        Image.asset(
-          Assets.logoPertamina,
-          width: 173,
-          height: 40,
+        Text(
+          "Powered By PT Pertamina EP Donggi Matindok Field",
+          style: TextStyles.captionModerateRegular(color: Pallet.lightBlack),
         )
       ],
     );

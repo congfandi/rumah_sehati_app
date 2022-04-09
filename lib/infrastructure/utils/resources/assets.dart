@@ -69,4 +69,6 @@ class Assets {
   static const String parentingUmum = "assets/images/parenting_umum.png";
   static const String parentingMenyusui =
       "assets/images/parenting_menyusui.png";
+  static const String newLogo = "assets/images/logo_moderate.png";
+  static const String kab = "assets/images/kab.png";
 }
