@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/request/child_request.dart';
 
@@ -41,10 +42,17 @@ class ChildrenProvider extends ApiClient {
   }
 
   Future<void> update(
-      {required ChildRequest request, required String childId}) async {
-    String path = ApiUrl.children + "/$childId";
+      {required ChildRequest request, String photoPath = "",required String childId}) async {
+    String path = ApiUrl.children+"/$childId";
     apiResponse.onStartRequest(path);
-    var response = await patch(path, request.toJson());
+    Map<String, dynamic> body = request.toJson();
+    if (photoPath != "") {
+      body.addAll({
+        "photo": MultipartFile(File(photoPath),
+            filename: "${DateTime.now().millisecondsSinceEpoch}.jpg")
+      });
+    }
+    var response = await patch(path, FormData(body));
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((response.statusCode ?? 500) < 300) {

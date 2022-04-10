@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
+import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
 import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_date_picker.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_input.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_option.dart';
+import 'package:rumah_sehati_mobile/infrastructure/widgets/take_image.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
 
 import '../../../../infrastructure/theme/theme.dart';
@@ -16,6 +21,7 @@ class EditChildScreen extends GetView<EditChildController> {
 
   @override
   Widget build(BuildContext context) {
+    Child child = Get.arguments as Child;
     return BaseUi(
       title: Strings.addChildData,
       child: Obx(
@@ -25,7 +31,7 @@ class EditChildScreen extends GetView<EditChildController> {
                 child: SingleChildScrollView(
                     child: Column(children: [
               _header(),
-              controller.step.value == 0 ? _form1() : _form2()
+              controller.step.value == 0 ? _form1(child) : _form2()
             ]))),
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
@@ -48,11 +54,87 @@ class EditChildScreen extends GetView<EditChildController> {
     );
   }
 
-  Widget _form1() {
+  Widget _photo(Child child) {
+    return Row(
+      children: [
+        Obx(
+          () => controller.imagePath.value == ""
+              ? CircleAvatar(
+                  backgroundColor: Pallet.grey,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(child.photo ?? ""),
+                    radius: Dimension.width40,
+                  ),
+                  radius: Dimension.width42,
+                )
+              : CircleAvatar(
+                  backgroundColor: Pallet.grey,
+                  child: CircleAvatar(
+                    backgroundImage: FileImage(
+                      File(controller.imagePath.value),
+                    ),
+                    radius: Dimension.width40,
+                  ),
+                  radius: Dimension.width42,
+                ),
+        ),
+        SizedBox(
+          width: Dimension.width16,
+        ),
+        Expanded(
+            child: SizedBox(
+          height: Dimension.width100,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Photo anak",
+                style: TextStyles.bodySmallMedium(),
+              ),
+              Text(
+                "Besar file maks. 10MB dengan format .JPG, .JPEG, .PNG",
+                style: TextStyles.captionModerateRegular(color: Pallet.grey),
+              ),
+              GestureDetector(
+                onTap: () {
+                  TakeImage(onPicked: (image) {
+                    controller.imagePath(image?.path ?? "");
+                  });
+                },
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.add,
+                      color: Pallet.primaryPurple,
+                    ),
+                    Text(
+                      "Unggah foto",
+                      style: TextStyles.componentModerate(
+                          color: Pallet.primaryPurple),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: Dimension.height10,
+              )
+            ],
+          ),
+        ))
+      ],
+    );
+  }
+
+  Widget _form1(Child child) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
       child: Column(
         children: [
+          _photo(child),
+          const SizedBox(
+            height: 16,
+          ),
           AppInput(
             controller: controller.name,
             hintText: Strings.inputBabyName,

@@ -31,6 +31,7 @@ class EditChildController extends GetxController implements ApiResponse {
   DateTime? posyanduDateSelected;
   late final ChildrenProvider _provider = ChildrenProvider(this);
   Child? child;
+  RxString imagePath = "".obs;
 
   void _errorMessage(String description) {
     Get.snackbar(Strings.failed, description, backgroundColor: Pallet.white);
@@ -104,7 +105,8 @@ class EditChildController extends GetxController implements ApiResponse {
               fullName: name.text,
               gender: gender.text == "Perempuan" ? "female" : "male",
               weight: double.parse(weight.text)),
-          childId: child?.id ?? "0");
+          childId: child?.id ?? "0",
+          photoPath: imagePath.value);
     }
   }
 
