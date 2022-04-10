@@ -8,6 +8,8 @@
  *
  */
 
+import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
+
 class Profile {
   Profile({
     this.phone,
@@ -41,7 +43,7 @@ class Profile {
     map['phone'] = phone;
     map['email'] = email;
     map['name'] = name;
-    map['birthDate'] = birthDate;
+    map['birthdate'] = birthDate;
     map['condition_mom'] = condition;
     map['photo'] = photo;
     map['password'] = password;
@@ -53,7 +55,7 @@ class Profile {
     map['phone'] = phone;
     map['email'] = email;
     map['name'] = name;
-    map['birthDate'] = birthDate;
+    map['birthDate'] = birthDate?.toParameter();
     map['condition'] = condition;
     map['photo'] = photo;
     map['password'] = password;

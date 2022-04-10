@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:rumah_sehati_mobile/presentation/home/home_menu/ibu_hamil/controllers/ibu_hamil.controller.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
 
 void main(){
-  IbuHamilController controller = IbuHamilController();
-  controller.firstDate = DateTime.now();
-  debugPrint("jalo ${controller.getTrimester1()}");
+ String tanggal = "01 April 2022";
+ test("test tanggal", (){
+   expect(tanggal.toParameter(), "2022-04-01");
+ });
 }

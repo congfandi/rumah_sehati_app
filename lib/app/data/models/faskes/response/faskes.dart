@@ -14,20 +14,24 @@ class Faskes {
       this.name, 
       this.latitude, 
       this.longitude, 
-      this.cover,});
+      this.cover,this.address,this.contact});
 
   Faskes.fromJson(dynamic json) {
-    id = int.parse(json["id"]);
+    id =json["id"];
     name = json['name'];
     latitude = json['latitude'];
     longitude = json['longitude'];
     cover = json['cover'];
+    address = json['address'];
+    contact = json['contact'];
   }
-  int? id;
+  String? id;
   String? name;
-  double? latitude;
-  double? longitude;
+  String? latitude;
+  String? longitude;
   String? cover;
+  String? address;
+  String? contact;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -36,6 +40,8 @@ class Faskes {
     map['latitude'] = latitude;
     map['longitude'] = longitude;
     map['cover'] = cover;
+    map['address'] = address;
+    map['contact'] = contact;
     return map;
   }
 

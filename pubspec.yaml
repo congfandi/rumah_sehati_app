@@ -23,6 +23,7 @@ dependencies:
   url_launcher: ^6.0.20
   flutter_share: ^2.0.0
   maps_launcher: ^2.0.1
+  cached_network_image: ^3.2.0
   flutter_localizations: 
     sdk: flutter
   flutter: 

@@ -14,8 +14,8 @@ class Meta {
       this.totalPage,});
 
   Meta.fromJson(dynamic json) {
-    currentPage = json['currentPage'];
-    totalPage = json['totalPage'];
+    currentPage = "${json['currentPage']}";
+    totalPage = "${json['totalPage']}";
   }
   String? currentPage;
   String? totalPage;

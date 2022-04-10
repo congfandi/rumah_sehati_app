@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/providers/providers.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/pallet.dart';
+import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/helpers/helpers.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
@@ -26,7 +27,7 @@ class ProfileController extends GetxController implements ApiResponse {
           profile?.phone?.substring(0, 4) == "0000" ? "" : profile?.phone ?? "",
       Strings.email:
           profile?.email?.substring(0, 4) == "0000" ? "" : profile?.email ?? "",
-      Strings.dateOfBirth: profile?.birthDate ?? "",
+      Strings.birthDate: (profile?.birthDate ?? "").toDayAndDate(format: "yyyy-MM-dd"),
       Strings.momStatus: profile?.condition ?? "",
     });
     isLoading(false);

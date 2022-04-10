@@ -170,10 +170,9 @@ class RegisterScreen extends GetView<RegisterController> {
           controller: controller.birthDate,
           title: Strings.birthDate,
           hint: Strings.chooseBirthDate,
-          onSelectedDate: (date) {},
-        ),
-        SizedBox(
-          height: Dimension.height16,
+          onSelectedDate: (date) {
+
+          },
         ),
         SizedBox(
           height: Dimension.height16,

@@ -8,6 +8,7 @@
  *
  */
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:rumah_sehati_mobile/app/data/models/faskes/response/faskes.dart';
@@ -39,11 +40,11 @@ class FaskesItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(5),
-            child: Image.network(
-              faskes?.cover ?? "",
+            child: CachedNetworkImage(
               width: 75,
               height: 108,
               fit: BoxFit.cover,
+              imageUrl: faskes?.cover ?? "",
             ),
           ),
           SizedBox(
@@ -51,6 +52,7 @@ class FaskesItem extends StatelessWidget {
           ),
           Expanded(
               child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 faskes?.name ?? "",
@@ -59,13 +61,24 @@ class FaskesItem extends StatelessWidget {
               SizedBox(
                 height: Dimension.height8,
               ),
+              Text(
+                "Kontak Darurat : ${faskes?.contact}",
+                style: TextStyles.moderateRegular(),
+              ),
+              SizedBox(
+                height: Dimension.height8,
+              ),
+              Text(
+                faskes?.address ?? "",
+                style: TextStyles.moderateRegular(),
+              ),
               Row(
                 children: [
                   SizedBox(
                     child: AppNormalButton(
                         onPress: () => MapsLauncher.launchCoordinates(
-                            faskes?.latitude ?? 0.0,
-                            faskes?.longitude ?? 0.0,
+                            double.parse(faskes?.latitude ?? "0.0"),
+                            double.parse(faskes?.longitude ?? "0.0"),
                             'Fasilitas Kesehatan'),
                         title: Strings.visitLocation),
                     width: 120,

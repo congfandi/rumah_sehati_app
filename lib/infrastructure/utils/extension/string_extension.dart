@@ -1,3 +1,4 @@
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 extension StringExtension on String {
@@ -30,5 +31,11 @@ extension StringExtension on String {
   String toDateString({String format = "yyyy-MM-dd"}) {
     DateTime date = DateFormat(format).parse(this);
     return DateFormat("dd MMMM yyyy", "id_ID").format(date);
+  }
+
+  String toParameter(){
+    initializeDateFormatting();
+    DateTime date = DateFormat("dd MMMM yyyy","id_ID").parse(this);
+    return DateFormat("yyyy-MM-dd").format(date);
   }
 }
