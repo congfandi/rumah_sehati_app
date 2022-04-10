@@ -21,7 +21,7 @@ class HomeMenuScreen extends GetView<HomeMenuController> {
           children: [
             _header(),
             _menu(),
-            _tips(),
+            // _tips(),
           ],
         ),
       )),
