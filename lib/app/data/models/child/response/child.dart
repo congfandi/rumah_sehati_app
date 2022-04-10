@@ -25,21 +25,21 @@ class Child {
   });
 
   Child.fromJson(dynamic json) {
-    id = int.parse(json["id"]);
-    fullName = json['fullName'];
-    birthDate = json['birthDate'];
+    id = json["id"];
+    fullName = json['childname'];
+    birthDate = json['birthdate'];
     gender = json['gender'];
-    motherName = json['motherName'];
-    fatherName = json['fatherName'];
-    fatherBirthday = json['fatherBirthday'];
-    motherBirthday = json['motherBirthday'];
+    motherName = json['mothername'];
+    fatherName = json['fathername'];
+    fatherBirthday = json['fatherbirthday'];
+    motherBirthday = json['motherbirthday'];
     height = json['height'];
     weight = json['weight'];
-    measuringDate = json['measuringDate'];
+    measuringDate = json['measuringdate'];
     photo = json['photo'];
   }
 
-  int? id;
+  String? id;
   String? fullName;
   String? birthDate;
   String? gender;
@@ -47,24 +47,24 @@ class Child {
   String? fatherName;
   String? fatherBirthday;
   String? motherBirthday;
-  double? height;
-  double? weight;
+  String? height;
+  String? weight;
   String? measuringDate;
   String? photo;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['fullName'] = fullName;
-    map['birthDate'] = birthDate;
+    map['childname'] = fullName;
+    map['birthdate'] = birthDate;
     map['gender'] = gender;
-    map['motherName'] = motherName;
-    map['fatherName'] = fatherName;
-    map['fatherBirthday'] = fatherBirthday;
-    map['motherBirthday'] = motherBirthday;
+    map['mothername'] = motherName;
+    map['fathername'] = fatherName;
+    map['fatherbirthday'] = fatherBirthday;
+    map['motherbirthday'] = motherBirthday;
     map['height'] = height;
     map['weight'] = weight;
-    map['measuringDate'] = measuringDate;
+    map['measuringdate'] = measuringDate;
     map['photo'] = photo;
     return map;
   }

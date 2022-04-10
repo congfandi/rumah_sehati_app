@@ -26,13 +26,17 @@ class ChildrenScreen extends GetView<ChildrenController> {
               Obx(
                 () => controller.isLoading.isTrue
                     ? _loading()
-                    : ListView.builder(
-                        itemBuilder: (c, i) =>
-                            BabyItem(child: controller.children[i]),
-                        itemCount: controller.children.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                      ),
+                    : controller.children.isEmpty
+                        ? const Center(
+                            child: Text("Tidak ada data anak"),
+                          )
+                        : ListView.builder(
+                            itemBuilder: (c, i) =>
+                                BabyItem(child: controller.children[i]),
+                            itemCount: controller.children.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                          ),
               )
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
@@ -8,7 +9,9 @@ extension StringExtension on String {
   }
 
   String ageBaby() {
-    DateTime birthDate = DateFormat("yyyy-MM-dd").parse(this);
+    debugPrint("age baby this: $this");
+    initializeDateFormatting();
+    DateTime birthDate = DateFormat("yyyy-MM-dd","id_ID").parse(this);
     DateTime today = DateTime.now();
     int totalDay = today.difference(birthDate).inDays;
     int year = totalDay ~/ 360;
@@ -29,6 +32,7 @@ extension StringExtension on String {
   }
 
   String toDateString({String format = "yyyy-MM-dd"}) {
+    initializeDateFormatting();
     DateTime date = DateFormat(format).parse(this);
     return DateFormat("dd MMMM yyyy", "id_ID").format(date);
   }

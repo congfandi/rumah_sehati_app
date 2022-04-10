@@ -10,7 +10,8 @@ class ChildrenController extends GetxController implements ApiResponse {
   RxList<Child> children = RxList<Child>();
   RxBool isLoading = RxBool(true);
 
-  deleteChild(int childId) {
+  deleteChild(String childId) {
+    children.clear();
     _provider.deleteChildren(childId: childId);
   }
 

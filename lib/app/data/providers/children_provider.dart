@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/request/child_request.dart';
 
 import '../../../domain/core/interfaces/api_response.dart';
@@ -11,10 +14,18 @@ class ChildrenProvider extends ApiClient {
     super.onInit();
   }
 
-  Future<void> create({required ChildRequest request}) async {
+  Future<void> create(
+      {required ChildRequest request, String photoPath = ""}) async {
     String path = ApiUrl.children;
     apiResponse.onStartRequest(path);
-    var response = await post(path, request.toJson());
+    Map<String, dynamic> body = request.toJson();
+    if (photoPath != "") {
+      body.addAll({
+        "photo": MultipartFile(File(photoPath),
+            filename: "${DateTime.now().millisecondsSinceEpoch}.jpg")
+      });
+    }
+    var response = await post(path, FormData(body));
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((response.statusCode ?? 500) < 300) {
@@ -30,7 +41,7 @@ class ChildrenProvider extends ApiClient {
   }
 
   Future<void> update(
-      {required ChildRequest request, required int childId}) async {
+      {required ChildRequest request, required String childId}) async {
     String path = ApiUrl.children + "/$childId";
     apiResponse.onStartRequest(path);
     var response = await patch(path, request.toJson());
@@ -48,7 +59,7 @@ class ChildrenProvider extends ApiClient {
     }
   }
 
-  Future<void> deleteChildren({required int childId}) async {
+  Future<void> deleteChildren({required String childId}) async {
     String path = ApiUrl.children + '/$childId';
     apiResponse.onStartRequest(path);
     var response = await delete(path);

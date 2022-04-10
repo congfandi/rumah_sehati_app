@@ -28,6 +28,7 @@ class AddChildController extends GetxController implements ApiResponse {
   DateTime? motherBirthDateSelected;
   DateTime? fatherBirthDateSelected;
   DateTime? posyanduDateSelected;
+  RxString imagePath = "".obs;
   late final ChildrenProvider _provider = ChildrenProvider(this);
 
   void _errorMessage(String description) {
@@ -104,7 +105,8 @@ class AddChildController extends GetxController implements ApiResponse {
               fatherName: fatherName.text,
               fullName: name.text,
               gender: gender.text == "Perempuan" ? "feamle" : "male",
-              weight: double.parse(weight.text)));
+              weight: double.parse(weight.text)),
+          photoPath: imagePath.value);
     }
   }
 

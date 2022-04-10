@@ -104,7 +104,7 @@ class EditChildController extends GetxController implements ApiResponse {
               fullName: name.text,
               gender: gender.text == "Perempuan" ? "female" : "male",
               weight: double.parse(weight.text)),
-          childId: child?.id ?? 0);
+          childId: child?.id ?? "0");
     }
   }
 

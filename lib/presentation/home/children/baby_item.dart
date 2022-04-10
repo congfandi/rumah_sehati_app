@@ -144,7 +144,7 @@ class BabyItem extends GetView<ChildrenController> {
                           onTap: () {
                             Get.back();
                             if (e == "Delete") {
-                              controller.deleteChild(child.id ?? 0);
+                              controller.deleteChild(child.id ?? "0");
                             } else {
                               Get.toNamed(Routes.EDIT_CHILD, arguments: child);
                             }
