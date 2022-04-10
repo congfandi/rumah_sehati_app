@@ -15,6 +15,7 @@ class ApiUrl {
   static const faskes = "/api/v1/faskes";
   static const groups = "/api/v1/groups";
   static const children = "/api/v1/children";
+  static const updateChildren = "/api/v1/children/update";
   static const profile = "/api/v1/profile";
   static const consultation = "/api/v1/consultations";
 }

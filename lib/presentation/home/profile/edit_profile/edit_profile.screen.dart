@@ -1,13 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_date_picker.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_option.dart';
+import 'package:rumah_sehati_mobile/infrastructure/widgets/take_image.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
 
 import '../../../../infrastructure/theme/theme.dart';
@@ -28,7 +27,7 @@ class EditProfileScreen extends GetView<EditProfileController> {
             padding: EdgeInsets.all(Dimension.height24),
             child: Column(
               children: [
-                _header(),
+                _photo(),
                 SizedBox(
                   height: Dimension.height16,
                 ),
@@ -39,20 +38,28 @@ class EditProfileScreen extends GetView<EditProfileController> {
         ));
   }
 
-  Widget _header() {
+  Widget _photo() {
     return Row(
       children: [
-        Container(
-          width: Dimension.width100,
-          height: Dimension.width100,
-          decoration: BoxDecoration(
-              color: const Color(0xFFEBEBEB),
-              borderRadius: BorderRadius.circular(50),
-              border: Border.all(color: Pallet.grey)),
-          child: Center(
-            child: Obx(() => controller.isAvailableImage.isFalse
-                ? SvgPicture.asset(Assets.iconUser)
-                : Image.file(File(controller.photo?.path ?? ""))),
+        Obx(
+              () => controller.imagePath.value == ""
+              ? CircleAvatar(
+            backgroundColor: Pallet.grey,
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(controller.profile?.photo ?? ""),
+              radius: Dimension.width40,
+            ),
+            radius: Dimension.width42,
+          )
+              : CircleAvatar(
+            backgroundColor: Pallet.grey,
+            child: CircleAvatar(
+              backgroundImage: FileImage(
+                File(controller.imagePath.value),
+              ),
+              radius: Dimension.width40,
+            ),
+            radius: Dimension.width42,
           ),
         ),
         SizedBox(
@@ -60,46 +67,49 @@ class EditProfileScreen extends GetView<EditProfileController> {
         ),
         Expanded(
             child: SizedBox(
-          height: Dimension.width100,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Gambar Profile",
-                style: TextStyles.bodySmallMedium(),
-              ),
-              Text(
-                "Besar file maks. 10MB dengan format .JPG, .JPEG, .PNG",
-                style: TextStyles.captionModerateRegular(color: Pallet.grey),
-              ),
-              GestureDetector(
-                onTap: () {
-                  _showDialogCamera();
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.add,
-                      color: Pallet.primaryPurple,
+              height: Dimension.width100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Photo anak",
+                    style: TextStyles.bodySmallMedium(),
+                  ),
+                  Text(
+                    "Besar file maks. 10MB dengan format .JPG, .JPEG, .PNG",
+                    style: TextStyles.captionModerateRegular(color: Pallet.grey),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      TakeImage(onPicked: (image) {
+                        controller.imagePath(image?.path ?? "");
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.add,
+                          color: Pallet.primaryPurple,
+                        ),
+                        Text(
+                          "Unggah foto",
+                          style: TextStyles.componentModerate(
+                              color: Pallet.primaryPurple),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "Unggah foto",
-                      style: TextStyles.componentModerate(
-                          color: Pallet.primaryPurple),
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: Dimension.height10,
+                  )
+                ],
               ),
-              SizedBox(
-                height: Dimension.height10,
-              )
-            ],
-          ),
-        ))
+            ))
       ],
     );
   }
+
 
   Widget _form() {
     return Column(
@@ -157,50 +167,5 @@ class EditProfileScreen extends GetView<EditProfileController> {
         ),
       ],
     );
-  }
-
-  void _showDialogCamera() {
-    showModalBottomSheet(
-        context: Get.context!,
-        backgroundColor: Colors.transparent,
-        builder: (c) {
-          return Container(
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20)),
-                color: Pallet.white),
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "Pilih Sumber",
-                  style: TextStyles.titleHero(),
-                ),
-                const Divider(),
-                TextButton(
-                    onPressed: () {
-                      controller.takeImage(false);
-                      Get.back();
-                    },
-                    child: Text(
-                      "Camera",
-                      style: TextStyles.moderateSemiBold(),
-                    )),
-                const Divider(),
-                TextButton(
-                    onPressed: () {
-                      controller.takeImage(true);
-                      Get.back();
-                    },
-                    child: Text(
-                      "Gallery",
-                      style: TextStyles.moderateSemiBold(),
-                    )),
-              ],
-            ),
-          );
-        });
   }
 }

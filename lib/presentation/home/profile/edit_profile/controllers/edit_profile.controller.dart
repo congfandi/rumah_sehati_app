@@ -20,6 +20,8 @@ class EditProfileController extends GetxController implements ApiResponse {
   final TextEditingController condition = TextEditingController();
   late final AppLoading _loading = AppLoading();
   RxBool isAvailableImage = RxBool(false);
+  RxString imagePath = RxString('');
+  Profile? profile;
   late final ProfileProvider _provider = ProfileProvider(this);
   XFile? photo;
   final List<String> userConditions = [
@@ -32,6 +34,7 @@ class EditProfileController extends GetxController implements ApiResponse {
 
   setProfile(ProfileController profileController) {
     this.profileController = profileController;
+    profile = profileController.profile;
     name.text = profileController.profile?.name ?? "";
     phone.text = profileController.profile?.phone ?? "";
     email.text = profileController.profile?.email ?? "";
@@ -66,12 +69,12 @@ class EditProfileController extends GetxController implements ApiResponse {
 
   register() {
     if (_validate()) {
-      _provider.updateProfile(profile:Profile(
+      _provider.updateProfile(request:Profile(
           email: email.text,
           condition: condition.text,
           name: name.text,
           birthDate: birthDate.text,
-          phone: phone.text));
+          phone: phone.text),filePath: imagePath.value);
     }
   }
 

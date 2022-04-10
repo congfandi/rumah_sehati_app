@@ -42,9 +42,12 @@ class ChildrenProvider extends ApiClient {
   }
 
   Future<void> update(
-      {required ChildRequest request, String photoPath = "",required String childId}) async {
-    String path = ApiUrl.children+"/$childId";
+      {required ChildRequest request,
+      String photoPath = "",
+      required String childId}) async {
+    String path = ApiUrl.updateChildren;
     apiResponse.onStartRequest(path);
+    request.id = childId;
     Map<String, dynamic> body = request.toJson();
     if (photoPath != "") {
       body.addAll({
@@ -52,7 +55,7 @@ class ChildrenProvider extends ApiClient {
             filename: "${DateTime.now().millisecondsSinceEpoch}.jpg")
       });
     }
-    var response = await patch(path, FormData(body));
+    var response = await post(path, FormData(body));
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((response.statusCode ?? 500) < 300) {

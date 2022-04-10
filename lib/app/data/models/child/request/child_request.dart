@@ -10,7 +10,8 @@ class ChildRequest {
       this.height,
       this.weight,
       this.measuringDate,
-      this.photo});
+      this.photo,
+      });
 
   ChildRequest.fromJson(dynamic json) {
     fullName = json['fullName'];
@@ -24,7 +25,7 @@ class ChildRequest {
     weight = json['weight'];
     measuringDate = json['measuringDate'];
   }
-
+  String? id;
   String? fullName;
   String? birthDate;
   String? gender;
@@ -72,6 +73,7 @@ class ChildRequest {
     if (photo != null) {
       map['photo'] = photo;
     }
+    map['id'] = id;
     return map;
   }
 }
