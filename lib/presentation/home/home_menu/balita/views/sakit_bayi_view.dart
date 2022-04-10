@@ -17,9 +17,11 @@ class SakitBayiView extends GetView<BalitaController> {
       children: [
         _search(),
         Obx(
-          () => controller.articles.isEmpty
+          () =>controller.isLoading.isTrue? const Center(
+            child: CircularProgressIndicator(),
+          ) : controller.articles.isEmpty
               ? const Center(
-                  child: CircularProgressIndicator(),
+                  child: Text("Tidak ada artikel"),
                 )
               : ListView.builder(
                   itemBuilder: (c, i) =>

@@ -19,6 +19,7 @@ class BalitaController extends GetxController implements ApiResponse {
   final TextEditingController asiController = TextEditingController();
   final TextEditingController searchController = TextEditingController();
   late final ArticleProvider articleProvider = ArticleProvider(this);
+  RxBool isLoading = true.obs;
   RxList<Article> articles = RxList();
   RxInt currentMenuIndex = 0.obs;
   final List<CalculatorMenu> menus = [
@@ -43,6 +44,7 @@ class BalitaController extends GetxController implements ApiResponse {
   }
 
   void searchArticles() {
+    isLoading(true);
     articles.clear();
     query.query = searchController.text;
     articleProvider.getArticles(query: query);
@@ -64,7 +66,9 @@ class BalitaController extends GetxController implements ApiResponse {
   void onFailedRequest(String path, int statusCode, String message) {}
 
   @override
-  void onFinishRequest(String path) {}
+  void onFinishRequest(String path) {
+    isLoading(false);
+  }
 
   @override
   void onStartRequest(String path) {}

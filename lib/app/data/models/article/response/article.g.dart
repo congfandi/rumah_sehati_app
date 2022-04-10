@@ -25,13 +25,15 @@ class ArticleAdapter extends TypeAdapter<Article> {
       link: fields[5] as String?,
       tags: (fields[6] as List?)?.cast<String>(),
       createdDate: fields[7] as String?,
+      category: fields[8] as String?,
+      linkVideo: fields[9] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Article obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -47,7 +49,11 @@ class ArticleAdapter extends TypeAdapter<Article> {
       ..writeByte(6)
       ..write(obj.tags)
       ..writeByte(7)
-      ..write(obj.createdDate);
+      ..write(obj.createdDate)
+      ..writeByte(8)
+      ..write(obj.category)
+      ..writeByte(9)
+      ..write(obj.linkVideo);
   }
 
   @override

@@ -15,23 +15,28 @@ class CalculatorScreen extends GetView<CalculatorController> {
   Widget build(BuildContext context) {
     return BaseUi(
         title: Strings.calculatorGizi,
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                Strings.chooseMenuMomNeed,
-                style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: SizedBox(
+              height: Get.height,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    Strings.chooseMenuMomNeed,
+                    style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+                  ),
+                  SizedBox(height: Dimension.height24),
+                  _menu(),
+                  _description(),
+                  Expanded(
+                    child: Obx(() =>
+                        controller.menus[controller.currentMenuIndex.value].child),
+                  )
+                ],
               ),
-              SizedBox(height: Dimension.height24),
-              _menu(),
-              _description(),
-              Expanded(
-                child: Obx(() =>
-                    controller.menus[controller.currentMenuIndex.value].child),
-              )
-            ],
+            ),
           ),
         ));
   }
