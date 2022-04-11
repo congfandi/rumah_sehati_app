@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
@@ -31,9 +32,9 @@ class ArticleDetailScreen extends GetView<ArticleDetailController> {
                       _header(),
                       SizedBox(height: Dimension.height24),
                       SizedBox(height: Dimension.height24),
-                      Text(
+                      HtmlWidget(
                         controller.article?.content ?? "",
-                        style: const TextStyle(
+                        textStyle: const TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 14,
                             height: 1.5),
@@ -110,7 +111,8 @@ class ArticleDetailScreen extends GetView<ArticleDetailController> {
                   height: Dimension.height8,
                 ),
                 Text(
-                  (controller.article?.createdDate ?? "").toDayAndDate(format: "yyyy-MM-dd HH:mm:ss"),
+                  (controller.article?.createdDate ?? "")
+                      .toDayAndDate(format: "yyyy-MM-dd HH:mm:ss"),
                   style: TextStyles.bodySmallRegular(),
                 ),
               ],

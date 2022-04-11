@@ -13,7 +13,7 @@ class ProfileScreen extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    // controller.setupProfile();
+   controller.getSavedArticle();
     return Scaffold(
       body: SizedBox(
         height: Get.height,
@@ -154,24 +154,31 @@ class ProfileScreen extends GetView<ProfileController> {
           ],
         ),
         SizedBox(height: Dimension.height16),
-        Row(
-          children: [
-            Text(
-              Strings.savedArticle,
-              style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-            ),
-            const Expanded(child: SizedBox()),
-            Text(
-              "12 Artikel",
-              style: TextStyles.bodySmallMedium(),
-            ),
-            SizedBox(width: Dimension.width8),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Pallet.lightBlack,
-              size: 16,
-            )
-          ],
+        GestureDetector(
+          onTap: () {
+            Get.toNamed(Routes.SAVED_ARTICLE);
+          },
+          child: Row(
+            children: [
+              Text(
+                Strings.savedArticle,
+                style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+              ),
+              const Expanded(child: SizedBox()),
+              Obx(
+                () => Text(
+                  "${controller.savedArticles} Artikel",
+                  style: TextStyles.bodySmallMedium(),
+                ),
+              ),
+              SizedBox(width: Dimension.width8),
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Pallet.lightBlack,
+                size: 16,
+              )
+            ],
+          ),
         ),
         //activity
         SizedBox(height: Dimension.height16),

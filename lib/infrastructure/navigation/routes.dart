@@ -12,6 +12,7 @@ class Routes {
   static const CALCULATOR = '/calculator';
   static const CHILDREN = '/children';
   static const EDIT_CHILD = '/edit-child';
+  static const EDIT_PROFILE = '/edit-profile';
   static const FASKES = '/faskes';
   static const HOME = '/home';
   static const HOME_MENU = '/home-menu';
@@ -28,5 +29,5 @@ class Routes {
   static const REGISTER = '/register';
   static const REKAN_BUNDA = '/rekan-bunda';
   static const SPLASH = '/splash';
-  static const EDIT_PROFILE = '/edit-profile';
+  static const SAVED_ARTICLE = '/saved-article';
 }

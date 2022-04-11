@@ -146,5 +146,10 @@ class Nav {
       page: () => EditProfileScreen(),
       binding: EditProfileControllerBinding(),
     ),
+    GetPage(
+      name: Routes.SAVED_ARTICLE,
+      page: () => SavedArticleScreen(),
+      binding: SavedArticleControllerBinding(),
+    ),
   ];
 }

@@ -564,4 +564,6 @@ class Strings {
   static const String sampleImage = "https://i.pravatar.cc/300";
   static const String km = "km";
   static const String samplePhone = "62821-3208-1430";
+  static const String sukses = "Sukses";
+  static const String artikelTelahDisimpan = "Artikel telah disimpan";
 }

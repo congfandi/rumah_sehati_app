@@ -1,5 +1,5 @@
 name: rumah_sehati_mobile
-version: 1.0.0+3
+version: 1.0.0+4
 publish_to: none
 description: A new Flutter project.
 environment: 
@@ -24,6 +24,7 @@ dependencies:
   flutter_share: ^2.0.0
   maps_launcher: ^2.0.1
   cached_network_image: ^3.2.0
+  flutter_widget_from_html: ^0.8.5
   flutter_localizations: 
     sdk: flutter
   flutter: 

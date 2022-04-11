@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:rumah_sehati_mobile/app/data/models/article/response/article.dart';
 import 'package:rumah_sehati_mobile/app/data/providers/providers.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/pallet.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
@@ -19,6 +21,8 @@ class ProfileController extends GetxController implements ApiResponse {
   late final ProfileProvider _provider = ProfileProvider(this);
   Profile? profile;
   RxBool isLoading = true.obs;
+  late final Box<Article> box = Hive.box<Article>("articles");
+  RxInt savedArticles = 0.obs;
 
   void setupProfile() {
     profile = PrefHelper.to.getProfile();
@@ -27,7 +31,8 @@ class ProfileController extends GetxController implements ApiResponse {
           profile?.phone?.substring(0, 4) == "0000" ? "" : profile?.phone ?? "",
       Strings.email:
           profile?.email?.substring(0, 4) == "0000" ? "" : profile?.email ?? "",
-      Strings.birthDate: (profile?.birthDate ?? "").toDayAndDate(format: "yyyy-MM-dd"),
+      Strings.birthDate:
+          (profile?.birthDate ?? "").toDayAndDate(format: "yyyy-MM-dd"),
       Strings.momStatus: profile?.condition ?? "",
     });
     isLoading(false);
@@ -53,10 +58,16 @@ class ProfileController extends GetxController implements ApiResponse {
         });
   }
 
+  void getSavedArticle() async {
+    List<Article> articles = box.values.toList();
+    savedArticles(articles.length);
+  }
+
   @override
   void onReady() {
     _provider.getProfile();
     setupProfile();
+    getSavedArticle();
     super.onReady();
   }
 

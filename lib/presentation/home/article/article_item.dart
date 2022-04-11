@@ -1,18 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
-
 import '../../../app/data/models/article/response/article.dart';
 import '../../../infrastructure/theme/theme.dart';
-import '../../../infrastructure/utils/resources/resources.dart';
 
 class ArticleItem extends StatelessWidget {
-  const ArticleItem({Key? key, required this.article}) : super(key: key);
+  ArticleItem({Key? key, required this.article, this.onSaved})
+      : super(key: key);
   final Article article;
+  final RxBool isAlreadySaved = false.obs;
+  final Box<Article> boxArticle = Hive.box<Article>('articles');
+  final Function? onSaved;
 
   @override
   Widget build(BuildContext context) {
+    _checkArticle();
     return GestureDetector(
       onTap: () {
         Get.toNamed(Routes.ARTICLE_DETAIL, arguments: article);
@@ -57,12 +63,13 @@ class ArticleItem extends StatelessWidget {
               Padding(
                   padding:
                       const EdgeInsets.only(left: 24, right: 24, bottom: 8),
-                  child: Text(
-                    article.content ?? "",
-                    style:
-                        TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  child: SizedBox(
+                    height: 30,
+                    child: HtmlWidget(
+                      article.content ?? "",
+                      textStyle:
+                          TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+                    ),
                   )),
               Padding(
                   padding:
@@ -95,15 +102,35 @@ class ArticleItem extends StatelessWidget {
                       Expanded(
                           child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        children: const [
-                          Icon(
-                            CupertinoIcons.archivebox,
-                            color: Pallet.primaryPurple,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              _save();
+                              if (onSaved != null) {
+                                onSaved!();
+                              }
+                            },
+                            child: Obx(
+                              () => isAlreadySaved.isTrue
+                                  ? const Icon(
+                                      CupertinoIcons.archivebox_fill,
+                                      color: Pallet.primaryPurple,
+                                    )
+                                  : const Icon(
+                                      CupertinoIcons.archivebox,
+                                      color: Pallet.primaryPurple,
+                                    ),
+                            ),
                           ),
-                          SizedBox(width: 16),
-                          Icon(
-                            Icons.share,
-                            color: Pallet.primaryPurple,
+                          const SizedBox(width: 16),
+                          GestureDetector(
+                            onTap: () {
+                              _share();
+                            },
+                            child: const Icon(
+                              Icons.share,
+                              color: Pallet.primaryPurple,
+                            ),
                           ),
                         ],
                       )),
@@ -114,5 +141,27 @@ class ArticleItem extends StatelessWidget {
         ]),
       ),
     );
+  }
+
+  void _checkArticle() {
+    List<Article> articles = boxArticle.values.toList();
+    isAlreadySaved(articles.contains(article));
+  }
+
+  Future<void> _share() async {
+    await FlutterShare.share(
+        title: 'Rumah Sehati Matindok',
+        text: 'Yuk baca artikel ini',
+        linkUrl: article.link ?? "",
+        chooserTitle: 'Pilih social media');
+  }
+
+  void _save() {
+    if (isAlreadySaved.value) {
+      boxArticle.delete(article.id);
+    } else {
+      boxArticle.put(article.id, article);
+    }
+    _checkArticle();
   }
 }
