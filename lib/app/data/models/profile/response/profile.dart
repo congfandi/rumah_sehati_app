@@ -8,6 +8,7 @@
  *
  */
 
+import 'package:flutter/cupertino.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
 
 class Profile {
@@ -22,6 +23,7 @@ class Profile {
   });
 
   Profile.fromJson(dynamic json) {
+    debugPrint("Profile.fromJson ${json.toString()}");
     phone = json['phone'];
     email = json['email'];
     name = json['name'];
@@ -52,8 +54,8 @@ class Profile {
 
   Map<String, dynamic> toRegister() {
     final map = <String, dynamic>{};
-    map['phone'] = phone;
-    map['email'] = email;
+    if (phone != null) map['phone'] = phone;
+    if (email != null) map['email'] = email;
     map['name'] = name;
     map['birthDate'] = birthDate?.toParameter();
     map['condition'] = condition;

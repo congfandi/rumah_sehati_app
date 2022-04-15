@@ -68,7 +68,9 @@ class ArticleItem extends StatelessWidget {
                     child: HtmlWidget(
                       article.content ?? "",
                       textStyle:
-                          TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+                          TextStyles.bodySmallRegular(color: Pallet.lightBlack).copyWith(
+                            overflow: TextOverflow.ellipsis
+                          ),
                     ),
                   )),
               Padding(

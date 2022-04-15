@@ -73,7 +73,7 @@ class EditProfileScreen extends GetView<EditProfileController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Photo anak",
+                    "Foto Profil Bunda",
                     style: TextStyles.bodySmallMedium(),
                   ),
                   Text(
@@ -159,7 +159,7 @@ class EditProfileScreen extends GetView<EditProfileController> {
         ),
         AppNormalButton(
             onPress: () {
-              controller.register();
+              controller.updateProfile();
             },
             title: Strings.save),
         SizedBox(

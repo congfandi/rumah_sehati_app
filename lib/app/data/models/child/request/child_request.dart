@@ -73,7 +73,9 @@ class ChildRequest {
     if (photo != null) {
       map['photo'] = photo;
     }
-    map['id'] = id;
+    if (id != null) {
+      map['id'] = id;
+    }
     return map;
   }
 }

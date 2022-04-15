@@ -15,7 +15,6 @@ import '../../../config.dart';
 import '../../../infrastructure/dal/services/crashlytics_service.dart';
 import '../../../infrastructure/utils/helpers/log_helper.dart';
 import '../../../infrastructure/utils/helpers/pref_helper.dart';
-import 'api_url.dart';
 
 class ApiClient extends GetConnect implements BaseResponse {
   @override
@@ -47,6 +46,7 @@ class ApiClient extends GetConnect implements BaseResponse {
           message = baseResponse.message;
           statusCode = baseResponse.statusCode;
           result = baseResponse.result;
+
         } else {
           BaseResponse baseResponse = BaseResponse.fromJson(response.body);
           statusCode = response.statusCode ?? 500;

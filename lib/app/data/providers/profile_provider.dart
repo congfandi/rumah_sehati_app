@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/profile/response/profile.dart';
 
@@ -42,6 +43,7 @@ class ProfileProvider extends ApiClient {
             filename: "${DateTime.now().millisecondsSinceEpoch}.jpg")
       });
     }
+    debugPrint("profile body: $body");
     try {
       var response = await patch(
         path,

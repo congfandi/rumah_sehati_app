@@ -54,7 +54,7 @@ class TakeImage {
   void _takeImage(bool isGallery) async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(
-        source: isGallery ? ImageSource.gallery : ImageSource.camera);
+        source: isGallery ? ImageSource.gallery : ImageSource.camera,imageQuality: 50);
     onPicked(image);
   }
 }

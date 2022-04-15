@@ -67,7 +67,7 @@ class EditProfileController extends GetxController implements ApiResponse {
     return true;
   }
 
-  register() {
+  updateProfile() {
     if (_validate()) {
       _provider.updateProfile(request:Profile(
           email: email.text,
