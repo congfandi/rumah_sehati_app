@@ -8,10 +8,9 @@ extension StringExtension on String {
     return DateFormat("EEEE,dd MMMM yyyy", "id_ID").format(date);
   }
 
-  String ageBaby() {
-    debugPrint("age baby this: $this");
+  String ageBaby({String format = "yyyy-MM-dd"}) {
     initializeDateFormatting();
-    DateTime birthDate = DateFormat("yyyy-MM-dd","id_ID").parse(this);
+    DateTime birthDate = DateFormat(format, "id_ID").parse(this);
     DateTime today = DateTime.now();
     int totalDay = today.difference(birthDate).inDays;
     int year = totalDay ~/ 360;
@@ -27,6 +26,13 @@ extension StringExtension on String {
     return "$year";
   }
 
+  int ageInMonth({String format = "yyyy-MM-dd"}) {
+    DateTime birthDate = DateFormat(format, "id_ID").parse(this);
+    DateTime today = DateTime.now();
+    Duration duration = today.difference(birthDate);
+    return (duration.inDays / 30).floor();
+  }
+
   DateTime toDate({String format = "yyyy-MM-dd"}) {
     return DateFormat(format).parse(this);
   }
@@ -37,9 +43,9 @@ extension StringExtension on String {
     return DateFormat("dd MMMM yyyy", "id_ID").format(date);
   }
 
-  String toParameter(){
+  String toParameter() {
     initializeDateFormatting();
-    DateTime date = DateFormat("dd MMMM yyyy","id_ID").parse(this);
+    DateTime date = DateFormat("dd MMMM yyyy", "id_ID").parse(this);
     return DateFormat("yyyy-MM-dd").format(date);
   }
 }

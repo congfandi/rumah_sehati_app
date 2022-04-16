@@ -67,7 +67,11 @@ class KmsDigitalView extends GetView<BalitaController> {
                 color: Pallet.primaryPurple,
               )),
           SizedBox(height: Dimension.height50),
-          AppNormalButton(onPress: () {}, title: Strings.count),
+          AppNormalButton(
+              onPress: () {
+                controller.resultOflKms();
+              },
+              title: Strings.count),
           Center(
             child: TextButton(
                 onPressed: () {

@@ -4,6 +4,7 @@ import 'package:rumah_sehati_mobile/app/data/models/article/request/article_requ
 import 'package:rumah_sehati_mobile/app/data/models/base_response.dart';
 import 'package:rumah_sehati_mobile/domain/core/interfaces/api_response.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
+import 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/views/kms.digital.result.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/views/sakit_bayi_view.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/calculator/controllers/calculator.controller.dart';
 
@@ -58,7 +59,23 @@ class BalitaController extends GetxController implements ApiResponse {
     currentMenuIndex(menu);
   }
 
+  resultOflKms() {
+    KmsDigitalResult(
+      asiController: asiController,
+      dateOfBirthController: dateOfBirthController,
+      genderController: genderController,
+      posyanduDateController: posyanduDateController,
+      weightController: weightController,
+    );
+  }
+
   void reset() {
+    genderController.clear();
+    dateOfBirthController.clear();
+    posyanduDateController.clear();
+    weightController.clear();
+    asiController.clear();
+    searchController.clear();
     menus[currentMenuIndex.value].reset();
   }
 
