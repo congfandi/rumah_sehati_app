@@ -31,7 +31,7 @@ class Assets {
   static const String iconPrakonsepsi = "assets/images/icon_prakonsepsi.png";
   static const String iconRekanBunda = "assets/images/icon_rekan_bunda.png";
   static const String imt = "assets/images/imt.png";
-  static const String imtKek = "assets/images/imtKek.png";
+  static const String imtKek = "assets/images/imt_kek.png";
   static const String logo = "assets/images/logo_moderate.png";
   static const String menuIcon = "assets/images/home_menu.png";
   static const String splashImage = "assets/images/splash_image.png";
