@@ -119,11 +119,18 @@ class ArticleDetailScreen extends GetView<ArticleDetailController> {
             ),
             const Expanded(child: SizedBox()),
             IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                CupertinoIcons.archivebox,
-                color: Pallet.primaryPurple,
-              ),
+              onPressed: () {
+                controller.save();
+              },
+              icon: Obx(() => controller.isAlreadySaved.isTrue
+                  ? const Icon(
+                      CupertinoIcons.archivebox_fill,
+                      color: Pallet.primaryPurple,
+                    )
+                  : const Icon(
+                      CupertinoIcons.archivebox,
+                      color: Pallet.primaryPurple,
+                    )),
             ),
             IconButton(
                 onPressed: () {

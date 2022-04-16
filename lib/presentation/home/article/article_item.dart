@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import '../../../app/data/models/article/response/article.dart';
 import '../../../infrastructure/theme/theme.dart';
+import 'package:html/dom.dart' as dom;
+import 'package:html/parser.dart' show parse;
 
 class ArticleItem extends StatelessWidget {
   ArticleItem({Key? key, required this.article, this.onSaved})
@@ -19,6 +20,7 @@ class ArticleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _checkArticle();
+    var document = parse(article.content);
     return GestureDetector(
       onTap: () {
         Get.toNamed(Routes.ARTICLE_DETAIL, arguments: article);
@@ -63,15 +65,12 @@ class ArticleItem extends StatelessWidget {
               Padding(
                   padding:
                       const EdgeInsets.only(left: 24, right: 24, bottom: 8),
-                  child: SizedBox(
-                    height: 30,
-                    child: HtmlWidget(
-                      article.content ?? "",
-                      textStyle:
-                          TextStyles.bodySmallRegular(color: Pallet.lightBlack).copyWith(
-                            overflow: TextOverflow.ellipsis
-                          ),
-                    ),
+                  child: Text(
+                    document.documentElement?.text ?? "",
+                    style: TextStyles.bodySmallRegular(color: Pallet.lightBlack)
+                        .copyWith(overflow: TextOverflow.ellipsis),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   )),
               Padding(
                   padding:
@@ -150,14 +149,6 @@ class ArticleItem extends StatelessWidget {
     isAlreadySaved(articles.contains(article));
   }
 
-  Future<void> _share() async {
-    await FlutterShare.share(
-        title: 'Rumah Sehati Matindok',
-        text: 'Yuk baca artikel ini',
-        linkUrl: article.link ?? "",
-        chooserTitle: 'Pilih social media');
-  }
-
   void _save() {
     if (isAlreadySaved.value) {
       boxArticle.delete(article.id);
@@ -165,5 +156,13 @@ class ArticleItem extends StatelessWidget {
       boxArticle.put(article.id, article);
     }
     _checkArticle();
+  }
+
+  Future<void> _share() async {
+    await FlutterShare.share(
+        title: 'Rumah Sehati Matindok',
+        text: 'Yuk baca artikel ini',
+        linkUrl: article.link ?? "",
+        chooserTitle: 'Pilih social media');
   }
 }
