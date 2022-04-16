@@ -45,7 +45,7 @@ class ProfileProvider extends ApiClient {
     }
     debugPrint("profile body: $body");
     try {
-      var response = await patch(
+      var response = await post(
         path,
         FormData(body),
       );
