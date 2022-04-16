@@ -12,17 +12,20 @@ class CalculatorController extends GetxController {
     CalculatorMenu(
         name: Strings.zScore,
         logo: Assets.calculatorZscore,
-        description: "Z-Score adalah deviasi nilai individu dari nilai rata-rata (median) populasi referensi, dibagi dengan standar deviasi referensi populasi (World Food Programme, 2005)",
+        description:
+            "Z-Score adalah deviasi nilai individu dari nilai rata-rata (median) populasi referensi, dibagi dengan standar deviasi referensi populasi (World Food Programme, 2005)",
         child: const ZscoreView()),
     CalculatorMenu(
         name: Strings.imt,
         logo: Assets.calculatorImt,
-        description: "Indeks Masa Tubuh (IMT) adalah indeks sederhana dari berat badan yang digunakan untuk mengklasifikasikan kelebihan berat badan dan obesitas pada orang dewasa (p2ptmkemenkesRI)",
+        description:
+            "Indeks Masa Tubuh (IMT) adalah indeks sederhana dari berat badan yang digunakan untuk mengklasifikasikan kelebihan berat badan dan obesitas pada orang dewasa (p2ptmkemenkesRI)",
         child: const ImtView()),
     CalculatorMenu(
         name: Strings.imtAndKek,
         logo: Assets.calculatorImtKek,
-        description: "Kekurangan Energi Kronik (KEK) adalah masalah kurang gizi yang berlangsung dalam waktu yang lama (International Journal of Community Medicine and Public Health)",
+        description:
+            "Kekurangan Energi Kronik (KEK) adalah masalah kurang gizi yang berlangsung dalam waktu yang lama (International Journal of Community Medicine and Public Health)",
         child: const ImtKekView()),
   ];
 
@@ -48,12 +51,14 @@ class CalculatorMenu {
   TextEditingController weightController = TextEditingController();
   TextEditingController heightController = TextEditingController();
   TextEditingController lilaController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
 
   reset() {
-    ageController = TextEditingController();
-    weightController = TextEditingController();
-    heightController = TextEditingController();
-    lilaController = TextEditingController();
+    ageController.clear();
+    weightController.clear();
+    heightController.clear();
+    lilaController.clear();
+    genderController.clear();
   }
 
   CalculatorMenu(

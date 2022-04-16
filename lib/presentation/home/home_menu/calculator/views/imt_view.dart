@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:rumah_sehati_mobile/presentation/home/home_menu/calculator/views/imt.result.dart';
 
 import '../../../../../infrastructure/theme/theme.dart';
 import '../../../../../infrastructure/utils/resources/resources.dart';
@@ -27,8 +28,10 @@ class ImtView extends GetView<CalculatorController> {
             title: Strings.tinggiBadan,
             hint: Strings.inputHeightBody,
             uom: Strings.cm),
-        const Expanded(child: SizedBox()),
-        AppNormalButton(onPress: () {}, title: Strings.count),
+        SizedBox(height: Dimension.height24),
+        AppNormalButton(onPress: () {
+          ImtResult(controller.currentMenu());
+        }, title: Strings.count),
         TextButton(
             onPressed: () {
               controller.reset();

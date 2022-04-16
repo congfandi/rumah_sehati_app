@@ -33,7 +33,7 @@ class ImtKekView extends GetView<CalculatorController> {
             title: Strings.lingkarLenganAtas,
             hint: Strings.inputLiLa,
             uom: Strings.cm),
-        SizedBox(height: Dimension.height50),
+        SizedBox(height: Dimension.height24),
         AppNormalButton(onPress: () {}, title: Strings.count),
         TextButton(
             onPressed: () {

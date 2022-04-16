@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/app_normal_button.dart';
+import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_option.dart';
+import 'package:rumah_sehati_mobile/presentation/home/home_menu/calculator/views/zscore.result.dart';
 
 import '../../../../../infrastructure/theme/theme.dart';
 import '../../../../../infrastructure/utils/resources/resources.dart';
@@ -22,6 +24,12 @@ class ZscoreView extends GetView<CalculatorController> {
             hint: Strings.inputAge,
             uom: Strings.month),
         SizedBox(height: Dimension.height24),
+        CalculatorOption(
+            controller: controller.currentMenu().genderController,
+            title: Strings.gender,
+            options: const ["Laki-laki", "Perempuan"],
+            hint: Strings.genderOfChild),
+        SizedBox(height: Dimension.height24),
         CalculatorInput(
             controller: controller.currentMenu().weightController,
             title: Strings.weightBody,
@@ -33,16 +41,19 @@ class ZscoreView extends GetView<CalculatorController> {
             title: Strings.tinggiBadan,
             hint: Strings.inputHeightBody,
             uom: Strings.cm),
-        SizedBox(height: Dimension.height50),
-        AppNormalButton(onPress: () {}, title: Strings.count),
+        SizedBox(height: Dimension.height16),
+        AppNormalButton(
+            onPress: () {
+              ZScoreResult(controller.currentMenu());
+            },
+            title: Strings.count),
         TextButton(
             onPressed: () {
               controller.reset();
             },
             child: Text(
               Strings.reset,
-              style:
-                  TextStyles.componentModerate(color: Pallet.primaryPurple),
+              style: TextStyles.componentModerate(color: Pallet.primaryPurple),
             ))
       ],
     );

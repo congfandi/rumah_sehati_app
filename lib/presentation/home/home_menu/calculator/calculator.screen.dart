@@ -19,7 +19,7 @@ class CalculatorScreen extends GetView<CalculatorController> {
           child: Padding(
             padding: const EdgeInsets.all(24.0),
             child: SizedBox(
-              height: Get.height,
+              height: Get.height+100,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
