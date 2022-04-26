@@ -425,7 +425,7 @@ class Strings {
   static const String ruangBgaiBunda =
       "Ruang bagi Bunda untuk Berbagi dan Belajar Bersama";
 
-  static const String sakitPadaBayi = "Sakit Pada Bayi";
+  static const String sakitPadaBayi = "Seputar Penyakit Bayi";
 
   static const String sarapan = "Sarapan";
 

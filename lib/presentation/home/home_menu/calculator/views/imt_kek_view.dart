@@ -18,10 +18,10 @@ class ImtKekView extends GetView<CalculatorController> {
       children: [
         SizedBox(height: Dimension.height24),
         CalculatorInput(
-            controller: controller.currentMenu().ageController,
-            title: Strings.age,
-            hint: Strings.inputAge,
-            uom: Strings.month),
+            controller: controller.currentMenu().heightController,
+            title: Strings.tinggiBadan,
+            hint: Strings.inputHeightBody,
+            uom: Strings.cm),
         SizedBox(height: Dimension.height24),
         CalculatorInput(
             controller: controller.currentMenu().weightController,

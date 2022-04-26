@@ -24,103 +24,110 @@ class BabyItem extends GetView<ChildrenController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Pallet.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 4,
-              blurRadius: 20,
-              offset: const Offset(0, 3),
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.CHILD_DETAIL, arguments: child);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: Pallet.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 4,
+                blurRadius: 20,
+                offset: const Offset(0, 3),
+              )
+            ],
+            borderRadius: BorderRadius.circular(10)),
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
+        child: Row(
+          children: [
+            CircleAvatar(
+              foregroundImage: NetworkImage(child.photo ?? ""),
+            ),
+            SizedBox(
+              width: Dimension.width16,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          child.fullName ?? "",
+                          style: TextStyles.moderateSemiBold(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      SizedBox(width: Dimension.width4),
+                      SvgPicture.asset(
+                        child.gender == "male"
+                            ? Assets.boyIcon
+                            : Assets.girlIcon,
+                        color: Pallet.primaryPurple,
+                      ),
+                      SizedBox(width: Dimension.width8),
+                      GestureDetector(
+                        child: const Icon(Icons.more_vert),
+                        onTap: () {
+                          openDialog();
+                        },
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: Dimension.height8,
+                  ),
+                  Row(children: [
+                    SvgPicture.asset(Assets.babyIcon,
+                        color: Pallet.primaryPurple),
+                    SizedBox(width: Dimension.width8),
+                    Text(
+                      (child.birthDate ?? "").ageBaby(),
+                      style: TextStyles.bodySmallMedium(
+                          color: Pallet.primaryPurple),
+                    )
+                  ]),
+                  SizedBox(height: Dimension.height8),
+                  Row(
+                    children: [
+                      Row(children: [
+                        SvgPicture.asset(Assets.dadIcon,
+                            color: Pallet.lightBlack),
+                        SizedBox(width: Dimension.width8),
+                        Text(
+                          "${child.fatherName}(" +
+                              (child.fatherBirthday ?? "").age() +
+                              ")",
+                          style: TextStyles.bodySmallMedium(
+                              color: Pallet.lightBlack),
+                        )
+                      ]),
+                      Row(children: [
+                        SvgPicture.asset(Assets.momIcon,
+                            color: Pallet.lightBlack),
+                        SizedBox(width: Dimension.width8),
+                        Text(
+                          "${child.motherName}(" +
+                              (child.motherBirthday ?? "").age() +
+                              ")",
+                          style: TextStyles.bodySmallMedium(
+                              color: Pallet.lightBlack),
+                        )
+                      ], mainAxisAlignment: MainAxisAlignment.end),
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  )
+                ],
+                crossAxisAlignment: CrossAxisAlignment.start,
+              ),
             )
           ],
-          borderRadius: BorderRadius.circular(10)),
-      padding: const EdgeInsets.all(16),
-      margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
-      child: Row(
-        children: [
-          CircleAvatar(
-            foregroundImage: NetworkImage(child.photo ?? ""),
-          ),
-          SizedBox(
-            width: Dimension.width16,
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        child.fullName ?? "",
-                        style: TextStyles.moderateSemiBold(),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    SizedBox(width: Dimension.width4),
-                    SvgPicture.asset(
-                      child.gender == "male" ? Assets.boyIcon : Assets.girlIcon,
-                      color: Pallet.primaryPurple,
-                    ),
-                    SizedBox(width: Dimension.width8),
-                    GestureDetector(
-                      child: const Icon(Icons.more_vert),
-                      onTap: () {
-                        openDialog();
-                      },
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: Dimension.height8,
-                ),
-                Row(children: [
-                  SvgPicture.asset(Assets.babyIcon,
-                      color: Pallet.primaryPurple),
-                  SizedBox(width: Dimension.width8),
-                  Text(
-                    (child.birthDate ?? "").ageBaby(),
-                    style:
-                        TextStyles.bodySmallMedium(color: Pallet.primaryPurple),
-                  )
-                ]),
-                SizedBox(height: Dimension.height8),
-                Row(
-                  children: [
-                    Row(children: [
-                      SvgPicture.asset(Assets.dadIcon,
-                          color: Pallet.lightBlack),
-                      SizedBox(width: Dimension.width8),
-                      Text(
-                        "${child.fatherName}(" +
-                            (child.fatherBirthday ?? "").age() +
-                            ")",
-                        style: TextStyles.bodySmallMedium(
-                            color: Pallet.lightBlack),
-                      )
-                    ]),
-                    Row(children: [
-                      SvgPicture.asset(Assets.momIcon,
-                          color: Pallet.lightBlack),
-                      SizedBox(width: Dimension.width8),
-                      Text(
-                        "${child.motherName}(" +
-                            (child.motherBirthday ?? "").age() +
-                            ")",
-                        style: TextStyles.bodySmallMedium(
-                            color: Pallet.lightBlack),
-                      )
-                    ], mainAxisAlignment: MainAxisAlignment.end),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                )
-              ],
-              crossAxisAlignment: CrossAxisAlignment.start,
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

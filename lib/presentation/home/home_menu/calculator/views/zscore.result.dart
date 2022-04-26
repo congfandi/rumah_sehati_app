@@ -9,7 +9,6 @@ import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/calculator/controllers/calculator.controller.dart';
 
-
 class ZScoreResult {
   final CalculatorMenu cMenu;
 
@@ -70,7 +69,15 @@ class ZScoreResult {
                               TextStyles.titleHero(color: Pallet.primaryPurple),
                         ),
                       ],
-                    )
+                    ),
+                    SizedBox(
+                      height: Dimension.height16,
+                    ),
+                    Text(
+                      "Anda tergolong ${summaryScore()}",
+                      style: TextStyles.bodySmallMedium(
+                          color: Pallet.primaryPurple),
+                    ),
                   ]),
                 ),
               ),
@@ -115,5 +122,27 @@ class ZScoreResult {
         (nilaiIndividu - median) >= 0 ? plus1SD - median : median - min1SD;
     result = (nilaiIndividu - median) / sdRujukan;
     return result;
+  }
+
+  String summaryScore() {
+    if (_getZScore() < -3) {
+      return "Gizi Buruk";
+    }
+    if (_getZScore() >= -3 && _getZScore() < -2) {
+      return "Gizi Kurang";
+    }
+    if (_getZScore() >= -2 && _getZScore() < 1) {
+      return "Gizi Baik";
+    }
+    if (_getZScore() >= 1 && _getZScore() < 2) {
+      return "Beresiko Gizi Lebih";
+    }
+    if (_getZScore() > 2 && _getZScore() <= 3) {
+      return "Gizi Lebih";
+    }
+    if (_getZScore() > 3) {
+      return "Obesitas";
+    }
+    return "";
   }
 }

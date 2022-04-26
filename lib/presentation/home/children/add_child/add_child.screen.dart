@@ -308,11 +308,13 @@ class AddChildScreen extends GetView<AddChildController> {
                       ),
                     ),
                     SizedBox(width: Dimension.width4),
-                    Text(Strings.babyIdentity,
-                        style: TextStyles.moderateRegular(
-                            color: controller.step.value == 0
-                                ? Pallet.grey
-                                : Pallet.jetBlack)),
+                    Expanded(
+                      child: Text("data perkembangan anak",
+                          style: TextStyles.moderateRegular(
+                              color: controller.step.value == 0
+                                  ? Pallet.grey
+                                  : Pallet.jetBlack)),
+                    ),
                   ],
                 ),
               ),

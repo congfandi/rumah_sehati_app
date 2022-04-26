@@ -151,5 +151,10 @@ class Nav {
       page: () => SavedArticleScreen(),
       binding: SavedArticleControllerBinding(),
     ),
+    GetPage(
+      name: Routes.CHILD_DETAIL,
+      page: () => ChildDetailScreen(),
+      binding: ChildDetailControllerBinding(),
+    ),
   ];
 }

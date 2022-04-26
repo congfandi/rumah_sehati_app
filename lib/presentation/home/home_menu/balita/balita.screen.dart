@@ -92,6 +92,7 @@ class BalitaScreen extends GetView<BalitaController> {
                   Text(
                     menu.name,
                     style: TextStyles.componentLarge(),
+                    textAlign: TextAlign.center,
                   )
                 ],
               ),

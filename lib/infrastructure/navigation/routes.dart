@@ -28,6 +28,7 @@ class Routes {
   static const QUESTIONER_DETAIL = '/questioner-detail';
   static const REGISTER = '/register';
   static const REKAN_BUNDA = '/rekan-bunda';
-  static const SPLASH = '/splash';
   static const SAVED_ARTICLE = '/saved-article';
+  static const SPLASH = '/splash';
+  static const CHILD_DETAIL = '/child-detail';
 }
