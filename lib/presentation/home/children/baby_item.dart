@@ -8,6 +8,8 @@
  *
  */
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -19,8 +21,10 @@ import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dar
 import 'package:rumah_sehati_mobile/presentation/home/children/controllers/children.controller.dart';
 
 class BabyItem extends GetView<ChildrenController> {
-  const BabyItem({Key? key, required this.child}) : super(key: key);
+  const BabyItem({Key? key, required this.child, this.isShowOption = true})
+      : super(key: key);
   final Child child;
+  final bool? isShowOption;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class BabyItem extends GetView<ChildrenController> {
         child: Row(
           children: [
             CircleAvatar(
-              foregroundImage: NetworkImage(child.photo ?? ""),
+              foregroundImage: FileImage(File(child.photo ?? "")),
             ),
             SizedBox(
               width: Dimension.width16,
@@ -71,12 +75,14 @@ class BabyItem extends GetView<ChildrenController> {
                         color: Pallet.primaryPurple,
                       ),
                       SizedBox(width: Dimension.width8),
-                      GestureDetector(
-                        child: const Icon(Icons.more_vert),
-                        onTap: () {
-                          openDialog();
-                        },
-                      )
+                      (isShowOption ?? true)
+                          ? GestureDetector(
+                              child: const Icon(Icons.more_vert),
+                              onTap: () {
+                                openDialog();
+                              },
+                            )
+                          : const SizedBox()
                     ],
                   ),
                   SizedBox(

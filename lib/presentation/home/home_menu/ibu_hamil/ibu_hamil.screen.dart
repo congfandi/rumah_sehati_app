@@ -29,7 +29,7 @@ class IbuHamilScreen extends GetView<IbuHamilController> {
                 height: Dimension.height8,
               ),
               Text(
-                Strings.checkStausOfPregnan,
+                "Cek kondisi kehamilan bunda",
                 style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
               ),
               SizedBox(

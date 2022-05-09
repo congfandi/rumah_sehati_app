@@ -55,6 +55,16 @@ class ResultResponse {
   List<Consultation>? consultations;
   AuthResponse? authResponse;
 
+  ResultResponse(
+      {this.profile,
+      this.articles,
+      this.meta,
+      this.faskes,
+      this.groups,
+      this.children,
+      this.consultations,
+      this.authResponse});
+
   ResultResponse.fromJson(dynamic json) {
     authResponse =
         json['login'] == null ? null : AuthResponse.fromJson(json['login']);

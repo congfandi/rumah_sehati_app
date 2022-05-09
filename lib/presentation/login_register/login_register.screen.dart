@@ -32,6 +32,7 @@ class LoginRegisterScreen extends GetView<LoginRegisterController> {
                   itemBuilder: (c, i) => _headerItem(controller.headers[i]),
                   itemCount: controller.headers.length,
                   onPageChanged: controller.changePage,
+                  controller: controller.pageController,
                 ),
               ),
               const SizedBox(

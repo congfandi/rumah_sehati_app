@@ -1,14 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
 import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_date_picker.dart';
-import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_input.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_option.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/take_image.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
@@ -24,31 +22,19 @@ class EditChildScreen extends GetView<EditChildController> {
     Child child = Get.arguments as Child;
     return BaseUi(
       title: Strings.addChildData,
-      child: Obx(
-        () => Column(
-          children: [
-            Expanded(
-                child: SingleChildScrollView(
-                    child: Column(children: [
-              _header(),
-              controller.step.value == 0 ? _form1(child) : _form2()
-            ]))),
-            Padding(
+      child: Column(
+        children: [
+          Expanded(
+              child: SingleChildScrollView(
+                  child: Column(children: [_form1(child)]))),
+          Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
-              child: controller.step.value == 0
-                  ? AppNormalButton(
-                      onPress: () {
-                        controller.setStep();
-                      },
-                      title: Strings.next)
-                  : AppNormalButton(
-                      onPress: () {
-                        controller.updateChild();
-                      },
-                      title: Strings.save),
-            )
-          ],
-        ),
+              child: AppNormalButton(
+                  onPress: () {
+                    controller.setStep();
+                  },
+                  title: Strings.save))
+        ],
       ),
       showBackButton: true,
     );
@@ -62,7 +48,7 @@ class EditChildScreen extends GetView<EditChildController> {
               ? CircleAvatar(
                   backgroundColor: Pallet.grey,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(child.photo ?? ""),
+                    backgroundImage: FileImage(File(child.photo ?? "")),
                     radius: Dimension.width40,
                   ),
                   radius: Dimension.width42,
@@ -100,6 +86,7 @@ class EditChildScreen extends GetView<EditChildController> {
                 onTap: () {
                   TakeImage(onPicked: (image) {
                     controller.imagePath(image?.path ?? "");
+                    controller.child?.photo = controller.imagePath.value;
                   });
                 },
                 child: Row(
@@ -199,132 +186,6 @@ class EditChildScreen extends GetView<EditChildController> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _form2() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 24),
-      child: Column(
-        children: [
-          SizedBox(
-            height: Dimension.height16,
-          ),
-          Row(
-            children: [
-              Expanded(
-                  child: CalculatorInput(
-                      controller: controller.height,
-                      title: Strings.tinggiBadan,
-                      hint: "XXX",
-                      uom: "Cm")),
-              SizedBox(
-                width: Dimension.width8,
-              ),
-              Expanded(
-                  child: CalculatorInput(
-                      controller: controller.weight,
-                      title: Strings.weightBody,
-                      hint: "XXX",
-                      uom: "Kg"))
-            ],
-          ),
-          SizedBox(
-            height: Dimension.height16,
-          ),
-          CalculatorDatePicker(
-              controller: controller.posyanduDate,
-              title: Strings.dateUkur,
-              hint: Strings.datePengukuran,
-              onSelectedDate: (date) {
-                controller.posyanduDateSelected = date;
-              }),
-          SizedBox(
-            height: Dimension.height32,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _header() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-          child: Text(
-            Strings.addChildData,
-            style: TextStyles.titleHero(),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-          child: Text(
-            Strings.consultationGiziProblemo,
-            style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-          child: Row(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Pallet.primaryPurple,
-                          borderRadius: BorderRadius.circular(8)),
-                      width: Dimension.width16,
-                      height: Dimension.width16,
-                      child: Center(
-                        child: Text(
-                          "1",
-                          style: TextStyles.captionModerateSemiBold(
-                              color: Pallet.white),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: Dimension.width4),
-                    Text(Strings.babyIdentity,
-                        style: TextStyles.moderateRegular()),
-                  ],
-                ),
-              ),
-              const Divider(),
-              Expanded(
-                child: Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: controller.step.value == 0
-                              ? Pallet.grey
-                              : Pallet.primaryPurple,
-                          borderRadius: BorderRadius.circular(8)),
-                      width: Dimension.width16,
-                      height: Dimension.width16,
-                      child: Center(
-                        child: Text(
-                          "2",
-                          style: TextStyles.captionModerateSemiBold(
-                              color: Pallet.white),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: Dimension.width4),
-                    Text(Strings.babyIdentity,
-                        style: TextStyles.moderateRegular(
-                            color: controller.step.value == 0
-                                ? Pallet.grey
-                                : Pallet.jetBlack)),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

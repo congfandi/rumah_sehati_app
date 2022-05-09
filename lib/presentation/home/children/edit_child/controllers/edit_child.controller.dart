@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:rumah_sehati_mobile/app/data/models/base_response.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/request/child_request.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
+import 'package:rumah_sehati_mobile/app/data/models/child/response/perkembangan.dart';
 import 'package:rumah_sehati_mobile/app/data/providers/children_provider.dart';
 import 'package:rumah_sehati_mobile/domain/core/interfaces/api_response.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
@@ -22,9 +23,6 @@ class EditChildController extends GetxController implements ApiResponse {
   final TextEditingController fatherName = TextEditingController();
   final TextEditingController fatherBirthDate = TextEditingController();
   final TextEditingController motherBirthDate = TextEditingController();
-  final TextEditingController height = TextEditingController();
-  final TextEditingController weight = TextEditingController();
-  final TextEditingController posyanduDate = TextEditingController();
   DateTime? babyBirthDate;
   DateTime? motherBirthDateSelected;
   DateTime? fatherBirthDateSelected;
@@ -71,48 +69,27 @@ class EditChildController extends GetxController implements ApiResponse {
     return true;
   }
 
-  bool _validateLast() {
-    if (weight.text.isEmpty) {
-      _errorMessage("berat badan wajid di isi");
-      return false;
-    }
-    if (height.text.isEmpty) {
-      _errorMessage("tinggi badan wajid di isi");
-      return false;
-    }
-    if (posyanduDate.text.isEmpty) {
-      _errorMessage("tanggal ukur wajid di isi");
-      return false;
-    }
-    return true;
-  }
-
-  void updateChild() {
-    if (_validateLast()) {
-      _provider.update(
-          request: ChildRequest(
-              birthDate:
-                  DateFormat("yyyy-MM-dd", "id_ID").format(babyBirthDate!),
-              fatherBirthday: DateFormat("yyyy-MM-dd", "id_ID")
-                  .format(fatherBirthDateSelected!),
-              motherBirthday: DateFormat("yyyy-MM-dd", "id_ID")
-                  .format(motherBirthDateSelected!),
-              measuringDate: DateFormat("yyyy-MM-dd", "id_ID")
-                  .format(posyanduDateSelected!),
-              motherName: motherName.text,
-              height: double.parse(height.text),
-              fatherName: fatherName.text,
-              fullName: name.text,
-              gender: gender.text == "Perempuan" ? "female" : "male",
-              weight: double.parse(weight.text)),
-          childId: child?.id ?? "0",
-          photoPath: imagePath.value);
-    }
+  void updateChild(String childId) {
+    _provider.update(
+        child: Child(
+            id: childId,
+            birthDate: DateFormat("yyyy-MM-dd", "id_ID").format(babyBirthDate!),
+            fatherBirthday: DateFormat("yyyy-MM-dd", "id_ID")
+                .format(fatherBirthDateSelected!),
+            motherBirthday: DateFormat("yyyy-MM-dd", "id_ID")
+                .format(motherBirthDateSelected!),
+            motherName: motherName.text,
+            fatherName: fatherName.text,
+            fullName: name.text,
+            gender: gender.text == "Perempuan" ? "female" : "male",
+            photo: child?.photo,
+            perkembangan: child?.perkembangan),
+        photoPath: imagePath.value);
   }
 
   setStep() {
     if (_validateFirst()) {
-      step(step.value + 1);
+      updateChild("${child?.id}");
     }
   }
 
@@ -125,13 +102,9 @@ class EditChildController extends GetxController implements ApiResponse {
     fatherName.text = child?.fatherName ?? "";
     fatherBirthDate.text = (child?.fatherBirthday ?? "").toDateString();
     motherBirthDate.text = (child?.motherBirthday ?? "").toDateString();
-    height.text = "${child?.height}";
-    weight.text = "${child?.weight}";
-    posyanduDate.text = (child?.measuringDate ?? "").toDateString();
     babyBirthDate = (child?.birthDate ?? "").toDate();
     fatherBirthDateSelected = (child?.fatherBirthday ?? "").toDate();
     motherBirthDateSelected = (child?.motherBirthday ?? "").toDate();
-    posyanduDateSelected = (child?.measuringDate ?? "").toDate();
   }
 
   @override

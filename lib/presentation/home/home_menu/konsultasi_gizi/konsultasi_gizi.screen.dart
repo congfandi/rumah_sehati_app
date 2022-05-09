@@ -39,7 +39,7 @@ class KonsultasiGiziScreen extends GetView<KonsultasiGiziController> {
             height: Dimension.height8,
           ),
           Text(
-            Strings.joinWithFocusGroup,
+            "Konsultasikan masalah gizi Bunda dengan ahlinya!",
             style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
           ),
           SizedBox(

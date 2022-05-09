@@ -27,7 +27,7 @@ class BalitaController extends GetxController implements ApiResponse {
     CalculatorMenu(
         name: Strings.kmsDigital,
         logo: Assets.kmsDigital,
-        description: Strings.watchGrowthOfBaby,
+        description: "Kartu Menuju Sehat Digital",
         child: const KmsDigitalView()),
     CalculatorMenu(
         name: Strings.sakitPadaBayi,

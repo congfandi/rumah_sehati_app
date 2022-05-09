@@ -46,24 +46,30 @@ class PrakonsepsiScreen extends GetView<PrakonsepsiController> {
           SizedBox(
             height: Dimension.height8,
           ),
+          Text(
+            Strings.prepairingPregnant,
+            style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+          ),
+          SizedBox(
+            height: Dimension.height16,
+          ),
           RichText(
               text: TextSpan(
-                  text:
-                  "apa sih prakonsepsi itu?",
+                  text: "apa sih prakonsepsi itu?",
                   style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
                   children: [
-                    TextSpan(
-                      text: " Yuk kerjakan Pre Test",
-                      style: TextStyles.bodySmallRegular().copyWith(
-                        decoration: TextDecoration.underline,
-                      ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          _launchUrl(
-                              "https://docs.google.com/forms/d/e/1FAIpQLSf2qjlSavMIBDRiicbdgtfq4w6TZFkcjERN1tWd_vu1eBMb2w/viewform?usp=sf_link");
-                        },
-                    )
-                  ])),
+                TextSpan(
+                  text: " Yuk kerjakan Pre Test",
+                  style: TextStyles.bodySmallRegular().copyWith(
+                    decoration: TextDecoration.underline,
+                  ),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      _launchUrl(
+                          "https://docs.google.com/forms/d/e/1FAIpQLSf2qjlSavMIBDRiicbdgtfq4w6TZFkcjERN1tWd_vu1eBMb2w/viewform?usp=sf_link");
+                    },
+                )
+              ])),
           SizedBox(
             height: Dimension.height24,
           ),
@@ -81,7 +87,10 @@ class PrakonsepsiScreen extends GetView<PrakonsepsiController> {
           SizedBox(
             height: Dimension.height8,
           ),
-          Text("Memahami prakonsepsi",style: TextStyles.moderateSemiBold(),),
+          Text(
+            "Memahami prakonsepsi",
+            style: TextStyles.moderateSemiBold(),
+          ),
           SizedBox(
             height: Dimension.height8,
           ),
@@ -110,7 +119,7 @@ class PrakonsepsiScreen extends GetView<PrakonsepsiController> {
           RichText(
               text: TextSpan(
                   text:
-                      "Dapatkan sertifikat Telan menyelesaikan kelas Prakonsepsi!",
+                      "Dapatkan sertifikat Telah menyelesaikan kelas Prakonsepsi!",
                   style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
                   children: [
                 TextSpan(

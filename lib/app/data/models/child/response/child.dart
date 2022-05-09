@@ -8,21 +8,25 @@
  *
  */
 
+import 'package:hive/hive.dart';
+import 'package:rumah_sehati_mobile/app/data/models/child/response/perkembangan.dart';
+import 'package:rumah_sehati_mobile/app/data/models/kms/kms.dart';
+
+part 'child.g.dart';
+
+@HiveType(typeId: 2)
 class Child {
-  Child({
-    this.id,
-    this.fullName,
-    this.birthDate,
-    this.gender,
-    this.motherName,
-    this.fatherName,
-    this.fatherBirthday,
-    this.motherBirthday,
-    this.height,
-    this.weight,
-    this.photo,
-    this.measuringDate,
-  });
+  Child(
+      {this.id,
+      this.fullName,
+      this.birthDate,
+      this.gender,
+      this.motherName,
+      this.fatherName,
+      this.fatherBirthday,
+      this.motherBirthday,
+      this.photo,
+      this.perkembangan});
 
   Child.fromJson(dynamic json) {
     id = json["id"];
@@ -33,24 +37,33 @@ class Child {
     fatherName = json['fathername'];
     fatherBirthday = json['fatherbirthday'];
     motherBirthday = json['motherbirthday'];
-    height = json['height'];
-    weight = json['weight'];
-    measuringDate = json['measuringdate'];
     photo = json['photo'];
+    perkembangan = json['perkembangan'] != null
+        ? List<Perkembangan>.from(
+            json['perkembangan'].map((x) => Perkembangan.fromJson(x)))
+        : null;
   }
 
+  @HiveField(0)
   String? id;
+  @HiveField(1)
   String? fullName;
+  @HiveField(2)
   String? birthDate;
+  @HiveField(3)
   String? gender;
+  @HiveField(4)
   String? motherName;
+  @HiveField(5)
   String? fatherName;
+  @HiveField(6)
   String? fatherBirthday;
+  @HiveField(7)
   String? motherBirthday;
-  String? height;
-  String? weight;
-  String? measuringDate;
+  @HiveField(8)
   String? photo;
+  @HiveField(9)
+  List<Perkembangan>? perkembangan;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -62,10 +75,10 @@ class Child {
     map['fathername'] = fatherName;
     map['fatherbirthday'] = fatherBirthday;
     map['motherbirthday'] = motherBirthday;
-    map['height'] = height;
-    map['weight'] = weight;
-    map['measuringdate'] = measuringDate;
     map['photo'] = photo;
+    if (perkembangan != null) {
+      map['perkembangan'] = perkembangan?.map((x) => x.toJson()).toList();
+    }
     return map;
   }
 }

@@ -6,7 +6,6 @@ import 'package:hive/hive.dart';
 import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import '../../../app/data/models/article/response/article.dart';
 import '../../../infrastructure/theme/theme.dart';
-import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' show parse;
 
 class ArticleItem extends StatelessWidget {
