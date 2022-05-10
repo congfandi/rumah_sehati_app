@@ -158,7 +158,7 @@ class ZScoreResult {
         break;
       }
     }
-
+    debugPrint("median : $median");
     double sdRujukan =
         (nilaiIndividu - median) >= 0 ? plus1SD - median : median - min1SD;
     result = (nilaiIndividu - median) / sdRujukan;

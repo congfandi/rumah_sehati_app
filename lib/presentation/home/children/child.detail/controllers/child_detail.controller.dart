@@ -6,11 +6,20 @@ import 'package:rumah_sehati_mobile/app/data/models/child/response/child.dart';
 import 'package:rumah_sehati_mobile/app/data/models/child/response/perkembangan.dart';
 import 'package:rumah_sehati_mobile/app/data/providers/children_provider.dart';
 import 'package:rumah_sehati_mobile/domain/core/interfaces/api_response.dart';
+import 'package:rumah_sehati_mobile/presentation/home/children/child.detail/chart.line.dart';
+import 'package:rumah_sehati_mobile/presentation/home/children/child.detail/child.description.dart';
 
 class ChildDetailController extends GetxController implements ApiResponse {
+  RxInt currentIndex = 0.obs;
   Child? anak;
-  late final ChildrenProvider _provider = ChildrenProvider(this);
 
+  void onChangeIndex(int index) {
+    currentIndex.value = index;
+  }
+
+  List<Widget> get child =>
+      [const ChildDescription(), const LineChartSample1()];
+  late final ChildrenProvider _provider = ChildrenProvider(this);
 
   @override
   void onInit() {

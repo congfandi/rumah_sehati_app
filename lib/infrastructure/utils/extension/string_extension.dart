@@ -19,10 +19,10 @@ extension StringExtension on String {
     return "$year tahun $month bulan $days hari";
   }
 
-  String ageBabyByMonth({String format = "yyyy-MM-dd"}) {
+  String ageBabyByMonth(String tanggalUkur,{String format = "yyyy-MM-dd"}) {
     initializeDateFormatting();
     DateTime birthDate = DateFormat(format, "id_ID").parse(this);
-    DateTime today = DateTime.now();
+    DateTime today =DateFormat(format, "id_ID").parse(tanggalUkur);
     int totalDay = today.difference(birthDate).inDays;
     int month = (totalDay ~/ 30);
     return "$month";

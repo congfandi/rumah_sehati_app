@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
-import 'package:rumah_sehati_mobile/infrastructure/theme/pallet.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_date_picker.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/calculator_input.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/widgets.dart';
-import 'package:rumah_sehati_mobile/presentation/home/children/child.detail/child.description.dart';
 
 import 'controllers/child_detail.controller.dart';
 
@@ -18,16 +16,28 @@ class ChildDetailScreen extends GetView<ChildDetailController> {
   @override
   Widget build(BuildContext context) {
     return BaseUi(
-      title: "Perkembangan Anak",
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _addDataPosyandu();
-        },
-        child: const Icon(Icons.add),
-        tooltip: 'Tambah Data',
-      ),
-      child: const ChildDescription(),
-    );
+        title: "Perkembangan Anak",
+        floatingActionButton: Obx(() => controller.currentIndex.value == 0
+            ? FloatingActionButton(
+                onPressed: () {
+                  _addDataPosyandu();
+                },
+                child: const Icon(Icons.add),
+                tooltip: 'Tambah Data',
+              )
+            : const SizedBox()),
+        bottomNavigationBar: Obx(() => BottomNavigationBar(
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.person), label: "Data Anak"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.bar_chart), label: "Perkembangan Anak"),
+              ],
+              currentIndex: controller.currentIndex.value,
+              selectedItemColor: Pallet.primaryPurple,
+              onTap: controller.onChangeIndex,
+            )),
+        child: Obx(() => controller.child[controller.currentIndex.value]));
   }
 
   void _addDataPosyandu() {

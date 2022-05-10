@@ -22,7 +22,8 @@ class RiwayatUkur extends StatelessWidget {
   Widget build(BuildContext context) {
     cMenu.genderController.text =
         anak.gender == "male" ? "Laki-laki" : "perempuan";
-    cMenu.ageController.text = (anak.birthDate ?? "").ageBabyByMonth();
+    cMenu.ageController.text =
+        (anak.birthDate ?? "").ageBabyByMonth(perkembangan.measuringDate ?? "");
     cMenu.weightController.text = "${perkembangan.weight}";
     cMenu.heightController.text = "${perkembangan.height}";
     ZScoreResult zScore = ZScoreResult(cMenu, isNeedShow: false);
