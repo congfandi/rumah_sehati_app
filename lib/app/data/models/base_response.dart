@@ -9,6 +9,7 @@
  */
 
 import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation.dart';
+import 'package:rumah_sehati_mobile/app/data/models/rekomendasi.dart';
 
 import 'article/response/article.dart';
 import 'auth/response/auth_response.dart';
@@ -54,6 +55,7 @@ class ResultResponse {
   List<Child>? children;
   List<Consultation>? consultations;
   AuthResponse? authResponse;
+  Rekomendasi? rekomendasi;
 
   ResultResponse(
       {this.profile,
@@ -63,7 +65,8 @@ class ResultResponse {
       this.groups,
       this.children,
       this.consultations,
-      this.authResponse});
+      this.authResponse,
+      this.rekomendasi});
 
   ResultResponse.fromJson(dynamic json) {
     authResponse =
@@ -104,6 +107,9 @@ class ResultResponse {
       json['consultations'].forEach((v) {
         consultations?.add(Consultation.fromJson(v));
       });
+    }
+    if (json['rekomendasi'] != null) {
+      rekomendasi = Rekomendasi.fromJson(json['rekomendasi']);
     }
   }
 }

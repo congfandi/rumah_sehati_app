@@ -10,6 +10,7 @@ export 'package:rumah_sehati_mobile/presentation/home/home.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/balita.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/calculator/calculator.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/home_menu.screen.dart';
+export 'package:rumah_sehati_mobile/presentation/home/home_menu/ibu_hamil/detail.ibu.hamil/detail_ibu_hamil.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/ibu_hamil/ibu_hamil.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/konsultasi_gizi/konsultasi_gizi.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/konsultasi_gizi/questioner/questioner.screen.dart';

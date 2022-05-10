@@ -156,5 +156,10 @@ class Nav {
       page: () => ChildDetailScreen(),
       binding: ChildDetailControllerBinding(),
     ),
+    GetPage(
+      name: Routes.DETAIL_IBU_HAMIL,
+      page: () => DetailIbuHamilScreen(),
+      binding: DetailIbuHamilControllerBinding(),
+    ),
   ];
 }

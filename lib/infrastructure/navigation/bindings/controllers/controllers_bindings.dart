@@ -5,6 +5,7 @@ export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controlle
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/calculator.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/child_detail.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/children.controller.binding.dart';
+export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/detail_ibu_hamil.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/edit_child.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/edit_profile.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/faskes.controller.binding.dart';
