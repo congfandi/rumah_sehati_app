@@ -4,10 +4,10 @@ import 'package:rumah_sehati_mobile/app/data/models/menu.harian/menu_harian_resp
 import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:html/parser.dart' show parse;
+import 'package:rumah_sehati_mobile/presentation/home/home_menu/menu_harian/menu.harian.detail.dart';
 
 class MenuHarianItem extends StatelessWidget {
-  const MenuHarianItem({Key? key, required this.article})
-      : super(key: key);
+  const MenuHarianItem({Key? key, required this.article}) : super(key: key);
   final MenuHarian article;
 
   @override
@@ -15,7 +15,7 @@ class MenuHarianItem extends StatelessWidget {
     var document = parse(article.content);
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.ARTICLE_DETAIL, arguments: article);
+        Get.to(() => const MenuHarianDetail(), arguments: article);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -56,7 +56,7 @@ class MenuHarianItem extends StatelessWidget {
                   )),
               Padding(
                   padding:
-                  const EdgeInsets.only(left: 24, right: 24, bottom: 8),
+                      const EdgeInsets.only(left: 24, right: 24, bottom: 8),
                   child: Text(
                     document.documentElement?.text ?? "",
                     style: TextStyles.bodySmallRegular(color: Pallet.lightBlack)
@@ -66,32 +66,32 @@ class MenuHarianItem extends StatelessWidget {
                   )),
               Padding(
                   padding:
-                  const EdgeInsets.only(left: 24, right: 24, bottom: 8),
+                      const EdgeInsets.only(left: 24, right: 24, bottom: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                    primary: Pallet.primaryPurple,
-                                    backgroundColor: Pallet.primaryPurple,
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: Dimension.width12,
-                                      vertical: Dimension.height4,
-                                    ),
-                                    shape: const StadiumBorder()),
-                                child: Text(
-                                  article.category ?? "",
-                                  style: TextStyles.captionModerateSemiBold(
-                                      color: Pallet.white),
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                                primary: Pallet.primaryPurple,
+                                backgroundColor: Pallet.primaryPurple,
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: Dimension.width12,
+                                  vertical: Dimension.height4,
                                 ),
-                              )
-                            ],
-                          )),
+                                shape: const StadiumBorder()),
+                            child: Text(
+                              article.category ?? "",
+                              style: TextStyles.captionModerateSemiBold(
+                                  color: Pallet.white),
+                            ),
+                          )
+                        ],
+                      )),
                     ],
                   )),
             ],

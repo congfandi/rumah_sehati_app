@@ -13,18 +13,17 @@ part 'article.g.dart';
 
 @HiveType(typeId: 0)
 class Article {
-  Article({
-    this.id,
-    this.title,
-    this.cover,
-    this.author,
-    this.content,
-    this.link,
-    this.tags,
-    this.createdDate,
-    this.category,
-    this.linkVideo
-  });
+  Article(
+      {this.id,
+      this.title,
+      this.cover,
+      this.author,
+      this.content,
+      this.link,
+      this.tags,
+      this.createdDate,
+      this.category,
+      this.linkVideo});
 
   Article.fromJson(dynamic json) {
     id = int.parse(json["id"]);
