@@ -9,6 +9,7 @@
  */
 
 import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation.dart';
+import 'package:rumah_sehati_mobile/app/data/models/menu.harian/menu_harian_response.dart';
 import 'package:rumah_sehati_mobile/app/data/models/rekomendasi.dart';
 
 import 'article/response/article.dart';
@@ -54,6 +55,10 @@ class ResultResponse {
   List<Group>? groups;
   List<Child>? children;
   List<Consultation>? consultations;
+  List<MenuHarian>? sarapan;
+  List<MenuHarian>? makanMalam;
+  List<MenuHarian>? makanSiang;
+  List<MenuHarian>? snack;
   AuthResponse? authResponse;
   Rekomendasi? rekomendasi;
 
@@ -66,7 +71,11 @@ class ResultResponse {
       this.children,
       this.consultations,
       this.authResponse,
-      this.rekomendasi});
+      this.rekomendasi,
+      this.sarapan,
+      this.makanMalam,
+      this.makanSiang,
+      this.snack});
 
   ResultResponse.fromJson(dynamic json) {
     authResponse =
@@ -106,6 +115,31 @@ class ResultResponse {
       consultations = [];
       json['consultations'].forEach((v) {
         consultations?.add(Consultation.fromJson(v));
+      });
+    }
+
+    if (json['sarapan'] != null) {
+      sarapan = [];
+      json['sarapan'].forEach((v) {
+        sarapan?.add(MenuHarian.fromJson(v));
+      });
+    }
+    if (json['makanMalam'] != null) {
+      makanMalam = [];
+      json['makanMalam'].forEach((v) {
+        makanMalam?.add(MenuHarian.fromJson(v));
+      });
+    }
+    if (json['makanSiang'] != null) {
+      makanSiang = [];
+      json['makanSiang'].forEach((v) {
+        makanSiang?.add(MenuHarian.fromJson(v));
+      });
+    }
+    if (json['snack'] != null) {
+      snack = [];
+      json['snack'].forEach((v) {
+        snack?.add(MenuHarian.fromJson(v));
       });
     }
     if (json['rekomendasi'] != null) {

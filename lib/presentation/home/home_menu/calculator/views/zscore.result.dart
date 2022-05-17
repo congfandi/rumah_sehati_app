@@ -204,15 +204,21 @@ class ZScoreResult {
     double median = 0;
     double plus1SD = 0;
     double min1SD = 0;
+    Map<String, num> temp = {};
     for (var element in data) {
-      if ((element['panjangBadan'] ?? 0) >= panjangBadan) {
+      if ((element['panjangBadan'] ?? 0) == panjangBadan) {
         median = (element['median'] ?? 0) * 1.0;
         plus1SD = (element['plus1SD'] ?? 0) * 1.0;
         min1SD = (element['minus1SD'] ?? 0) * 1.0;
         break;
+      } else if ((element['panjangBadan'] ?? 0) > panjangBadan) {
+        median = (temp['median'] ?? 0) * 1.0;
+        plus1SD = (temp['plus1SD'] ?? 0) * 1.0;
+        min1SD = (temp['minus1SD'] ?? 0) * 1.0;
+        break;
       }
+      temp = element;
     }
-    debugPrint("${median} ${plus1SD} ${min1SD} $panjangBadan");
     double sdRujukan =
         (nilaiIndividu - median) >= 0 ? plus1SD - median : median - min1SD;
     result = (nilaiIndividu - median) / sdRujukan;

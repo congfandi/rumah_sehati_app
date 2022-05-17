@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/app_normal_button.dart';
@@ -140,6 +138,6 @@ class PrakonsepsiScreen extends GetView<PrakonsepsiController> {
   }
 
   void _launchUrl(String url) async {
-    if (!await launch(url)) throw 'Could not launch $url';
+    if (!await launchUrl(Uri.parse(url))) throw 'Could not launch $url';
   }
 }

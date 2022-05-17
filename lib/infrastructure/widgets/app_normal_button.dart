@@ -35,7 +35,7 @@ class AppNormalButton extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8), color: buttonColor),
               margin: EdgeInsets.symmetric(vertical: Dimension.width8),
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Center(
                 child: Text(
                   title,

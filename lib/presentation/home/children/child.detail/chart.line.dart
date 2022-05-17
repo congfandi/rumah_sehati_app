@@ -73,7 +73,7 @@ class _LineChart extends GetView<ChildDetailController> {
         getTitlesWidget: leftTitleWidgets,
         showTitles: true,
         interval: 1,
-        reservedSize: 40,
+        reservedSize: 50,
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
@@ -87,7 +87,7 @@ class _LineChart extends GetView<ChildDetailController> {
         getTitlesWidget: bottomTitleWidgets,
       );
 
-  FlGridData get gridData => FlGridData(show: true, drawHorizontalLine: true);
+  FlGridData get gridData => FlGridData(show: true, drawHorizontalLine: true,);
 
   FlBorderData get borderData => FlBorderData(
         show: true,

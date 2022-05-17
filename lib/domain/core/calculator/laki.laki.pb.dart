@@ -251,7 +251,7 @@ class LakiLakiPb{
       "plus3SD": 97
     },
     {
-      "month": 24,
+      "usia": 24,
       "minus3SD": 78,
       "minus2SD": 81,
       "minus1SD": 84.1,
@@ -261,7 +261,7 @@ class LakiLakiPb{
       "plus3SD": 96.3
     },
     {
-      "month": 25,
+      "usia": 25,
       "minus3SD": 78.6,
       "minus2SD": 81.7,
       "minus1SD": 84.9,
@@ -271,7 +271,7 @@ class LakiLakiPb{
       "plus3SD": 97.3
     },
     {
-      "month": 26,
+      "usia": 26,
       "minus3SD": 79.3,
       "minus2SD": 82.5,
       "minus1SD": 85.6,
@@ -281,7 +281,7 @@ class LakiLakiPb{
       "plus3SD": 98.3
     },
     {
-      "month": 27,
+      "usia": 27,
       "minus3SD": 79.9,
       "minus2SD": 83.1,
       "minus1SD": 86.4,
@@ -291,7 +291,7 @@ class LakiLakiPb{
       "plus3SD": 99.3
     },
     {
-      "month": 28,
+      "usia": 28,
       "minus3SD": 80.5,
       "minus2SD": 83.8,
       "minus1SD": 87.1,
@@ -301,7 +301,7 @@ class LakiLakiPb{
       "plus3SD": 100.3
     },
     {
-      "month": 29,
+      "usia": 29,
       "minus3SD": 81.1,
       "minus2SD": 84.5,
       "minus1SD": 87.8,
@@ -311,7 +311,7 @@ class LakiLakiPb{
       "plus3SD": 101.2
     },
     {
-      "month": 30,
+      "usia": 30,
       "minus3SD": 81.7,
       "minus2SD": 85.1,
       "minus1SD": 88.5,
@@ -321,7 +321,7 @@ class LakiLakiPb{
       "plus3SD": 102.1
     },
     {
-      "month": 31,
+      "usia": 31,
       "minus3SD": 82.3,
       "minus2SD": 85.7,
       "minus1SD": 89.2,
@@ -331,7 +331,7 @@ class LakiLakiPb{
       "plus3SD": 103
     },
     {
-      "month": 32,
+      "usia": 32,
       "minus3SD": 82.8,
       "minus2SD": 86.4,
       "minus1SD": 89.9,
@@ -341,7 +341,7 @@ class LakiLakiPb{
       "plus3SD": 103.9
     },
     {
-      "month": 33,
+      "usia": 33,
       "minus3SD": 83.4,
       "minus2SD": 86.9,
       "minus1SD": 90.5,
@@ -351,7 +351,7 @@ class LakiLakiPb{
       "plus3SD": 104.8
     },
     {
-      "month": 34,
+      "usia": 34,
       "minus3SD": 83.9,
       "minus2SD": 87.5,
       "minus1SD": 91.1,
@@ -361,7 +361,7 @@ class LakiLakiPb{
       "plus3SD": 105.6
     },
     {
-      "month": 35,
+      "usia": 35,
       "minus3SD": 84.4,
       "minus2SD": 88.1,
       "minus1SD": 91.8,
@@ -371,7 +371,7 @@ class LakiLakiPb{
       "plus3SD": 106.4
     },
     {
-      "month": 36,
+      "usia": 36,
       "minus3SD": 85,
       "minus2SD": 88.7,
       "minus1SD": 92.4,
@@ -381,7 +381,7 @@ class LakiLakiPb{
       "plus3SD": 107.2
     },
     {
-      "month": 37,
+      "usia": 37,
       "minus3SD": 85.5,
       "minus2SD": 89.2,
       "minus1SD": 93,
@@ -391,7 +391,7 @@ class LakiLakiPb{
       "plus3SD": 108
     },
     {
-      "month": 38,
+      "usia": 38,
       "minus3SD": 86,
       "minus2SD": 89.8,
       "minus1SD": 93.6,
@@ -401,7 +401,7 @@ class LakiLakiPb{
       "plus3SD": 108.8
     },
     {
-      "month": 39,
+      "usia": 39,
       "minus3SD": 86.5,
       "minus2SD": 90.3,
       "minus1SD": 94.2,
@@ -411,7 +411,7 @@ class LakiLakiPb{
       "plus3SD": 109.5
     },
     {
-      "month": 40,
+      "usia": 40,
       "minus3SD": 87,
       "minus2SD": 90.9,
       "minus1SD": 94.7,
@@ -421,7 +421,7 @@ class LakiLakiPb{
       "plus3SD": 110.3
     },
     {
-      "month": 41,
+      "usia": 41,
       "minus3SD": 87.5,
       "minus2SD": 91.4,
       "minus1SD": 95.3,
@@ -431,7 +431,7 @@ class LakiLakiPb{
       "plus3SD": 111
     },
     {
-      "month": 42,
+      "usia": 42,
       "minus3SD": 88,
       "minus2SD": 91.9,
       "minus1SD": 95.9,
@@ -441,7 +441,7 @@ class LakiLakiPb{
       "plus3SD": 111.7
     },
     {
-      "month": 43,
+      "usia": 43,
       "minus3SD": 88.4,
       "minus2SD": 92.4,
       "minus1SD": 96.4,
@@ -451,7 +451,7 @@ class LakiLakiPb{
       "plus3SD": 112.5
     },
     {
-      "month": 44,
+      "usia": 44,
       "minus3SD": 88.9,
       "minus2SD": 93,
       "minus1SD": 97,
@@ -461,7 +461,7 @@ class LakiLakiPb{
       "plus3SD": 113.2
     },
     {
-      "month": 45,
+      "usia": 45,
       "minus3SD": 89.4,
       "minus2SD": 93.5,
       "minus1SD": 97.5,
@@ -471,7 +471,7 @@ class LakiLakiPb{
       "plus3SD": 113.9
     },
     {
-      "month": 46,
+      "usia": 46,
       "minus3SD": 89.8,
       "minus2SD": 94,
       "minus1SD": 98.1,
@@ -481,7 +481,7 @@ class LakiLakiPb{
       "plus3SD": 114.6
     },
     {
-      "month": 47,
+      "usia": 47,
       "minus3SD": 90.3,
       "minus2SD": 94.4,
       "minus1SD": 98.6,
@@ -491,7 +491,7 @@ class LakiLakiPb{
       "plus3SD": 115.2
     },
     {
-      "month": 48,
+      "usia": 48,
       "minus3SD": 90.7,
       "minus2SD": 94.9,
       "minus1SD": 99.1,
@@ -501,7 +501,7 @@ class LakiLakiPb{
       "plus3SD": 115.9
     },
     {
-      "month": 49,
+      "usia": 49,
       "minus3SD": 91.2,
       "minus2SD": 95.4,
       "minus1SD": 99.7,
@@ -511,7 +511,7 @@ class LakiLakiPb{
       "plus3SD": 116.6
     },
     {
-      "month": 50,
+      "usia": 50,
       "minus3SD": 91.6,
       "minus2SD": 95.9,
       "minus1SD": 100.2,
@@ -521,7 +521,7 @@ class LakiLakiPb{
       "plus3SD": 117.3
     },
     {
-      "month": 51,
+      "usia": 51,
       "minus3SD": 92.1,
       "minus2SD": 96.4,
       "minus1SD": 100.7,
@@ -531,7 +531,7 @@ class LakiLakiPb{
       "plus3SD": 117.9
     },
     {
-      "month": 52,
+      "usia": 52,
       "minus3SD": 92.5,
       "minus2SD": 96.9,
       "minus1SD": 101.2,
@@ -541,7 +541,7 @@ class LakiLakiPb{
       "plus3SD": 118.6
     },
     {
-      "month": 53,
+      "usia": 53,
       "minus3SD": 93,
       "minus2SD": 97.4,
       "minus1SD": 101.7,
@@ -551,7 +551,7 @@ class LakiLakiPb{
       "plus3SD": 119.2
     },
     {
-      "month": 54,
+      "usia": 54,
       "minus3SD": 93.4,
       "minus2SD": 97.8,
       "minus1SD": 102.3,
@@ -561,7 +561,7 @@ class LakiLakiPb{
       "plus3SD": 119.9
     },
     {
-      "month": 55,
+      "usia": 55,
       "minus3SD": 93.9,
       "minus2SD": 98.3,
       "minus1SD": 102.8,
@@ -571,7 +571,7 @@ class LakiLakiPb{
       "plus3SD": 120.6
     },
     {
-      "month": 56,
+      "usia": 56,
       "minus3SD": 94.3,
       "minus2SD": 98.8,
       "minus1SD": 103.3,
@@ -581,7 +581,7 @@ class LakiLakiPb{
       "plus3SD": 121.2
     },
     {
-      "month": 57,
+      "usia": 57,
       "minus3SD": 94.7,
       "minus2SD": 99.3,
       "minus1SD": 103.8,
@@ -591,7 +591,7 @@ class LakiLakiPb{
       "plus3SD": 121.9
     },
     {
-      "month": 58,
+      "usia": 58,
       "minus3SD": 95.2,
       "minus2SD": 99.7,
       "minus1SD": 104.3,
@@ -601,7 +601,7 @@ class LakiLakiPb{
       "plus3SD": 122.6
     },
     {
-      "month": 59,
+      "usia": 59,
       "minus3SD": 95.6,
       "minus2SD": 100.2,
       "minus1SD": 104.8,
@@ -611,7 +611,7 @@ class LakiLakiPb{
       "plus3SD": 123.2
     },
     {
-      "month": 60,
+      "usia": 60,
       "minus3SD": 96.1,
       "minus2SD": 100.7,
       "minus1SD": 105.3,

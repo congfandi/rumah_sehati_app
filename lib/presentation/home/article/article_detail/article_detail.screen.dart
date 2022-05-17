@@ -60,20 +60,28 @@ class ArticleDetailScreen extends GetView<ArticleDetailController> {
             style: TextStyles.moderateSemiBold(),
           ),
           SizedBox(height: Dimension.height24),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-                primary: Pallet.primaryPurple,
-                backgroundColor: Pallet.primaryPurple,
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimension.width12,
+          SizedBox(
+            height: Dimension.height48,
+            child: ListView.builder(
+              itemBuilder: (c, i) => TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                    primary: Pallet.primaryPurple,
+                    backgroundColor: Pallet.primaryPurple,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Dimension.width12,
+                    ),
+                    shape: const StadiumBorder()),
+                child: Text(
+                  controller.article?.tags?[i] ?? "",
+                  style:
+                      TextStyles.captionModerateSemiBold(color: Pallet.white),
                 ),
-                shape: const StadiumBorder()),
-            child: Text(
-              controller.article?.tags.toString() ?? "",
-              style: TextStyles.captionModerateSemiBold(color: Pallet.white),
+              ),
+              itemCount: controller.article?.tags?.length ?? 0,
+              scrollDirection: Axis.horizontal,
             ),
-          ),
+          )
         ],
       ),
     );

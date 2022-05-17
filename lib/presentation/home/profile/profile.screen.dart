@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../infrastructure/widgets/widgets.dart';
 import 'controllers/profile.controller.dart';
@@ -182,22 +183,22 @@ class ProfileScreen extends GetView<ProfileController> {
         ),
         //activity
         SizedBox(height: Dimension.height16),
-        Row(
-          children: [
-            Text(
-              Strings.activity,
-              style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-            ),
-            const Expanded(child: SizedBox()),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Pallet.lightBlack,
-              size: 16,
-            )
-          ],
-        ),
-        //change password
-        SizedBox(height: Dimension.height16),
+        // Row(
+        //   children: [
+        //     Text(
+        //       Strings.activity,
+        //       style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+        //     ),
+        //     const Expanded(child: SizedBox()),
+        //     const Icon(
+        //       Icons.arrow_forward_ios_rounded,
+        //       color: Pallet.lightBlack,
+        //       size: 16,
+        //     )
+        //   ],
+        // ),
+        // //change password
+        // SizedBox(height: Dimension.height16),
         Row(
           children: [
             Text(
@@ -214,35 +215,45 @@ class ProfileScreen extends GetView<ProfileController> {
         ),
         //FAQ
         SizedBox(height: Dimension.height16),
-        Row(
-          children: [
-            Text(
-              Strings.faq,
-              style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-            ),
-            const Expanded(child: SizedBox()),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Pallet.lightBlack,
-              size: 16,
-            )
-          ],
+        GestureDetector(
+          onTap: (){
+            _launchUrl("https://sehatidmf.com/public/faq");
+          },
+          child: Row(
+            children: [
+              Text(
+                Strings.faq,
+                style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+              ),
+              const Expanded(child: SizedBox()),
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Pallet.lightBlack,
+                size: 16,
+              )
+            ],
+          ),
         ),
         //activity
         SizedBox(height: Dimension.height16),
-        Row(
-          children: [
-            Text(
-              Strings.help,
-              style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-            ),
-            const Expanded(child: SizedBox()),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Pallet.lightBlack,
-              size: 16,
-            )
-          ],
+        GestureDetector(
+          onTap: (){
+            _launchUrl("https://sehatidmf.com/public/faq");
+          },
+          child: Row(
+            children: [
+              Text(
+                Strings.help,
+                style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+              ),
+              const Expanded(child: SizedBox()),
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Pallet.lightBlack,
+                size: 16,
+              )
+            ],
+          ),
         ),
         SizedBox(height: Dimension.height40),
         _buttonLogout()
@@ -269,5 +280,8 @@ class ProfileScreen extends GetView<ProfileController> {
         ),
       ),
     );
+  }
+  void _launchUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) throw 'Could not launch $url';
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../infrastructure/navigation/routes.dart';
 import '../../infrastructure/theme/theme.dart';
 import '../../infrastructure/utils/resources/resources.dart';
 import 'controllers/splash.controller.dart';

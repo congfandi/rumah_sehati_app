@@ -17,10 +17,8 @@ class RekanBundaController extends GetxController implements ApiResponse {
   }
 
   Future<void> openUrl(String url) async {
-    if (!await launch(
-      url,
-      forceSafariVC: false,
-      forceWebView: false
+    if (!await launchUrl(
+      Uri.parse(url)
     )) {
       throw 'Could not launch $url';
     }

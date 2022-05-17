@@ -76,17 +76,6 @@ class RiwayatUkur extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          Row(
-            children: [
-              const Text("ZScore : "),
-              Expanded(
-                child: Text(
-                  zScore.getBBperU().toStringAsFixed(2),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
           Text(
             zScore.getBBperUSummery(),
             style: TextStyles.moderateSemiBold(),

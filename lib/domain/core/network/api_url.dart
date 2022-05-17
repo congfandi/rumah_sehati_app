@@ -19,4 +19,5 @@ class ApiUrl {
   static const profile = "/api/v1/profile";
   static const consultation = "/api/v1/consultations";
   static const rekomendasi = "/api/v1/rekomendasi";
+  static const menuHarian = "/api/v1/menu-harian";
 }

@@ -1,64 +1,78 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rumah_sehati_mobile/presentation/home/home_menu/menu_harian/views/bayi_dan_balita_view.dart';
-import 'package:rumah_sehati_mobile/presentation/home/home_menu/menu_harian/views/ibu_menyusui_view.dart';
-
-import '../../../../../app/data/models/article/request/article_request.dart';
-import '../../../../../app/data/models/article/response/article.dart';
+import 'package:rumah_sehati_mobile/app/data/models/menu.harian/menu_harian_request.dart';
+import 'package:rumah_sehati_mobile/app/data/models/menu.harian/menu_harian_response.dart';
+import 'package:rumah_sehati_mobile/app/data/providers/menu.harian.provider.dart';
 import '../../../../../app/data/models/base_response.dart';
-import '../../../../../app/data/providers/article_provider.dart';
 import '../../../../../domain/core/interfaces/api_response.dart';
-import '../../../../../infrastructure/utils/resources/resources.dart';
-import '../../calculator/controllers/calculator.controller.dart';
-import '../views/ibu_hamil_view.dart';
 
 class MenuHarianController extends GetxController implements ApiResponse {
-  RxInt currentMenuIndex = 0.obs;
-  final List<CalculatorMenu> menus = [
-    CalculatorMenu(
-        name: Strings.babyAndBalita,
-        logo: Assets.babyAndBalita,
-        description: Strings.fillOfplate,
-        child: const BayiDanBalitaView()),
-    CalculatorMenu(
-      name: Strings.momPregnan,
-      logo: Assets.ibuHamil,
-      description: Strings.fillOfplate,
-      child: const IbuHamilView(),
-    ),
-    CalculatorMenu(
-        name: Strings.momFeed,
-        logo: Assets.ibuMenyusui,
-        description: Strings.fillOfplate,
-        child: const IbuMenyusuiView()),
+  RxList<MenuHarian> menuHarian = RxList();
+  RxList<MenuHarian> makanSiang = RxList();
+  RxList<MenuHarian> makanMalam = RxList();
+  RxList<MenuHarian> sarapan = RxList();
+  RxList<MenuHarian> snack = RxList();
+  late final MenuHarianProvider _provider = MenuHarianProvider(this);
+  MenuHarianRequest query =
+      MenuHarianRequest(perpage: 5, page: 1, category: 'Bayi dan Balita');
+  RxBool isNeedLoading = true.obs;
+  final List<String> jenisMakanan = [
+    "Makan Malam",
+    "Sarapan",
+    "Makan Siang",
+    "Snack"
   ];
 
-  CalculatorMenu currentMenu() {
-    return menus[currentMenuIndex.value];
-  }
+  RxString selectedJenisMakanan = RxString("Makan Malam");
 
-  void changeMenu(int menu) {
-    currentMenuIndex(menu);
+  changeJenisMakanan(String jenisMakanan) {
+    selectedJenisMakanan.value = jenisMakanan;
+    setList();
   }
-
-  void reset() {
-    menus[currentMenuIndex.value].reset();
-  }
-
-  RxList<Article> listArticle = RxList();
-  late final ArticleProvider _provider = ArticleProvider(this);
-  ArticleRequest query = ArticleRequest(perPage: 5, page: 1);
-  RxBool isNeedLoading = true.obs;
 
   void loadMore() {
     query.page = (query.page ?? 0) + 1;
-    _provider.getArticles(query: query);
+    _provider.getMenuHarian(query);
   }
 
-  void filter(String value) {
-    listArticle.clear();
+  void filter(MenuHarianRequest query) {
+    menuHarian.clear();
+    sarapan.clear();
+    makanMalam.clear();
+    makanSiang.clear();
+    snack.clear();
     isNeedLoading(true);
-    query.category = value;
-    _provider.getArticles(query: query);
+    _provider.getMenuHarian(query);
+  }
+
+  void setList() {
+    switch (selectedJenisMakanan.value) {
+      case "Makan Malam":
+        menuHarian.clear();
+        menuHarian.addAll(makanMalam);
+        break;
+      case "Sarapan":
+        menuHarian.clear();
+        menuHarian.addAll(sarapan);
+        break;
+      case "Makan Siang":
+        menuHarian.clear();
+        menuHarian.addAll(makanSiang);
+        break;
+      case "Snack":
+        menuHarian.clear();
+        menuHarian.addAll(snack);
+        break;
+    }
+    debugPrint(
+        "menu ${menuHarian.length} malam ${makanMalam.length} sarapan ${sarapan.length} siang ${makanSiang.length} snack ${snack.length}");
+  }
+
+  @override
+  void onReady() {
+    _provider.getMenuHarian(query);
+    isNeedLoading(true);
+    super.onReady();
   }
 
   @override
@@ -74,6 +88,10 @@ class MenuHarianController extends GetxController implements ApiResponse {
 
   @override
   void onSuccessRequest(String path, ResultResponse? result, String method) {
-    listArticle.addAll(result?.articles ?? []);
+    sarapan.addAll(result?.sarapan ?? []);
+    makanMalam.addAll(result?.makanMalam ?? []);
+    makanSiang.addAll(result?.makanSiang ?? []);
+    snack.addAll(result?.snack ?? []);
+    setList();
   }
 }

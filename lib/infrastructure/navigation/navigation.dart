@@ -93,7 +93,7 @@ class Nav {
     ),
     GetPage(
       name: Routes.PARENTING,
-      page: () => ParentingScreen(),
+      page: () => const ParentingScreen(),
       binding: ParentingControllerBinding(),
     ),
     GetPage(
@@ -133,32 +133,32 @@ class Nav {
     ),
     GetPage(
       name: Routes.ADD_CHILD,
-      page: () => AddChildScreen(),
+      page: () => const AddChildScreen(),
       binding: AddChildControllerBinding(),
     ),
     GetPage(
       name: Routes.EDIT_CHILD,
-      page: () => EditChildScreen(),
+      page: () => const EditChildScreen(),
       binding: EditChildControllerBinding(),
     ),
     GetPage(
       name: Routes.EDIT_PROFILE,
-      page: () => EditProfileScreen(),
+      page: () => const EditProfileScreen(),
       binding: EditProfileControllerBinding(),
     ),
     GetPage(
       name: Routes.SAVED_ARTICLE,
-      page: () => SavedArticleScreen(),
+      page: () => const SavedArticleScreen(),
       binding: SavedArticleControllerBinding(),
     ),
     GetPage(
       name: Routes.CHILD_DETAIL,
-      page: () => ChildDetailScreen(),
+      page: () => const ChildDetailScreen(),
       binding: ChildDetailControllerBinding(),
     ),
     GetPage(
       name: Routes.DETAIL_IBU_HAMIL,
-      page: () => DetailIbuHamilScreen(),
+      page: () => const DetailIbuHamilScreen(),
       binding: DetailIbuHamilControllerBinding(),
     ),
   ];
