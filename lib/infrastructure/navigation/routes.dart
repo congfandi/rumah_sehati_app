@@ -12,6 +12,7 @@ class Routes {
   static const CALCULATOR = '/calculator';
   static const CHILDREN = '/children';
   static const CHILD_DETAIL = '/child-detail';
+  static const DETAIL_IBU_HAMIL = '/detail-ibu-hamil';
   static const EDIT_CHILD = '/edit-child';
   static const EDIT_PROFILE = '/edit-profile';
   static const FASKES = '/faskes';
@@ -31,5 +32,5 @@ class Routes {
   static const REKAN_BUNDA = '/rekan-bunda';
   static const SAVED_ARTICLE = '/saved-article';
   static const SPLASH = '/splash';
-  static const DETAIL_IBU_HAMIL = '/detail-ibu-hamil';
+  static const KMS_DETAIL = '/kms-detail';
 }

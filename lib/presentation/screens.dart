@@ -8,6 +8,7 @@ export 'package:rumah_sehati_mobile/presentation/home/children/edit_child/edit_c
 export 'package:rumah_sehati_mobile/presentation/home/faskes/faskes.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/balita.screen.dart';
+export 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/kms.detail/kms_detail.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/calculator/calculator.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/home_menu.screen.dart';
 export 'package:rumah_sehati_mobile/presentation/home/home_menu/ibu_hamil/detail.ibu.hamil/detail_ibu_hamil.screen.dart';

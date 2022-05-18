@@ -14,14 +14,18 @@ class KmsDigitalResult {
   final TextEditingController posyanduDateController;
   final TextEditingController weightController;
   final TextEditingController asiController;
+  final bool needShoResult;
 
   KmsDigitalResult(
       {required this.genderController,
       required this.dateOfBirthController,
       required this.posyanduDateController,
       required this.weightController,
-      required this.asiController}) {
-    _showResult();
+      required this.asiController,
+      this.needShoResult = true}) {
+    if (needShoResult) {
+      _showResult();
+    }
   }
 
   void _showResult() {
@@ -186,11 +190,10 @@ class KmsDigitalResult {
                       height: Dimension.height18,
                     ),
                     Text(
-                     conclusion(),
+                      conclusion(),
                       textAlign: TextAlign.center,
                       maxLines: 6,
-                      style: TextStyles.bodySmallMedium(
-                          color: Pallet.jetBlack),
+                      style: TextStyles.bodySmallMedium(color: Pallet.jetBlack),
                     ),
                   ]),
                 ),
@@ -202,7 +205,7 @@ class KmsDigitalResult {
     "Berat badan sangat kurang (severely underweight)",
     "Berat badan kurang (underweight)",
     "Berat badan normal",
-    "Risiko Berat badan lebih1",
+    "Risiko Berat badan lebih",
   ];
 
   String conclusion() {
@@ -243,15 +246,42 @@ class KmsDigitalResult {
 
     return result;
   }
-}
 
-// {
-// "usia": 0,
-// "minus3SD": 2.1,
-// "minus2SD": 2.5,
-// "minus1SD": 2.9,
-// "median": 3.3,
-// "plus1SD": 3.9,
-// "plus2SD": 4.4,
-// "plus3SD": 5
-// }
+  String conclusionHistory(int usia) {
+    List<Map<String, num>> data = [];
+    String result = "";
+    switch (genderController.text) {
+      case "Laki-laki":
+        data = LakiLakiBB.bb;
+        break;
+      case "Perempuan":
+        data = PerempuanBb.bb;
+        break;
+    }
+    for (var element in data) {
+      if (element["usia"] == usia) {
+        double beratBadan = double.parse(weightController.text);
+        if (beratBadan < (element["minus3SD"] ?? 0)) {
+          result = _conclusion[0];
+          return result;
+        }
+        if (beratBadan > (element["minus3SD"] ?? 0) &&
+            beratBadan < (element["minus2SD"] ?? 0)) {
+          result = _conclusion[1];
+          return result;
+        }
+        if (beratBadan > (element["minus2SD"] ?? 0) &&
+            beratBadan < (element["plus1SD"] ?? 0)) {
+          result = _conclusion[2];
+          return result;
+        }
+        if (beratBadan > (element["plus1SD"] ?? 0)) {
+          result = _conclusion[3];
+          return result;
+        }
+      }
+    }
+
+    return result;
+  }
+}

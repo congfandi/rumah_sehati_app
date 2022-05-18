@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/article/request/article_request.dart';
 import 'package:rumah_sehati_mobile/app/data/models/base_response.dart';
+import 'package:rumah_sehati_mobile/app/data/models/kms/kms.dart';
+import 'package:rumah_sehati_mobile/app/data/providers/kms.provider.dart';
 import 'package:rumah_sehati_mobile/domain/core/interfaces/api_response.dart';
+import 'package:rumah_sehati_mobile/infrastructure/utils/extension/string_extension.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/views/kms.digital.result.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/balita/views/sakit_bayi_view.dart';
@@ -20,6 +23,7 @@ class BalitaController extends GetxController implements ApiResponse {
   final TextEditingController asiController = TextEditingController();
   final TextEditingController searchController = TextEditingController();
   late final ArticleProvider articleProvider = ArticleProvider(this);
+  late final KmsProvider kmsProvider = KmsProvider(this);
   RxBool isLoading = true.obs;
   RxList<Article> articles = RxList();
   RxInt currentMenuIndex = 0.obs;
@@ -66,6 +70,17 @@ class BalitaController extends GetxController implements ApiResponse {
       genderController: genderController,
       posyanduDateController: posyanduDateController,
       weightController: weightController,
+    );
+    kmsProvider.saveKms(
+      Kms(
+        weight: double.parse(weightController.text),
+        asi: asiController.text,
+        birthDate: dateOfBirthController.text,
+        posyanduDate: posyanduDateController.text,
+        createdAt: DateTime.now().toString(),
+        gender: genderController.text,
+        usia: dateOfBirthController.text.ageInMonth(format: 'dd MMMM yyyy'),
+      ),
     );
   }
 

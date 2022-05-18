@@ -23,13 +23,14 @@ class KmsAdapter extends TypeAdapter<Kms> {
       weight: fields[3] as double?,
       asi: fields[4] as String?,
       createdAt: fields[5] as String?,
-    );
+      usia: fields[7] as int?,
+    )..id = fields[6] as int?;
   }
 
   @override
   void write(BinaryWriter writer, Kms obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.gender)
       ..writeByte(1)
@@ -41,7 +42,11 @@ class KmsAdapter extends TypeAdapter<Kms> {
       ..writeByte(4)
       ..write(obj.asi)
       ..writeByte(5)
-      ..write(obj.createdAt);
+      ..write(obj.createdAt)
+      ..writeByte(6)
+      ..write(obj.id)
+      ..writeByte(7)
+      ..write(obj.usia);
   }
 
   @override

@@ -12,6 +12,7 @@ export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controlle
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/home.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/home_menu.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/ibu_hamil.controller.binding.dart';
+export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/kms_detail.controller.binding.dart'; 
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/konsultasi_gizi.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/login.controller.binding.dart';
 export 'package:rumah_sehati_mobile/infrastructure/navigation/bindings/controllers/login_register.controller.binding.dart';

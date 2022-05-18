@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
+import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 
 import '../../../../infrastructure/theme/theme.dart';
@@ -15,6 +16,14 @@ class BalitaScreen extends GetView<BalitaController> {
   Widget build(BuildContext context) {
     return BaseUi(
         title: Strings.baby,
+        actionbar: IconButton(
+            onPressed: () {
+              Get.toNamed(Routes.KMS_DETAIL);
+            },
+            icon: const Icon(
+              Icons.insert_chart,
+              color: Colors.white,
+            )),
         child: SizedBox(
           width: Get.width,
           height: Get.height,
@@ -38,7 +47,8 @@ class BalitaScreen extends GetView<BalitaController> {
             Text(controller.menus[controller.currentMenuIndex.value].name,
                 style: TextStyles.titleHero()),
             SizedBox(height: Dimension.height8),
-            Text(controller.menus[controller.currentMenuIndex.value].description,
+            Text(
+                controller.menus[controller.currentMenuIndex.value].description,
                 style: TextStyles.bodySmallRegular(color: Pallet.lightBlack)),
           ],
         ),

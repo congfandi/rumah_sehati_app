@@ -161,5 +161,10 @@ class Nav {
       page: () => const DetailIbuHamilScreen(),
       binding: DetailIbuHamilControllerBinding(),
     ),
+    GetPage(
+      name: Routes.KMS_DETAIL,
+      page: () => const KmsDetailScreen(),
+      binding: KmsDetailControllerBinding(),
+    ),
   ];
 }

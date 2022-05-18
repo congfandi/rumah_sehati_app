@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/app/data/models/menu.harian/menu_harian_response.dart';
-import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/menu_harian/menu.harian.detail.dart';

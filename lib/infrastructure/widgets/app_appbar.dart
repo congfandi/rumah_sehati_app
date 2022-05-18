@@ -3,10 +3,15 @@ import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 
 class AppAppbar extends StatelessWidget {
-  const AppAppbar({Key? key, required this.title, this.showBackButton = true})
+  const AppAppbar(
+      {Key? key,
+      required this.title,
+      this.showBackButton = true,
+      this.actionbar})
       : super(key: key);
   final String title;
   final bool showBackButton;
+  final Widget? actionbar;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +52,10 @@ class AppAppbar extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(
-                  width: Dimension.width36,
-                ),
+                actionbar ??
+                    const SizedBox(
+                      width: 32,
+                    ),
               ],
             ),
           )

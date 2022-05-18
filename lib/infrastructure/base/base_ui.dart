@@ -10,7 +10,9 @@ class BaseUi extends StatefulWidget {
       required this.child,
       this.backgroundColor = Pallet.white,
       this.showBackButton = true,
-      this.bottomNavigationBar,this.floatingActionButton})
+      this.bottomNavigationBar,
+      this.floatingActionButton,
+      this.actionbar})
       : super(key: key);
   final String title;
   final Widget child;
@@ -18,6 +20,7 @@ class BaseUi extends StatefulWidget {
   final bool showBackButton;
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
+  final Widget? actionbar;
 
   @override
   _BaseUiState createState() => _BaseUiState();
@@ -32,7 +35,11 @@ class _BaseUiState extends State<BaseUi> {
       floatingActionButton: widget.floatingActionButton,
       body: Column(
         children: [
-          AppAppbar(title: widget.title, showBackButton: widget.showBackButton),
+          AppAppbar(
+            title: widget.title,
+            showBackButton: widget.showBackButton,
+            actionbar: widget.actionbar,
+          ),
           Expanded(child: widget.child)
         ],
       ),

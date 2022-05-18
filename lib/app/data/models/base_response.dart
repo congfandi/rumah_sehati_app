@@ -9,6 +9,7 @@
  */
 
 import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation.dart';
+import 'package:rumah_sehati_mobile/app/data/models/kms/kms.dart';
 import 'package:rumah_sehati_mobile/app/data/models/menu.harian/menu_harian_response.dart';
 import 'package:rumah_sehati_mobile/app/data/models/rekomendasi.dart';
 
@@ -59,6 +60,7 @@ class ResultResponse {
   List<MenuHarian>? makanMalam;
   List<MenuHarian>? makanSiang;
   List<MenuHarian>? snack;
+  List<Kms>? listKms;
   AuthResponse? authResponse;
   Rekomendasi? rekomendasi;
 
@@ -75,7 +77,8 @@ class ResultResponse {
       this.sarapan,
       this.makanMalam,
       this.makanSiang,
-      this.snack});
+      this.snack,
+      this.listKms});
 
   ResultResponse.fromJson(dynamic json) {
     authResponse =

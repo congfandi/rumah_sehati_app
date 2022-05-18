@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/theme/theme.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
-import 'package:rumah_sehati_mobile/presentation/home/home_menu/tips_item.dart';
 
 import 'controllers/home_menu.controller.dart';
 
@@ -25,55 +24,6 @@ class HomeMenuScreen extends GetView<HomeMenuController> {
           ],
         ),
       )),
-    );
-  }
-
-  Widget _tips() {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 24),
-          child: SizedBox(
-            width: Get.width,
-            child: Text(
-              Strings.simakTips,
-              style: TextStyles.bodySmallMedium(),
-              textAlign: TextAlign.start,
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 310,
-          child: PageView.builder(
-            itemBuilder: (c, i) {
-              return const TipsItem();
-            },
-            itemCount: 3,
-            onPageChanged: controller.onTipsChanged,
-          ),
-        ),
-        Obx(
-          () => Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              3,
-              (index) => Container(
-                height: 6,
-                width: 6,
-                margin: const EdgeInsets.only(left: 3),
-                decoration: BoxDecoration(
-                    color: index == controller.currentIndexTips.value
-                        ? Pallet.primaryPurple
-                        : Pallet.grey,
-                    borderRadius: BorderRadius.circular(5)),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: Dimension.height16,
-        )
-      ],
     );
   }
 

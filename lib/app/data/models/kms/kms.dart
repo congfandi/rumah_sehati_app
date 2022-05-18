@@ -10,7 +10,8 @@ class Kms {
       this.posyanduDate,
       this.weight,
       this.asi,
-      this.createdAt});
+      this.createdAt,
+      this.usia});
 
   Kms.fromJson(dynamic json) {
     gender = json['gender'];
@@ -19,6 +20,7 @@ class Kms {
     weight = json['weight'];
     asi = json['asi'];
     createdAt = json['createdAt'];
+    usia = json['usia'];
   }
 
   @HiveField(0)
@@ -33,6 +35,10 @@ class Kms {
   String? asi;
   @HiveField(5)
   String? createdAt;
+  @HiveField(6)
+  int? id;
+  @HiveField(7)
+  int? usia;
 
   Kms copyWith(
           {String? gender,
@@ -40,14 +46,16 @@ class Kms {
           String? posyanduDate,
           double? weight,
           String? asi,
-          String? createdAt}) =>
+          String? createdAt,
+          int? usia}) =>
       Kms(
           gender: gender ?? this.gender,
           birthDate: birthDate ?? this.birthDate,
           posyanduDate: posyanduDate ?? this.posyanduDate,
           weight: weight ?? this.weight,
           asi: asi ?? this.asi,
-          createdAt: createdAt ?? this.createdAt);
+          createdAt: createdAt ?? this.createdAt,
+          usia: usia ?? this.usia);
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -57,6 +65,7 @@ class Kms {
     map['weight'] = weight;
     map['asi'] = asi;
     map['createdAt'] = createdAt;
+    map['usia'] = usia;
     return map;
   }
 }
