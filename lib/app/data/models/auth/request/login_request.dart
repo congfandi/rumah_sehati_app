@@ -14,7 +14,7 @@ class LoginRequest {
       this.password,});
 
   LoginRequest.fromJson(dynamic json) {
-    email = json['email'];
+    email = json['username'];
     password = json['password'];
   }
   String? email;
@@ -22,7 +22,7 @@ class LoginRequest {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['email'] = email;
+    map['username'] = email;
     map['password'] = password;
     return map;
   }

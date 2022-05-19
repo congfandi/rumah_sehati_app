@@ -199,20 +199,20 @@ class ProfileScreen extends GetView<ProfileController> {
         // ),
         // //change password
         // SizedBox(height: Dimension.height16),
-        Row(
-          children: [
-            Text(
-              Strings.changePassword,
-              style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
-            ),
-            const Expanded(child: SizedBox()),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Pallet.lightBlack,
-              size: 16,
-            )
-          ],
-        ),
+        // Row(
+        //   children: [
+        //     Text(
+        //       Strings.changePassword,
+        //       style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
+        //     ),
+        //     const Expanded(child: SizedBox()),
+        //     const Icon(
+        //       Icons.arrow_forward_ios_rounded,
+        //       color: Pallet.lightBlack,
+        //       size: 16,
+        //     )
+        //   ],
+        // ),
         //FAQ
         SizedBox(height: Dimension.height16),
         GestureDetector(

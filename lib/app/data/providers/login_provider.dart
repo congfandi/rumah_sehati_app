@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:rumah_sehati_mobile/domain/core/network/api_url.dart';
 
 import '../../../domain/core/interfaces/api_response.dart';
@@ -14,7 +16,9 @@ class LoginProvider extends ApiClient {
   Future<void> login(LoginRequest request) async {
     String path = ApiUrl.login;
     apiResponse.onStartRequest(path);
-    var response = await post(path, request.toJson());
+    var response = await post(path, request.toJson(),
+        contentType: "application/x-www-form-urlencoded"
+    );
     apiResponse.onFinishRequest(path);
     if (response.isOk) {
       if ((response.statusCode ?? 500) < 300) {
