@@ -158,7 +158,7 @@ class _LineChart extends GetView<KmsDetailController> {
         dotData: FlDotData(show: true),
         belowBarData: BarAreaData(show: false),
         spots: controller.listKms
-                .map((e) => FlSpot((e.usia ?? 0) * 1.0, e.weight ?? 0))
-                .toList(),
+            .map((e) => FlSpot((e.weight ?? 0), (e.usia ?? 0) * 1.0))
+            .toList(),
       );
 }

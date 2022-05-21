@@ -52,7 +52,7 @@ class KmsProvider extends ApiClient {
     try {
       List<Kms> listKms = box.values.toList();
       kms.id = listKms.length + 1;
-      box.add(kms);
+      box.put(kms.id, kms);
       apiResponse.onFinishRequest("save");
       apiResponse.onSuccessRequest(
           "save",
