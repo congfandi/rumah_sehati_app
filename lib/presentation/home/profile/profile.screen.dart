@@ -238,12 +238,12 @@ class ProfileScreen extends GetView<ProfileController> {
         SizedBox(height: Dimension.height16),
         GestureDetector(
           onTap: (){
-            _launchUrl("https://sehatidmf.com/public/faq");
+            _launchUrl("https://sehatidmf.com/public/contact");
           },
           child: Row(
             children: [
               Text(
-                Strings.help,
+                Strings.kontak,
                 style: TextStyles.bodySmallRegular(color: Pallet.lightBlack),
               ),
               const Expanded(child: SizedBox()),

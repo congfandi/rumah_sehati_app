@@ -166,5 +166,10 @@ class Nav {
       page: () => const KmsDetailScreen(),
       binding: KmsDetailControllerBinding(),
     ),
+    GetPage(
+      name: Routes.DETAIL_PRAKONSEPSI,
+      page: () => DetailPrakonsepsiScreen(),
+      binding: DetailPrakonsepsiControllerBinding(),
+    ),
   ];
 }

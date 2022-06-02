@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 
 import 'package:get/get.dart';
+import 'package:rumah_sehati_mobile/infrastructure/navigation/routes.dart';
 import 'package:rumah_sehati_mobile/infrastructure/widgets/app_normal_button.dart';
 
 import '../../../../infrastructure/base/base_ui.dart';
@@ -93,24 +94,34 @@ class PrakonsepsiScreen extends GetView<PrakonsepsiController> {
             height: Dimension.height8,
           ),
           AppNormalButton(
-              onPress: () {}, title: "Pemeriksaan prakonksepsi apa saja?"),
+              onPress: () {
+                Get.toNamed(Routes.DETAIL_PRAKONSEPSI, arguments: "1");
+              },
+              title: "Pemeriksaan prakonksepsi apa saja?"),
           SizedBox(
             height: Dimension.height8,
           ),
           AppNormalButton(
-              onPress: () {},
+              onPress: () {
+                Get.toNamed(Routes.DETAIL_PRAKONSEPSI, arguments: "2");
+              },
               title: "langkah langkah yang dilakukan dalam prakonsepsi?"),
           SizedBox(
             height: Dimension.height8,
           ),
           AppNormalButton(
-              onPress: () {},
+              onPress: () {
+                Get.toNamed(Routes.DETAIL_PRAKONSEPSI, arguments: "3");
+              },
               title: "Mengapa harus dilakukan skrining prakonsepsi?"),
           SizedBox(
             height: Dimension.height8,
           ),
           AppNormalButton(
-              onPress: () {}, title: "Persiapan apa saja untuk bisa hamil?"),
+              onPress: () {
+                Get.toNamed(Routes.DETAIL_PRAKONSEPSI, arguments: "4");
+              },
+              title: "Persiapan apa saja untuk bisa hamil?"),
           SizedBox(
             height: Dimension.height18,
           ),

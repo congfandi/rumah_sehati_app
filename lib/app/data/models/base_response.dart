@@ -11,6 +11,7 @@
 import 'package:rumah_sehati_mobile/app/data/models/consultation/consultation.dart';
 import 'package:rumah_sehati_mobile/app/data/models/kms/kms.dart';
 import 'package:rumah_sehati_mobile/app/data/models/menu.harian/menu_harian_response.dart';
+import 'package:rumah_sehati_mobile/app/data/models/prakonsepsi/pretest.dart';
 import 'package:rumah_sehati_mobile/app/data/models/rekomendasi.dart';
 
 import 'article/response/article.dart';
@@ -51,6 +52,7 @@ class BaseResponse {
 class ResultResponse {
   Profile? profile;
   List<Article>? articles;
+  List<Article>? parenting;
   Meta? meta;
   List<Faskes>? faskes;
   List<Group>? groups;
@@ -63,6 +65,8 @@ class ResultResponse {
   List<Kms>? listKms;
   AuthResponse? authResponse;
   Rekomendasi? rekomendasi;
+  Article? prakonsepsi;
+  Pretest? test;
 
   ResultResponse(
       {this.profile,
@@ -78,17 +82,29 @@ class ResultResponse {
       this.makanMalam,
       this.makanSiang,
       this.snack,
-      this.listKms});
+      this.prakonsepsi,
+      this.listKms,
+      this.parenting,
+      this.test});
 
   ResultResponse.fromJson(dynamic json) {
     authResponse =
         json['login'] == null ? null : AuthResponse.fromJson(json['login']);
+
     profile =
         json['profile'] == null ? null : Profile.fromJson(json['profile']);
+
     if (json['articles'] != null) {
       articles = [];
       json['articles'].forEach((v) {
         articles?.add(Article.fromJson(v));
+      });
+    }
+
+    if (json['parenting'] != null) {
+      parenting = [];
+      json['parenting'].forEach((v) {
+        parenting?.add(Article.fromJson(v));
       });
     }
 
@@ -147,6 +163,12 @@ class ResultResponse {
     }
     if (json['rekomendasi'] != null) {
       rekomendasi = Rekomendasi.fromJson(json['rekomendasi']);
+    }
+    if (json["prakonsepsi"] != null) {
+      prakonsepsi = Article.fromJson(json["prakonsepsi"]);
+    }
+    if (json["data"] != null) {
+      test = Pretest.fromJson(json["data"]);
     }
   }
 }

@@ -20,4 +20,6 @@ class ApiUrl {
   static const consultation = "/api/v1/consultations";
   static const rekomendasi = "/api/v1/rekomendasi";
   static const menuHarian = "/api/v1/menu-harian";
+  static const prakonsepsi = "/api/v1/prakonsepsi";
+  static const pretest = "/api/v1/prepost_test";
 }

@@ -566,4 +566,6 @@ class Strings {
   static const String samplePhone = "62821-3208-1430";
   static const String sukses = "Sukses";
   static const String artikelTelahDisimpan = "Artikel telah disimpan";
+  static const String kontak = "Kontak";
+  static const String noArtikel = "Tidak ada artikel";
 }

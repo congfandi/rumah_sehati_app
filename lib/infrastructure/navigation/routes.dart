@@ -19,6 +19,7 @@ class Routes {
   static const HOME = '/home';
   static const HOME_MENU = '/home-menu';
   static const IBU_HAMIL = '/ibu-hamil';
+  static const KMS_DETAIL = '/kms-detail';
   static const KONSULTASI_GIZI = '/konsultasi-gizi';
   static const LOGIN = '/login';
   static const LOGIN_REGISTER = '/login-register';
@@ -32,5 +33,5 @@ class Routes {
   static const REKAN_BUNDA = '/rekan-bunda';
   static const SAVED_ARTICLE = '/saved-article';
   static const SPLASH = '/splash';
-  static const KMS_DETAIL = '/kms-detail';
+  static const DETAIL_PRAKONSEPSI = '/detail-prakonsepsi';
 }

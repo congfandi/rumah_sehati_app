@@ -34,11 +34,16 @@ class ParentingScreen extends GetView<ParentingController> {
 
   Widget _articles() {
     return Obx(
-      () => controller.listArticle.isEmpty
+      () => controller.isNeedLoading.isTrue?SizedBox(
+        height: Dimension.height112,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
+      ):controller.listArticle.isEmpty
           ? SizedBox(
               height: Dimension.height112,
               child: const Center(
-                child: CircularProgressIndicator(),
+                child: Text(Strings.noArtikel),
               ),
             )
           : ListView.builder(

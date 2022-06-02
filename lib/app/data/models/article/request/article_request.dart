@@ -33,7 +33,7 @@ class ArticleRequest {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    if (category != null) {
+    if (category != null && category != "") {
       map['category'] = category;
     }
     if (query != null) {
@@ -46,7 +46,7 @@ class ArticleRequest {
       map['perPage'] = "$perPage";
     }
     if (tags != null) {
-      map['tags'] = "$perPage";
+      map['tags'] = "$tags";
     }
     return map;
   }

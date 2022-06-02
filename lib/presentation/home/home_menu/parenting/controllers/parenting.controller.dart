@@ -8,31 +8,33 @@ import 'package:rumah_sehati_mobile/domain/core/interfaces/api_response.dart';
 import 'package:rumah_sehati_mobile/infrastructure/utils/resources/resources.dart';
 import 'package:rumah_sehati_mobile/presentation/home/home_menu/calculator/controllers/calculator.controller.dart';
 
-
 class ParentingController extends GetxController implements ApiResponse {
   RxInt currentMenuIndex = 0.obs;
   final List<CalculatorMenu> menus = [
     CalculatorMenu(
-        name: Strings.umum,
-        logo: Assets.parentingUmum,
-        description: Strings.articleAndParentingUmum,
-        child: const SizedBox(),),
+      name: Strings.umum,
+      logo: Assets.parentingUmum,
+      description: Strings.articleAndParentingUmum,
+      child: const SizedBox(),
+    ),
     CalculatorMenu(
-      name: "0 - 12 Bulan",
+      name: "0-12 Bulan",
       logo: Assets.parenting0,
       description: Strings.articleAndParenting0,
       child: const SizedBox(),
     ),
     CalculatorMenu(
-        name: "1 - 3 Tahun",
-        logo: Assets.parenting1,
-        description: Strings.articleAndParenting1,
-        child: const SizedBox(),),
+      name: "1-3 Tahun",
+      logo: Assets.parenting1,
+      description: Strings.articleAndParenting1,
+      child: const SizedBox(),
+    ),
     CalculatorMenu(
       name: Strings.menyusui,
       logo: Assets.parentingMenyusui,
       description: Strings.articleAndParentingMenyusui,
-      child: const SizedBox(),),
+      child: const SizedBox(),
+    ),
   ];
 
   CalculatorMenu currentMenu() {
@@ -50,7 +52,7 @@ class ParentingController extends GetxController implements ApiResponse {
 
   RxList<Article> listArticle = RxList();
   late final ArticleProvider _provider = ArticleProvider(this);
-  ArticleRequest query = ArticleRequest(perPage: 5, page: 1);
+  ArticleRequest query = ArticleRequest(perPage: 100, page: 1);
   RxBool isNeedLoading = true.obs;
 
   void loadMore() {
@@ -61,7 +63,12 @@ class ParentingController extends GetxController implements ApiResponse {
   void filter(String value) {
     listArticle.clear();
     isNeedLoading(true);
-    query.category = value;
+    if (value == Strings.umum) {
+      query.category = "";
+    } else {
+      query.category = value.toLowerCase();
+    }
+    query.tags = "Parenting";
     _provider.getArticles(query: query);
   }
 
