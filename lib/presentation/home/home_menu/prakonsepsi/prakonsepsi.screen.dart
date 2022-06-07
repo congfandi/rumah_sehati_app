@@ -64,8 +64,7 @@ class PrakonsepsiScreen extends GetView<PrakonsepsiController> {
                   ),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      _launchUrl(
-                          "https://docs.google.com/forms/d/e/1FAIpQLSf2qjlSavMIBDRiicbdgtfq4w6TZFkcjERN1tWd_vu1eBMb2w/viewform?usp=sf_link");
+                      _launchUrl(controller.pretestUrl);
                     },
                 )
               ])),
@@ -138,8 +137,7 @@ class PrakonsepsiScreen extends GetView<PrakonsepsiController> {
                   ),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      _launchUrl(
-                          "https://docs.google.com/forms/d/e/1FAIpQLSf2qjlSavMIBDRiicbdgtfq4w6TZFkcjERN1tWd_vu1eBMb2w/viewform?usp=sf_link");
+                      _launchUrl(controller.postTestUrl);
                     },
                 )
               ])),
