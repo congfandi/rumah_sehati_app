@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import 'package:get/get.dart';
 import 'package:rumah_sehati_mobile/infrastructure/base/base_ui.dart';
@@ -16,7 +17,7 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
   Widget build(BuildContext context) {
     controller.onReady();
     return BaseUi(
-        title: Strings.article,
+        title: Strings.consultantGizi,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,9 +31,9 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
                       _header(),
                       SizedBox(height: Dimension.height24),
                       SizedBox(height: Dimension.height24),
-                      Text(
+                      HtmlWidget(
                         controller.consultation?.answer ?? "",
-                        style: const TextStyle(
+                        textStyle: const TextStyle(
                             fontWeight: FontWeight.normal,
                             fontSize: 14,
                             height: 1.5),
@@ -101,7 +102,7 @@ class QuestionerDetailScreen extends GetView<QuestionerDetailController> {
                   height: Dimension.height8,
                 ),
                 Text(
-                  (controller.consultation?.createdDate ?? "").toDayAndDate(),
+                  (controller.consultation?.createdDate ?? "").toDayAndDate(format: "yyyy-MM-dd"),
                   style: TextStyles.bodySmallRegular(),
                 ),
               ],
